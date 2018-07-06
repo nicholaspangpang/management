@@ -11,5 +11,13 @@
 
     <artifactId>management-service</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.fooee.winqing</groupId>
+            <artifactId>management-dao</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
