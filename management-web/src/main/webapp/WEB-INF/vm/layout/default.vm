@@ -1,0 +1,15 @@
+<html>
+<head>
+    <title>$!page_title</title>
+    #parse("default/static.vm")
+</head>
+<body>
+
+#parse("default/header.vm")
+
+$screen_content
+
+#parse("default/footer.vm")
+
+</body>
+</html>

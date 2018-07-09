@@ -1,0 +1,78 @@
+﻿<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"%>
+	<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Access-Control-Allow-Origin" content="*">
+<%@ include file="/common/publicCsJs.jsp"%>
+<script type="text/javascript" src="<c:url value='/js/mainPage.js'/>"></script>
+<title>管理系统</title>
+</head> 
+<body>
+<!-- 头文件开始 --> 
+<%@ include file="/common/menu.jsp"%>
+<!-- 头文件结束 --> 
+
+<!-- 中间内容结束开始 -->
+<!-- 	<div class="dh_back">  -->
+<!-- 		<div class="l_r_t_b20 font12"> -->
+<%-- 			<img src="<c:url value='/img/icon_navigation.png'/>" width="16" height="16">&nbsp;&nbsp;当前位置：首 页&nbsp;&nbsp;  --%>
+<%-- 			<img src="<c:url value='/img/arrow_red.gif'/>" width="7" height="5">&nbsp;&nbsp; 待办工作 &nbsp;&nbsp;  --%>
+<!-- 		</div> -->
+<!-- 	</div> -->
+<form class="form-horizontal">
+  <div class="container_center">
+    <div class="row-fluid">
+      <div class="span7">
+        <div class="row-fluid taskBack">
+          <div class="left20">
+            <div class="span6">
+              <br>
+              <img src="<c:url value='/img/task.gif'/>"> &nbsp;&nbsp; 待办工作
+              <br>
+            </div>
+          </div>
+	    </div>
+        <div class="row-fluid left40">
+        	<div class="top10"><span class="fontB">您有：</span></div>
+        	<c:if test="${sessionScope.userSession.shopId == 1 && wtShop > 0}">
+        		<div class="left40 top6"><a href="<%=basePath%>shopInf/toShopInfList" class="line">待审核商家 <span class="fontRed">${wtShop}</span> 条！</a></div>
+        	</c:if>
+        	<c:if test="${waitProcessOrderNum > 0}">
+        		<div class="left40 top6"><a href="<%=basePath%>order/toOrderInfoList?orderStCd=30" class="line">待确认订单 <span class="fontRed">${waitProcessOrderNum}</span> 条！</a></div>
+        	</c:if>
+        	<c:if test="${waitFahuoOrderNum > 0}">
+        		<div class="left40 top6"><a href="<%=basePath%>order/toOrderInfoList?orderStCd=3" class="line">待发货订单 <span class="fontRed">${waitFahuoOrderNum}</span> 条！</a></div>
+        	</c:if>
+        	<c:if test="${oderCountToday > 0}">
+        		<div class="left40 top6"><a href="<%=basePath%>order/toOrderInfoList?startDt=${nowDate}&endDt=${nowDate}" class="line">今日订单总数 <span class="fontRed">${oderCountToday}</span> 条！</a></div>
+        	</c:if>
+        	<c:if test="${orderAccuntByToday !=null}">
+        		<div class="left40 top6"><a href="<%=basePath%>cptl/cptlPayList?startDt=${nowDate}&endDt=${nowDate}" class="line">今日成交金额<span class="fontRed">${orderAccuntByToday}</span> 元！</a></div>
+        	</c:if>
+        	<c:if test="${returnOderInfoCount >0}">
+        		<div class="left40 top6"><a href="<%=basePath%>order/toRefundOrderList?orderStcds=15" class="line">待处理退款<span class="fontRed">${returnOderInfoCount}</span> 条！</a></div>
+        	</c:if>
+        </div>
+      </div>
+      <div class="span5">
+        <div class="row-fluid top10">
+          <div class="span1"></div>
+          <div class="span11">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<!-- 中间内容结束 --> 
+
+<!-- 尾文件开始 -->
+<%@ include file="/common/footer.jsp"%>
+<!-- 尾文件结束 --> 
+</body>
+</html>

@@ -1,0 +1,9 @@
+<div class="content">
+	<div class="container-fluid">
+		<div class="alert alert-warning" role="alert">
+			${error.message}
+		</div>
+		<button class="btn btn-default" type="submit" onclick="history.go(-1);">返回</button>
+		<a class="btn btn-default" href="/" role="button">首页</a>
+    </div>
+</div>

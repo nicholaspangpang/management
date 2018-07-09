@@ -7,14 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * description
  *
  * @author pangzhenhua
- * @date 2018/7/6
+ * @date 2018/7/8
  */
 @Controller
-public class MainController {
+public class LoginController {
 
-    @RequestMapping("main")
-    String main(){
+    @RequestMapping("login")
+    String login(){
 
-        return "main";
+        return "login";
+    }
+
+    @RequestMapping("logout")
+    String logout(){
+
+        return "login";
     }
 }

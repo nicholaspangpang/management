@@ -1,0 +1,5 @@
+#set($layout="/layout/none.vm")
+{
+	"error":"true",
+	"message":"${error.message}"
+}
