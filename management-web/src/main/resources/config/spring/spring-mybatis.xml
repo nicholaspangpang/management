@@ -20,7 +20,7 @@
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
-		<property name="basePackage" value="com.fooee.winqing.user.dao.mapper,com.fooee.commons.dao.mapper" />
+		<property name="basePackage" value="com.fooee.winqing.management.dao.mapper,com.fooee.commons.dao.mapper" />
 	</bean>
 	
 </beans>

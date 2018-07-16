@@ -1,0 +1,14 @@
+﻿@charset "utf-8";
+.query_data_area { position: relative; text-align: left; overflow: hidden; border:1px solid #ddd; font-family: "微软雅黑", Arial, Verdana, Tahoma; }
+.query_data_area .l_left { float: left; padding: 5px; width: 318px; border-right: 1px solid #ddd; overflow: hidden; overflow-y: auto; height: 190px; -moz-user-select: none; }
+.query_data_area .l_so_area { padding: 5px; border-bottom: 1px solid #ccc; background-color: #f6f6f6 }
+.query_data_area .l_so { border: 1px solid #ccc; height: 26px; }
+.query_data_area .l_right {float: right; padding: 5px; width: 318px; overflow: hidden; overflow-y: auto; -moz-user-select: none; height: 190px; }
+.query_data_area .l_lab { display: block; padding-right: 24px; margin-bottom: 5px; position: relative; height: 18px; cursor: pointer; overflow: hidden; font-size: 12px; }
+.query_data_area .l_lab.active, .query_data_area .l_left .l_lab.none, .query_data_area .l_right .l_lab.none { display: none; }
+.query_data_area .l_lab span { position: absolute; right: 0; top: 0; display: inline-block;}
+.query_data_area .l_left .r_span, .query_data_area .l_right .l_span { display: none; }
+.msie6 .query_data_area .l_left, .msie6 .query_data_area .l_right { height: 185px; }
+.layui-layer-lan.my-layui-query .layui-layer-btn .layui-layer-btn0 { background-color: #4476a7; border-radius: 2px; border-color: #4898d5; color: #fff; }
+.layui-layer-lan.my-layui-query .layui-layer-btn .layui-layer-btn1, .layui-layer-lan.my-layui-query .layui-layer-btn .layui-layer-btn2 { background-color: #f1f1f1; border: 1px solid #dedede; border-radius: 2px; color: #333; cursor: pointer; font-weight: 400; height: 28px; line-height: 28px; margin: 0 6px; padding: 0 15px; text-decoration: none; }
+.query_model_area.ui-dialog .ui-dialog-content { padding: 0 }

@@ -1,78 +1,135 @@
-﻿<%@ page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"%>
-	<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="Access-Control-Allow-Origin" content="*">
-<%@ include file="/common/publicCsJs.jsp"%>
-<script type="text/javascript" src="<c:url value='/js/mainPage.js'/>"></script>
-<title>管理系统</title>
-</head> 
-<body>
-<!-- 头文件开始 --> 
-<%@ include file="/common/menu.jsp"%>
-<!-- 头文件结束 --> 
+﻿<div class="container-full">
 
-<!-- 中间内容结束开始 -->
-<!-- 	<div class="dh_back">  -->
-<!-- 		<div class="l_r_t_b20 font12"> -->
-<%-- 			<img src="<c:url value='/img/icon_navigation.png'/>" width="16" height="16">&nbsp;&nbsp;当前位置：首 页&nbsp;&nbsp;  --%>
-<%-- 			<img src="<c:url value='/img/arrow_red.gif'/>" width="7" height="5">&nbsp;&nbsp; 待办工作 &nbsp;&nbsp;  --%>
-<!-- 		</div> -->
-<!-- 	</div> -->
-<form class="form-horizontal">
-  <div class="container_center">
-    <div class="row-fluid">
-      <div class="span7">
-        <div class="row-fluid taskBack">
-          <div class="left20">
-            <div class="span6">
-              <br>
-              <img src="<c:url value='/img/task.gif'/>"> &nbsp;&nbsp; 待办工作
-              <br>
-            </div>
-          </div>
-	    </div>
-        <div class="row-fluid left40">
-        	<div class="top10"><span class="fontB">您有：</span></div>
-        	<c:if test="${sessionScope.userSession.shopId == 1 && wtShop > 0}">
-        		<div class="left40 top6"><a href="<%=basePath%>shopInf/toShopInfList" class="line">待审核商家 <span class="fontRed">${wtShop}</span> 条！</a></div>
-        	</c:if>
-        	<c:if test="${waitProcessOrderNum > 0}">
-        		<div class="left40 top6"><a href="<%=basePath%>order/toOrderInfoList?orderStCd=30" class="line">待确认订单 <span class="fontRed">${waitProcessOrderNum}</span> 条！</a></div>
-        	</c:if>
-        	<c:if test="${waitFahuoOrderNum > 0}">
-        		<div class="left40 top6"><a href="<%=basePath%>order/toOrderInfoList?orderStCd=3" class="line">待发货订单 <span class="fontRed">${waitFahuoOrderNum}</span> 条！</a></div>
-        	</c:if>
-        	<c:if test="${oderCountToday > 0}">
-        		<div class="left40 top6"><a href="<%=basePath%>order/toOrderInfoList?startDt=${nowDate}&endDt=${nowDate}" class="line">今日订单总数 <span class="fontRed">${oderCountToday}</span> 条！</a></div>
-        	</c:if>
-        	<c:if test="${orderAccuntByToday !=null}">
-        		<div class="left40 top6"><a href="<%=basePath%>cptl/cptlPayList?startDt=${nowDate}&endDt=${nowDate}" class="line">今日成交金额<span class="fontRed">${orderAccuntByToday}</span> 元！</a></div>
-        	</c:if>
-        	<c:if test="${returnOderInfoCount >0}">
-        		<div class="left40 top6"><a href="<%=basePath%>order/toRefundOrderList?orderStcds=15" class="line">待处理退款<span class="fontRed">${returnOderInfoCount}</span> 条！</a></div>
-        	</c:if>
+    <!-- 面包导航开始 -->
+    <div class="headerBox">
+        <div class="active_com">
+            <span class="position"><b class="map-marker"></b>当前位置：</span>
+            <ul class="ul">
+                <li><a href="JavaScript:;"> <span>首 页</span>
+                </a> <b> > </b></li>
+                <li><a href="JavaScript:;"> <span>收发货查询</span>
+                </a> <b> > </b></li>
+                <li><a href="JavaScript:;"> <span>供应商发货单查询</span>
+                </a></li>
+            </ul>
         </div>
-      </div>
-      <div class="span5">
-        <div class="row-fluid top10">
-          <div class="span1"></div>
-          <div class="span11">
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
-</form>
-<!-- 中间内容结束 --> 
+    <!-- 面包导航结束 -->
 
-<!-- 尾文件开始 -->
-<%@ include file="/common/footer.jsp"%>
-<!-- 尾文件结束 --> 
-</body>
-</html>
+
+    <div class="bodyBox">
+        <input id="purchaserId" type="hidden" value="${sapvendorId}" />
+        <!-- 待发送开始 -->
+        <div class="Tab" id="TabA">
+            <div class="screenBox">
+                <div class="screenTable">
+                    <div class="left">
+                        <ul>
+                            <li>
+                                <span class="name">订单号</span>
+                                <div class="com gys">
+                                    <input id="orderCodes" type="text" value="">
+                                    <span class="add conditions-orders-btn"></span> <span class="del"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="name">发货日期</span>
+                                <div class="com time">
+                                    <input type="text" onClick="WdatePicker();" id="startOrderSendOutDate">
+                                    <b></b>
+                                    <span></span>
+                                    <input type="text" onClick="WdatePicker();" id="endOrderSendOutDate">
+                                    <b></b>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="name">发货单号</span>
+                                <div class="com gys">
+                                    <input type="text" id="sendoutCode" value=""> <span
+                                        class="add conditions-btn"></span> <span class="del"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="name">供应商</span>
+                                <div class="com gys">
+                                    <input type="text" id="supplierid" value=""> <span
+                                        class="add query-btn"></span> <span class="del"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="name">采购商商品ID</span>
+                                <div class="com gys">
+                                    <input type="text" id="purchaserCommoditiesIds" value="">
+                                    <span class="add conditions-purchaserCommoditiesIds-btn"></span> <span class="del"></span>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="name">商品名称</span>
+                                <div class="com gys">
+                                    <input type="text" id="bookTitles" value=""><span
+                                        class="add conditions-bookTitles-btn"></span> <span class="del"></span>
+                                </div>
+                            </li>
+                            <li class="hide">
+                                <span class="name">ISBN</span>
+                                <div class="com gys">
+                                    <input type="text" id="isbns" value=""><span
+                                        class="add conditions-isbn-btn"></span> <span class="del"></span>
+                                </div>
+                            </li>
+                            <li class="hide">
+                                <span class="name">收货仓位</span>
+                                <div class="com">
+                                    <select id="warehouse" class="warehouse">
+                                        <option selected="" value="">全部</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="hide">
+                                <span class="name">发货单状态</span>
+                                <div class="com">
+                                    <select id="status" id="status">
+                                        <option selected="" value="">全部</option>
+                                        <option value="5">未收货</option>
+                                        <option value="10">部分收货</option>
+                                        <option value="15">全部收货</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="hide">
+                                <span class="name">主发标识</span>
+                                <div class="com">
+                                    <select id="isInitiative" class="isInitiative">
+                                        <option selected="" value="">全部</option>
+                                        <option value="Y">主发</option>
+                                        <option value="N">非主发</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="right">
+                        <div class="btn">
+                            <span class="span1" id="queryBtn"><i></i>搜 索</span>
+                            <span id="open" class="span2"><i class="open"></i><b>展 开</b></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gridBox">
+                <div class="sortBox">
+                    <div class="orderBox">
+                        <div class="com del">
+                            <span export-type="part" class='span exportBtn'>导出</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="jqGrid">
+                    <table id="tbList"></table>
+                    <div id="page"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

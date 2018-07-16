@@ -1,7 +1,10 @@
-package com.fooee.winqing.management.web.controller.system;
+package com.fooee.winqing.management.web.controller.passport;
 
+import com.fooee.commons.web.controller.BaseController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * description
@@ -10,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2018/7/8
  */
 @Controller
-public class LoginController {
+public class LoginController extends BaseController{
 
     @RequestMapping("login")
     String login(){
@@ -19,8 +22,8 @@ public class LoginController {
     }
 
     @RequestMapping("logout")
-    String logout(){
-
+    String logout(HttpServletRequest request){
+        request.getSession().setAttribute("manageUserSession",null);
         return "login";
     }
 }

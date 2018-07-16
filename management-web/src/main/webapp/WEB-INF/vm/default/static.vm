@@ -17,5 +17,5 @@
     config_parameter.url_system_book = "${config_parameter.url_system_book}";
 </script>
 
-<script type="text/javascript" src="${contextPath}/resources/js/lib/injs/in.js" autoload="true" core="${contextPath}/resources/js/lib/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="${contextPath}/resources/js/lib/injs/in.js" autoload="true" core="${contextPath}/resources/js/lib/jquery/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="${contextPath}/resources/js/common.js"></script>

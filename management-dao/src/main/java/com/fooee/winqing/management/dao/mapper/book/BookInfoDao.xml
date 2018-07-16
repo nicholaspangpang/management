@@ -1,0 +1,456 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	@author pangzhenhua
+	@version 2016-11-29 23:08:52
+-->
+<mapper namespace="com.fooee.winqing.management.dao.mapper.book.BookInfoDao">
+
+	<resultMap type="BookInfoDo" id="BookInfoResult">
+		<result property="id" column="id" />
+		<result property="wqId" column="wq_id" />
+		<result property="authorName" column="author_name" />
+		<result property="bindingName" column="binding_name" />
+		<result property="bookName" column="book_name" />
+		<result property="bookPrice" column="book_price" />
+		<result property="createTime" column="create_time" />
+		<result property="isbn" column="isbn" />
+		<result property="pageNumber" column="page_number" />
+		<result property="pictureAddress" column="picture_address" />
+		<result property="pressName" column="press_name" />
+		<result property="publishDate" column="publish_date" />
+		<result property="scoreNumber" column="score_number" />
+		<result property="commentNumber" column="comment_number" />
+		<result property="translatorName" column="translator_name" />
+		<result property="subTitle" column="sub_title" />
+	</resultMap>
+
+	<sql id="columns">
+			author_name,
+			binding_name,
+			book_name,
+			book_price,
+			create_time,
+			id,
+			isbn,
+			page_number,
+			picture_address,
+			press_name,
+			publish_date,
+			score_number,
+			comment_number,
+			wq_id,
+			translator_name,
+			sub_title
+	</sql>
+
+	<select id="select" parameterType="BookInfoQc" resultMap="BookInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM book_info
+		<where>
+				<if  test="authorName != null">
+					AND author_name = #{authorName}
+				</if>
+				<if  test="bindingName != null">
+					AND binding_name = #{bindingName}
+				</if>
+				<if  test="bookName != null">
+					AND book_name = #{bookName}
+				</if>
+				<if  test="bookPrice != null">
+					AND book_price = #{bookPrice}
+				</if>
+				<if  test="createTime != null">
+					AND create_time = #{createTime}
+				</if>
+				<if  test="id != null">
+					AND id = #{id}
+				</if>
+				<if  test="isbn != null">
+					AND isbn = #{isbn}
+				</if>
+				<if  test="pageNumber != null">
+					AND page_number = #{pageNumber}
+				</if>
+				<if  test="pictureAddress != null">
+					AND picture_address = #{pictureAddress}
+				</if>
+				<if  test="pressName != null">
+					AND press_name = #{pressName}
+				</if>
+				<if  test="publishDate != null">
+					AND publish_date = #{publishDate}
+				</if>
+				<if  test="scoreNumber != null">
+					AND score_number = #{scoreNumber}
+				</if>
+				<if  test="commentNumber != null">
+					AND comment_number = #{commentNumber}
+				</if>
+				<if  test="wqId != null">
+					AND wq_id = #{wqId}
+				</if>
+				<if  test="translatorName != null">
+					AND translator_name = #{translatorName}
+				</if>
+				<if  test="subTitle != null">
+					AND sub_title = #{subTitle}
+				</if>
+		</where>   		
+	</select>
+	
+	<select id="selectByPage" parameterType="BookInfoQc" resultMap="BookInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM book_info
+		<where>
+				<if  test="authorName != null">
+					AND author_name = #{authorName}
+				</if>
+				<if  test="bindingName != null">
+					AND binding_name = #{bindingName}
+				</if>
+				<if  test="bookName != null">
+					AND book_name = #{bookName}
+				</if>
+				<if  test="bookNames != null">
+					AND book_name in
+					<foreach collection="bookNames"  separator="," item="item" open="(" close=") ">
+						#{item}
+					</foreach>
+				</if>
+				<if  test="bookPrice != null">
+					AND book_price = #{bookPrice}
+				</if>
+				<if  test="createTime != null">
+					AND create_time = #{createTime}
+				</if>
+				<if  test="id != null">
+					AND id = #{id}
+				</if>
+				<if  test="isbn != null">
+					AND isbn = #{isbn}
+				</if>
+				<if  test="isbns != null">
+					AND isbn in
+					<foreach collection="isbns"  separator="," item="item" open="(" close=") ">
+						#{item}
+					</foreach>
+				</if>
+				<if  test="pageNumber != null">
+					AND page_number = #{pageNumber}
+				</if>
+				<if  test="pictureAddress != null">
+					AND picture_address = #{pictureAddress}
+				</if>
+				<if  test="pressName != null">
+					AND press_name = #{pressName}
+				</if>
+				<if  test="publishDate != null">
+					AND publish_date = #{publishDate}
+				</if>
+				<if  test="scoreNumber != null">
+					AND score_number = #{scoreNumber}
+				</if>
+				<if  test="commentNumber != null">
+					AND comment_number = #{commentNumber}
+				</if>
+				<if  test="wqId != null">
+					AND wq_id = #{wqId}
+				</if>
+				<if  test="translatorName != null">
+					AND translator_name = #{translatorName}
+				</if>
+				<if  test="subTitle != null">
+					AND sub_title = #{subTitle}
+				</if>
+		</where>   	
+	</select>
+
+	<select id="selectByPage_count" parameterType="BookInfoQc" resultMap="BookInfoResult">
+		SELECT count(1)
+		FROM book_info
+		<where>
+			<if  test="authorName != null">
+				AND author_name = #{authorName}
+			</if>
+			<if  test="bindingName != null">
+				AND binding_name = #{bindingName}
+			</if>
+			<if  test="bookName != null">
+				AND book_name = #{bookName}
+			</if>
+			<if  test="bookNames != null">
+				AND book_name in
+				<foreach collection="bookNames"  separator="," item="item" open="(" close=") ">
+					#{item}
+				</foreach>
+			</if>
+			<if  test="bookPrice != null">
+				AND book_price = #{bookPrice}
+			</if>
+			<if  test="createTime != null">
+				AND create_time = #{createTime}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="isbn != null">
+				AND isbn = #{isbn}
+			</if>
+			<if  test="isbns != null">
+				AND isbn in
+				<foreach collection="isbns"  separator="," item="item" open="(" close=") ">
+					#{item}
+				</foreach>
+			</if>
+			<if  test="pageNumber != null">
+				AND page_number = #{pageNumber}
+			</if>
+			<if  test="pictureAddress != null">
+				AND picture_address = #{pictureAddress}
+			</if>
+			<if  test="pressName != null">
+				AND press_name = #{pressName}
+			</if>
+			<if  test="publishDate != null">
+				AND publish_date = #{publishDate}
+			</if>
+			<if  test="scoreNumber != null">
+				AND score_number = #{scoreNumber}
+			</if>
+			<if  test="commentNumber != null">
+				AND comment_number = #{commentNumber}
+			</if>
+			<if  test="wqId != null">
+				AND wq_id = #{wqId}
+			</if>
+			<if  test="translatorName != null">
+				AND translator_name = #{translatorName}
+			</if>
+			<if  test="subTitle != null">
+				AND sub_title = #{subTitle}
+			</if>
+		</where>
+	</select>
+	
+	<update id="update" parameterType="BookInfoDo">
+		UPDATE book_info
+		<trim prefix="SET" suffixOverrides=",">
+								<if test="authorName != null">
+									author_name = #{authorName},
+								</if>
+								<if test="bindingName != null">
+									binding_name = #{bindingName},
+								</if>
+								<if test="bookName != null">
+									book_name = #{bookName},
+								</if>
+								<if test="bookPrice != null">
+									book_price = #{bookPrice},
+								</if>
+								<if test="createTime != null">
+									create_time = #{createTime},
+								</if>
+								<if test="isbn != null">
+									isbn = #{isbn},
+								</if>
+								<if test="pageNumber != null">
+									page_number = #{pageNumber},
+								</if>
+								<if test="pictureAddress != null">
+									picture_address = #{pictureAddress},
+								</if>
+								<if test="pressName != null">
+									press_name = #{pressName},
+								</if>
+								<if test="publishDate != null">
+									publish_date = #{publishDate},
+								</if>
+								<if test="scoreNumber != null">
+									score_number = #{scoreNumber},
+								</if>
+								<if  test="commentNumber != null">
+									comment_number = #{commentNumber},
+								</if>
+								<if test="wqId != null">
+									wq_id = #{wqId},
+								</if>
+								<if test="translatorName != null">
+									translator_name = #{translatorName},
+								</if>
+								<if test="subTitle != null">
+									sub_title = #{subTitle},
+								</if>
+		</trim>
+		<where>
+				id = #{id}
+		</where>
+	</update>
+	
+	<insert id="insert" parameterType="BookInfoDo">
+		INSERT INTO book_info
+		(
+			<trim suffixOverrides=",">
+				<if test="authorName != null">
+					author_name,
+				</if>
+				<if test="bindingName != null">
+					binding_name,
+				</if>
+				<if test="bookName != null">
+					book_name,
+				</if>
+				<if test="bookPrice != null">
+					book_price,
+				</if>
+				<if test="createTime != null">
+					create_time,
+				</if>
+				<if test="id != null">
+					id,
+				</if>
+				<if test="isbn != null">
+					isbn,
+				</if>
+				<if test="pageNumber != null">
+					page_number,
+				</if>
+				<if test="pictureAddress != null">
+					picture_address,
+				</if>
+				<if test="pressName != null">
+					press_name,
+				</if>
+				<if test="publishDate != null">
+					publish_date,
+				</if>
+				<if test="scoreNumber != null">
+					score_number,
+				</if>
+				<if  test="commentNumber != null">
+					comment_number,
+				</if>
+				<if test="wqId != null">
+					wq_id,
+				</if>
+				<if test="translatorName != null">
+					translator_name,
+				</if>
+				<if test="subTitle != null">
+					sub_title,
+				</if>
+			</trim>
+		) VALUES (
+			<trim suffixOverrides=",">
+				<if test="authorName != null">
+					#{authorName},
+				</if>
+				<if test="bindingName != null">
+					#{bindingName},
+				</if>
+				<if test="bookName != null">
+					#{bookName},
+				</if>
+				<if test="bookPrice != null">
+					#{bookPrice},
+				</if>
+				<if test="createTime != null">
+					#{createTime},
+				</if>
+				<if test="id != null">
+					#{id},
+				</if>
+				<if test="isbn != null">
+					#{isbn},
+				</if>
+				<if test="pageNumber != null">
+					#{pageNumber},
+				</if>
+				<if test="pictureAddress != null">
+					#{pictureAddress},
+				</if>
+				<if test="pressName != null">
+					#{pressName},
+				</if>
+				<if test="publishDate != null">
+					#{publishDate},
+				</if>
+				<if test="scoreNumber != null">
+					#{scoreNumber},
+				</if>
+				<if  test="commentNumber != null">
+					#{commentNumber},
+				</if>
+				<if test="wqId != null">
+					#{wqId},
+				</if>
+				<if test="translatorName != null">
+					#{translatorName},
+				</if>
+				<if test="subTitle != null">
+					#{subTitle},
+				</if>
+			</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="BookInfoDo">
+		DELETE 
+		  FROM  book_info
+		 WHERE 
+			id = #{id}
+	</delete>
+	
+	
+	<!--<sql id="columns">
+			AUTH_NM,
+			BNDG_NM,
+			BOOK_NM,
+			BOOK_PRC,
+			CRT_TM,
+			ID,
+			ISBN,
+			PG_NUM,
+			PIC_ADR,
+			PUBLISHERS_NM,
+			PUBLISH_DT,
+			SCOR_NUM,
+			WQ_ID,
+			TRANS_NM,
+			VICE_TTL
+	</sql>
+	<sql id="columnsAs">
+			AUTH_NM as authorName,
+			BNDG_NM as bindingName,
+			BOOK_NM as bookName,
+			BOOK_PRC as bookPrice,
+			CRT_TM as createTime,
+			ID as id,
+			ISBN as isbn,
+			PG_NUM as pageNumber,
+			PIC_ADR as pictureAddress,
+			PUBLISHERS_NM as pressName,
+			PUBLISH_DT as publishDate,
+			SCOR_NUM as scoreNumber,
+			WQ_ID as wqId,
+			TRANS_NM as translatorName,
+			VICE_TTL as subTitle
+	</sql>
+	<sql id="values">
+			#authorName#,
+			#bindingName#,
+			#bookName#,
+			#bookPrice#,
+			#createTime#,
+			#id#,
+			#isbn#,
+			#pageNumber#,
+			#pictureAddress#,
+			#pressName#,
+			#publishDate#,
+			#scoreNumber#,
+			#wqId#,
+			#translatorName#,
+			#subTitle#
+	</sql>-->
+</mapper>

@@ -1,6 +1,7 @@
 package com.fooee.winqing.management.web.interceptor;
 
 import com.fooee.commons.service.dictionary.DictionaryCache;
+import com.fooee.winqing.management.dao.vdo.passport.ManageUserVo;
 import com.fooee.winqing.sso.client.service.inf.SsoClientService;
 import com.fooee.winqing.sso.client.vdo.UserSession;
 import org.slf4j.Logger;
@@ -71,9 +72,9 @@ public class SessionInterceptor implements HandlerInterceptor {
         if("/singleLogin".equals(requestUri)) {
             return true;
         } else {
-            UserSession userSession = (UserSession)request.getSession().getAttribute("userSession");
-            if(null == userSession) {
-                request.getSession().setAttribute("user", (Object)null);
+            ManageUserVo manageUserSession = (ManageUserVo)request.getSession().getAttribute("manageUserSession");
+            if(null == manageUserSession) {
+                request.getSession().setAttribute("manageUserSession", (Object)null);
                 response.sendRedirect("/login");
                 return false;
             } else {

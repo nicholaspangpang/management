@@ -24,10 +24,10 @@
 			javaType="string" jdbcType="CLOB" />
 	</typeHandlers>
 	
-	<!--plugins>
-		<plugin interceptor="com.fooee.winqing.web.interceptor.PageInterceptor">
+	<plugins>
+		<plugin interceptor="com.fooee.commons.compontent.query.interceptor.PageInterceptor">
 			<property name="dialect" value="mysql"/>
 		</plugin>
-	</plugins-->
+	</plugins>
 	
 </configuration>

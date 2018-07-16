@@ -1,0 +1,1506 @@
+
+html {
+  -webkit-text-size-adjust: none;
+}
+body {
+  font-family: Microsoft YaHei;
+  font: 12px/1.5 Microsoft YaHei, arial, 'Hiragino Sans GB' !important;
+  color: #000;
+  background-color: #fff;
+  min-width: 1340px;
+
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+button,
+input,
+select,
+textarea,
+div,
+span,
+td {
+  font-family: Microsoft YaHei;
+}
+textarea {
+  overflow: auto;
+}
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  -webkit-text-size-adjust: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+article,
+aside,
+footer,
+header,
+hgroup,
+main,
+nav,
+section,
+figure,
+figcaption {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+a,
+u {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  color: #616161;
+}
+a:hover {
+  color: #070606;
+}
+fieldset,
+img {
+  border: 0;
+}
+img {
+  vertical-align: middle;
+  display: inline-block;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+th,
+var,
+u {
+  font-style: normal;
+  font-weight: normal;
+}
+ol,
+ul {
+  list-style-type: none;
+}
+li {
+  list-style-type: none;
+}
+caption,
+th {
+  text-align: left;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+i,
+em {
+  font-size: 100%;
+  font-weight: normal;
+  font-style: normal;
+}
+q:before,
+q:after {
+  content: '';
+}
+abbr,
+acronym {
+  border: 0;
+  font-variant: normal;
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  outline: none;
+  color: #373737;
+  *font-size: 100%;
+}
+input:focus,
+textarea:focus {
+  outline: none;
+}
+p {
+  white-space: normal;
+  word-break: break-all;
+}
+table {
+  border-spacing: 0;
+}
+td {
+  word-break: break-all;
+  word-wrap: normal;
+}
+b {
+  font-weight: normal;
+}
+input::-ms-clear {
+  display: none;
+}
+input[type="text"],
+input[type="password"] {
+  height: 22px;
+  line-height: 24px;
+  padding: 0 2px;
+  border: 1px solid #ccc;
+}
+input[type="text"]:hover,
+input[type="password"]:hover {
+  border: 1px solid #92c6f5;
+}
+input[type="radio"] {
+  -webkit-appearance: none;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-position: 0 24px;
+  cursor: pointer;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  position: relative;
+  background-color: #fff;
+  border-radius: 50%;
+}
+input[type="radio"]:checked {
+  background-position: 0 0;
+  border: 1px solid #4d99db;
+}
+input[type="radio"]::before {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #fff;
+  left: 2px;
+  top: 2px;
+  display: inline-block;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  content: ' ';
+}
+input[type="radio"]:checked::before {
+  background-color: #4d99db;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-position: 0 24px;
+  cursor: pointer;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  position: relative;
+  background-color: #fff;
+}
+input[type="checkbox"]:checked {
+  background-position: 0 0;
+  border: 1px solid #4d99db;
+  background-color: #4d99db;
+}
+input[type="checkbox"]::before,
+input[type="checkbox"]::after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  position: absolute;
+  height: 2px;
+  background-color: #fff;
+  left: 3px;
+  top: 8px;
+  display: inline-block;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  -webkit-transform-origin: left top;
+  transform-origin: left top;
+  content: ' ';
+}
+input[type="checkbox"]:checked::before {
+  width: 4px;
+  transform: rotate(-135deg);
+}
+input[type="checkbox"]:checked::after {
+  width: 9px;
+  transform: rotate(-50deg);
+}
+label {
+  cursor: pointer;
+  color: #333;
+  line-height: 24px;
+  margin-right: 10px;
+}
+select {
+  height: 24px;
+  line-height: 24px;
+  border: 1px solid #ccc;
+}
+select:hover {
+  border: 1px solid #92c6f5;
+}
+input[disabled],
+input[readonly],
+select[disabled],
+select[readonly],
+textarea[disabled],
+textarea[readonly] {
+  cursor: not-allowed !important;
+  background-color: #eee !important;
+}
+span[readonly] {
+  cursor: not-allowed !important;
+  background-color: #eee !important;
+}
+.red {
+  color: red;
+}
+.btn_so {
+  display: inline-block;
+  width: 80px;
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  background-color: #3c89cd;
+}
+.btn_so:hover {
+  background-color: #57a1e3;
+}
+.btn_so:active {
+  background-color: #2370b5;
+}
+.btn_so i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  margin-right: 2px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background: url("../img/glyphicons-halflings-white.png") -48px 0;
+}
+.btn_white {
+  display: inline-block;
+  padding: 0 20px;
+  height: 22px;
+  line-height: 22px !important;
+  color: #333;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #999;
+  font-size: 12px;
+}
+.btn_white:hover {
+  background-color: #d0e8fe;
+  border: 1px solid #3c89cd;
+}
+.btn_white:active {
+  background-color: #92c6f5;
+  border: 1px solid #3c89cd;
+}
+.btn_background {
+  display: inline-block;
+  padding: 0 20px;
+  height: 24px;
+  line-height: 24px !important;
+  color: #fff;
+  cursor: pointer;
+  background-color: #3c89cd;
+  font-size: 12px;
+}
+.btn_background:hover {
+  background-color: #57a1e3;
+}
+.btn_background:active {
+  background-color: #2370b5;
+}
+.selectDIY {
+  width: 90px;
+  height: 24px;
+  display: inline-block;
+  line-height: 22px;
+  cursor: pointer;
+  color: #666;
+  position: relative;
+  background-color: #fff;
+}
+.selectDIY span {
+  height: 22px;
+  border: 1px solid #ccc;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: normal;
+  text-overflow: ellipsis;
+  padding: 0 5px;
+  position: relative;
+  z-index: 101;
+}
+.selectDIY span:hover {
+  border: 1px solid #3c89cd;
+  background-color: #c9e2f8;
+}
+.selectDIY i {
+  position: absolute;
+  right: 5px;
+  top: -1px;
+  width: 12px;
+  height: 15px;
+  background: url("../img/multiple-select.png") left top no-repeat;
+  content: ' ';
+  display: inline-block;
+  z-index: 102;
+}
+.selectDIY .oCon {
+  box-sizing: border-box;
+  width: 100%;
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 23px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  z-index: 100;
+}
+.selectDIY a {
+  display: block;
+  padding: 0 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: normal;
+  text-overflow: ellipsis;
+}
+.selectDIY a:hover {
+  background-color: #48a8e8;
+  color: #fff;
+}
+.newPasswordBox {
+  display: none;
+  overflow: hidden;
+}
+.newPasswordBox .list {
+  min-height: 1px;
+  zoom: 1;
+  margin-bottom: 10px;
+}
+.newPasswordBox .list:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.newPasswordBox .list span {
+  float: left;
+  display: block;
+  text-align: right;
+  min-width: 70px;
+  margin-right: 15px;
+  line-height: 24px;
+}
+.newPasswordBox .list input,
+.newPasswordBox .list select {
+  width: 158px;
+}
+.newPasswordBox .list select {
+  float: left;
+  width: 164px;
+}
+.newPasswordBox .list:last-child {
+  margin-bottom: 0;
+}
+.bodyTab {
+  border-bottom: 1px solid #3c89cd;
+  position: relative;
+  height: 35px;
+  margin-top: 15px;
+}
+.bodyTab .headActive {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  min-height: 1px;
+  zoom: 1;
+  padding-left: 20px;
+  z-index: 1;
+}
+.bodyTab .headActive:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.bodyTab .headActive li {
+  float: left;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  padding: 0 15px;
+  height: 34px;
+  line-height: 34px;
+}
+.bodyTab .headActive li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.bodyTab .headActive li:hover,
+.bodyTab .headActive li.active {
+  color: #3c89cd;
+}
+.bodyTab .headActive li:hover a,
+.bodyTab .headActive li.active a {
+  color: #3c89cd;
+}
+.bodyTab .activeNow {
+  display: inline-block;
+  left: 20px;
+  top: 1px;
+  position: absolute;
+  height: 33px;
+  width: 86px;
+  border: 1px solid #3c89cd;
+  border-bottom: 1px solid #fff;
+  color: #3c89cd;
+}
+.screenBox {
+  margin: 20px 20px 0 20px;
+  border: 1px solid #ccc;
+  transition: all 0.5s;
+}
+.screenBox .screenTable {
+  width: 100%;
+  padding: 10px 0;
+  display: table;
+}
+.screenBox .screenTable .left {
+  display: table-cell;
+  vertical-align: middle;
+  width: 90%;
+  border-right: 1px solid #ccc;
+}
+.screenBox .screenTable .left ul {
+  min-height: 1px;
+  zoom: 1;
+  padding-left: 10px;
+  padding-top: 10px;
+}
+.screenBox .screenTable .left ul:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.screenBox .screenTable .left ul li {
+  float: left;
+  width: 33%;
+  height: 24px;
+  margin-bottom: 10px;
+  min-height: 1px;
+  zoom: 1;
+}
+.screenBox .screenTable .left ul li:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.screenBox .screenTable .left ul li .name {
+  float: left;
+  font-size: 12px;
+  color: #333;
+  margin-right: 15px;
+  line-height: 24px;
+  width: 80px;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: normal;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.screenBox .screenTable .left ul li .com {
+  float: left;
+  width: 194px;
+}
+.screenBox .screenTable .left ul li .com input[type='text'] {
+  width: 188px;
+}
+.screenBox .screenTable .left ul li .com select {
+  width: 194px;
+}
+.screenBox .screenTable .left ul li .gys {
+  min-height: 1px;
+  zoom: 1;
+}
+.screenBox .screenTable .left ul li .gys:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.screenBox .screenTable .left ul li .gys input[type="text"] {
+  width: 134px;
+  float: left;
+}
+.screenBox .screenTable .left ul li .gys span {
+  text-align: center;
+  float: left;
+  display: inline-block;
+  height: 22px;
+  line-height: 24px;
+  width: 26px;
+  border: 1px solid #ccc;
+  margin-left: -1px;
+  cursor: pointer;
+}
+.screenBox .screenTable .left ul li .gys .icon-chacha,
+.screenBox .screenTable .left ul li .gys .icon-zengjiachaxun1 {
+  color: #ccc;
+}
+.screenBox .screenTable .left ul li .gys .add {
+  background: url("../img/glyphicons-halflings_hui.png") no-repeat -403px -92px;
+}
+.screenBox .screenTable .left ul li .gys .del {
+  background: url("../img/glyphicons-halflings_hui.png") no-repeat -307px 5px;
+}
+.screenBox .screenTable .left ul li .gys:hover input {
+  border: 1px solid #92c6f5;
+}
+.screenBox .screenTable .left ul li .gys:hover span {
+  border: 1px solid #92c6f5;
+}
+.screenBox .screenTable .left ul li .time {
+  position: relative;
+  min-height: 1px;
+  zoom: 1;
+}
+.screenBox .screenTable .left ul li .time:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.screenBox .screenTable .left ul li .time input[type='text'] {
+  width: 72px;
+  float: left;
+  padding-right: 15px;
+}
+.screenBox .screenTable .left ul li .time b {
+  float: left;
+  width: 14px;
+  height: 14px;
+  margin-left: -16px;
+  margin-top: 5px;
+  background: url("../img/glyphicons-halflings_hui.png") no-repeat -192px -120px;
+}
+.screenBox .screenTable .left ul li .time span {
+  float: left;
+  background-color: #ccc;
+  width: 8px;
+  height: 2px;
+  margin: 11px 2px;
+}
+.screenBox .screenTable .left ul li .time .time_box {
+  position: absolute;
+  width: 110px;
+  left: 195px;
+  top: -17px;
+  min-height: 1px;
+  zoom: 1;
+}
+.screenBox .screenTable .left ul li .time .time_box:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.screenBox .screenTable .left ul li .time .time_box .mes {
+  text-align: right;
+  float: left;
+  width: 94px;
+}
+.screenBox .screenTable .left ul li .time .time_box .mes i {
+  max-width: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: normal;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  background-color: #f89406;
+  padding: 0 2px;
+  color: #fff;
+  border-radius: 1px;
+}
+.screenBox .screenTable .left ul li .time .time_box a {
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  white-space: nowrap;
+  float: left;
+  border: 1px solid #3c89cd;
+  color: #3c89cd;
+  cursor: pointer;
+  margin-left: 2px;
+}
+.screenBox .screenTable .left ul li .time .time_box a:hover,
+.screenBox .screenTable .left ul li .time .time_box a.active {
+  background-color: #3c89cd;
+  border: 1px solid #3c89cd;
+  color: #fff;
+}
+.screenBox .screenTable .left ul li .time .icon-riqi {
+  margin-top: 4px;
+  color: #ccc;
+  background: none;
+}
+.screenBox .screenTable .left ul li .checked {
+  height: 24px;
+  min-height: 1px;
+  zoom: 1;
+}
+.screenBox .screenTable .left ul li .checked:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.screenBox .screenTable .left ul li .checked input {
+  float: left;
+  margin-top: 7px;
+}
+.screenBox .screenTable .left ul li .checked label {
+  float: left;
+  font-size: 12px;
+  margin-right: 12px;
+}
+.screenBox .screenTable .left ul li .label input {
+  float: left;
+  margin-top: 6px;
+  margin-right: 2px;
+}
+.screenBox .screenTable .left ul li .label input:checked {
+  background-position: 0 0;
+  border: 1px solid #4d99db;
+}
+.screenBox .screenTable .left ul li .label label {
+  float: left;
+}
+.screenBox .screenTable .left ul li.show {
+  display: block;
+}
+.screenBox .screenTable .left ul li.hide {
+  display: none;
+}
+.screenBox .screenTable .right {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 10%;
+  position: relative;
+}
+.screenBox .screenTable .right .btn {
+  display: inline-block;
+}
+.screenBox .screenTable .right .btn span {
+  display: block;
+  width: 80px;
+  height: 24px;
+  line-height: 24px;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  background-color: #3c89cd;
+}
+.screenBox .screenTable .right .btn .span1:hover {
+  background-color: #57a1e3;
+}
+.screenBox .screenTable .right .btn .span1:active {
+  background-color: #2370b5;
+}
+.screenBox .screenTable .right .btn .span1 i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  margin-right: 2px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background: url("../img/glyphicons-halflings-white.png") -48px 0;
+}
+.screenBox .screenTable .right .btn .span1 .icon-sousuo {
+  background: none;
+}
+.screenBox .screenTable .right .btn .span2 {
+  background-color: #fff;
+  color: #3c89cd;
+}
+.screenBox .screenTable .right .btn .span2 i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  margin-right: 2px;
+  line-height: 14px;
+  vertical-align: text-top;
+}
+.screenBox .screenTable .right .btn .span2 .open {
+  background: url("../img/open.gif") no-repeat center;
+}
+.screenBox .screenTable .right .btn .span2 .close {
+  background: url("../img/close.gif") no-repeat center;
+}
+.sortBox {
+  padding: 15px 20px;
+  min-height: 1px;
+  zoom: 1;
+}
+.sortBox:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.sortBox ul {
+  min-height: 1px;
+  zoom: 1;
+  float: left;
+}
+.sortBox ul:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.sortBox ul li {
+  width: 63px;
+  height: 22px;
+  line-height: 21px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: normal;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  float: left;
+  border: 1px solid #ccc;
+  color: #333;
+  cursor: pointer;
+}
+.sortBox ul li.active {
+  background-color: #3c89cd;
+  border: 1px solid #3c89cd;
+  color: #fff;
+}
+.sortBox ul li:hover {
+  border: 1px solid #3c89cd;
+  color: #3c89cd;
+}
+.sortBox ul li.active:hover {
+  background-color: #3c89cd;
+  border: 1px solid #3c89cd;
+  color: #fff;
+}
+.sortBox .orderBox {
+  float: right;
+}
+.sortBox .orderBox .choice {
+  min-height: 1px;
+  zoom: 1;
+  margin-right: 30px;
+  float: left;
+}
+.sortBox .orderBox .choice:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.sortBox .orderBox .choice input {
+  margin-top: 6px;
+  float: left;
+  margin-right: 2px;
+}
+.sortBox .orderBox .choice label {
+  float: left;
+}
+.sortBox .orderBox .del {
+  float: left;
+}
+.sortBox .orderBox .del .span {
+  display: inline-block;
+  width: 80px;
+  height: 22px;
+  text-align: center;
+  line-height: 22px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  color: #333;
+  float: left;
+  margin-left: 4px;
+}
+.sortBox .orderBox .del .spanBack {
+  background-color: #3c89cd;
+  color: #fff;
+  border: 1px solid #3c89cd;
+}
+.sortBox .orderBox .del .span:hover {
+  border: 1px solid #3c89cd;
+  background-color: #c9e2f8;
+}
+.sortBox .orderBox .del .spanBack:hover {
+  background-color: #57A1E3 ;
+}
+.sortBox .orderBox .del .span:active {
+  border: 1px solid #3c89cd;
+  background-color: #2370b5;
+}
+.sortBox .orderBox .del .dc_select {
+  float: left;
+  width: 80px;
+  height: 24px;
+  line-height: 24px;
+  margin-left: 4px;
+}
+.sortBox .orderBox .del .dc_select:hover {
+  border: 1px solid #3c89cd;
+}
+.sortBox .orderBox .del .btn_span {
+  margin-left: 0;
+  margin-right: 20px;
+}
+.sortBox .orderBox .condition {
+  float: left;
+}
+.sortBox .orderBox .condition .name {
+  float: left;
+  height: 24px;
+  line-height: 24px;
+}
+.sortBox .orderBox .condition .select {
+  float: left;
+  width: 80px;
+  height: 24px;
+  line-height: 24px;
+  margin-right: 4px;
+}
+.sortBox .orderBox .condition .com {
+  float: left;
+}
+.sortBox .orderBox .condition .select1 {
+  display: none;
+}
+.sortBox .orderBox .condition .cg_input {
+  float: left;
+  width: 72px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0 2px;
+  margin-right: 4px;
+}
+.timeIcon {
+  background: url("../img/datePicker.gif") no-repeat right #fff;
+}
+.timeIcon::-ms-clear {
+  display: none;
+}
+.timeIcontErr {
+  font-weight: bold;
+  color: red;
+}
+.headerBox .menuback_com {
+  background-color: #3c89cd;
+  height: 50px;
+  min-height: 1px;
+  zoom: 1;
+}
+.headerBox .menuback_com:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.headerBox .menuback_com h1 {
+  float: left;
+  width: 210px;
+  height: 100%;
+  background-color: #0b56bb;
+}
+.headerBox .menuback_com h1 a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: url("../img/logo.png") no-repeat center;
+}
+.headerBox .menuback_com .ulLeft {
+  min-height: 1px;
+  zoom: 1;
+  float: left;
+  height: 50px;
+  background-color: #3c89cd;
+}
+.headerBox .menuback_com .ulLeft:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.headerBox .menuback_com .ulLeft li {
+  float: left;
+  height: 100%;
+  line-height: 100%;
+  position: relative;
+}
+.headerBox .menuback_com .ulLeft li a {
+  display: inline-block;
+  height: 50px;
+  border: none;
+  line-height: 50px;
+  font-size: 13px;
+  color: #fff;
+  padding: 0 10px;
+  min-height: 1px;
+  zoom: 1;
+  overflow: hidden;
+}
+.headerBox .menuback_com .ulLeft li a:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.headerBox .menuback_com .ulLeft li a span {
+  float: left;
+  font-size: 14px;
+  font-family: Microsoft YaHei;
+}
+.headerBox .menuback_com .ulLeft li a b {
+  float: left;
+  display: inline-block;
+  border-top: 4px solid #fff;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  margin-top: 25px;
+  margin-left: 4px;
+}
+.headerBox .menuback_com .ulLeft li a:hover,
+.headerBox .menuback_com .ulLeft li a.active {
+  background-color: #4c99db;
+}
+.headerBox .menuback_com .ulLeft li .List {
+  min-width: 100%;
+  display: none;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  position: absolute;
+  z-index: 9999;
+  left: 0;
+  top: 50px;
+  padding: 4px 0;
+  box-sizing: border-box;
+}
+.headerBox .menuback_com .ulLeft li .List a {
+  display: block;
+  height: 26px;
+  border: none;
+  line-height: 26px;
+  font-size: 13px;
+  color: #000;
+  white-space: nowrap;
+  overflow: hidden;
+  word-wrap: normal;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  padding: 0 6px;
+  text-decoration: none;
+  text-align: left;
+}
+.headerBox .menuback_com .ulLeft li .List a:hover {
+  color: #E1F9FF;
+  background-color: #3c89cd;
+}
+.headerBox .menuback_com .ulRight {
+  float: right;
+  font-size: 12px;
+  margin-right: 25px;
+}
+.headerBox .menuback_com .ulRight li a span {
+  line-height: 100%;
+  margin-top: 12px;
+  font-size: 12px;
+}
+.headerBox .menuback_com .ulRight li a span i {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+  line-height: 14px;
+}
+.headerBox .menuback_com .ulRight li a .help {
+  margin-top: 0;
+  line-height: 50px;
+}
+.headerBox .active_com {
+  height: 30px;
+  background-color: #ebebeb;
+  padding: 0 20px;
+  position: relative;
+  min-height: 1px;
+  zoom: 1;
+}
+.headerBox .active_com:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.headerBox .active_com .position {
+  line-height: 30px;
+  float: left;
+}
+.headerBox .active_com .position .map-marker {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("../img/glyphicons-halflings.png");
+  background-position: -27px -72px;
+  background-repeat: no-repeat;
+}
+.headerBox .active_com .ul {
+  float: left;
+  height: 30px;
+  margin-left: 5px;
+  min-height: 1px;
+  zoom: 1;
+}
+.headerBox .active_com .ul:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.headerBox .active_com .ul li {
+  float: left;
+  height: 30px;
+  line-height: 100%;
+}
+.headerBox .active_com .ul li a {
+  display: inline-block;
+  height: 30px;
+  border: none;
+  line-height: 30px;
+  font-size: 12px;
+  color: #333;
+  padding: 0 2px;
+}
+.headerBox .active_com .ul li a span {
+  padding: 0 6px;
+}
+.headerBox .active_com .ul li .chevron-right {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("../img/glyphicons-halflings.png");
+  background-position: -456px -72px;
+  background-repeat: no-repeat;
+}
+.bodyBox {
+  padding-bottom: 40px;
+}
+.bodyBox .bodyContentBox .Tab {
+  display: none;
+}
+.bodyBox .bodyContentBox .Tab.active {
+  display: block;
+}
+.bodyBox .jqGrid {
+  padding: 0 20px;
+}
+.footerBox {
+  height: 35px;
+  background-color: #E3E3E3;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1023;
+  min-height: 1px;
+  zoom: 1;
+}
+.footerBox:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.footerBox ul {
+  margin-left: 20px;
+  float: left;
+}
+.footerBox ul li {
+  float: left;
+  margin-right: 5px;
+}
+.footerBox ul li a {
+  display: inline-block;
+  color: #000;
+  padding-right: 5px;
+  height: 35px;
+  line-height: 35px;
+}
+.footerBox ul li .href:hover {
+  color: #3c89cd;
+}
+.footerBox ul li .xkz {
+  margin: 0 15px;
+}
+.footerBox ul li:last-child a,
+.footerBox ul li:first-child a {
+  cursor: auto;
+}
+.footerBox div {
+  height: 35px;
+  line-height: 35px;
+  float: right;
+  margin-right: 20px;
+}
+.queryBox {
+  display: inline-block;
+  font-size: 0;
+  min-height: 24px;
+  vertical-align: middle;
+}
+.queryBox .query-input {
+  width: 134px;
+  color: #333;
+  font-size: 12px;
+  vertical-align: middle;
+}
+.queryBox .query-btn {
+  text-align: center;
+  display: inline-block;
+  height: 22px;
+  line-height: 22px;
+  width: 26px;
+  border: 1px solid #ccc;
+  margin-left: -1px;
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 12px;
+  color: #ccc;
+}
+.queryBox:hover .query-btn {
+  border: 1px solid #92c6f5;
+}
+.queryBox:hover .query-input {
+  border: 1px solid #92c6f5;
+}
+.dialog-form .form-row {
+  margin-bottom: 10px;
+}
+.dialog-form .form-row:before,
+.dialog-form .form-row:after {
+  display: table;
+  content: " ";
+}
+.dialog-form .form-row:after {
+  clear: both;
+}
+.dialog-form .form-tit {
+  float: left;
+  padding: 2px 5px 0 5px;
+  width: 110px;
+  text-align: right;
+  line-height: 20px;
+}
+.dialog-form .form-con input,
+.dialog-form .form-con textarea,
+.dialog-form .form-con select {
+  font-size: 12px;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  height: 24px;
+}
+.dialog-form .form-con {
+  float: left;
+  padding: 0 5px;
+}
+.dialog-form .form-con textarea {
+  padding: 0 2px;
+  border: 1px solid #ccc;
+}
+.dialog-form .form-con textarea:hover {
+  border: 1px solid #92c6f5;
+}
+.dialog-form .s-box {
+  position: relative;
+  padding: 0 2px;
+  height: 24px;
+  border: 1px solid #ccc;
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: default;
+}
+.dialog-form .ico-select {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  cursor: default;
+}
+.dialog-form .s-box .suplist-title {
+  display: inline-block;
+  height: 28px;
+  max-width: 100px;
+  overflow: hidden;
+  vertical-align: top;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/* è¡¨æ ¼è¾¹å®½è‰² */
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  background: #e1effc !important;
+}
+/* è¡¨æ ¼é€‰ä¸­è‰² */
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+  background: #fff7bf !important;
+}
+/* è¡¨æ ¼ç§»å…¥è‰² */
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+  background: #fff7bf !important;
+}
+/* è¡¨æ ¼å¤´æ–‡å­—é¢œè‰² */
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+  color: #333 !important;
+}
+/* è¡¨æ ¼å¤´æ–‡å­—è¡Œé«˜ */
+.ui-jqgrid .ui-jqgrid-htable th div {
+  line-height: 20px !important;
+  padding-top: 0 !important;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-left,
+.ui-corner-tl {
+  -moz-border-radius-topleft: 0 !important;
+  -webkit-border-top-left-radius: 0 !important;
+  -khtml-border-top-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+}
+.ui-corner-all,
+.ui-corner-top,
+.ui-corner-right,
+.ui-corner-tr {
+  -moz-border-radius-topright: 0 !important;
+  -webkit-border-top-right-radius: 0 !important;
+  -khtml-border-top-right-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-left,
+.ui-corner-bl {
+  -moz-border-radius-bottomleft: 0 !important;
+  -webkit-border-bottom-left-radius: 0 !important;
+  -khtml-border-bottom-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+.ui-corner-all,
+.ui-corner-bottom,
+.ui-corner-right,
+.ui-corner-br {
+  -moz-border-radius-bottomright: 0 !important;
+  -webkit-border-bottom-right-radius: 0 !important;
+  -khtml-border-bottom-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.art-dialog-footer button {
+  border-radius: 0 !important;
+}
+/* jqGridä¸­å›¾æ ‡æ ·å¼ */
+/* å·²ä¸‹è½½ */
+.u-icon-yxz {
+  display: inline-block;
+  padding: 0 2px;
+  height: 16px;
+  text-align: center;
+  background-color: #ff9900;
+  color: #fff;
+  line-height: 16px;
+}
+/* éœ€å®¡æ‰¹ */
+.u-icon-xsp {
+  display: inline-block;
+  width: 39px;
+  height: 16px;
+  text-align: center;
+  background-color: #ffedd1;
+  color: #ff9900;
+  line-height: 16px;
+}
+/* ç›´ä¾› */
+.u-icon-zg {
+  display: inline-block;
+  width: 28px;
+  height: 16px;
+  background-color: #6699ff;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+}
+/* ä¸»å‘ */
+.u-icon-zf {
+  display: inline-block;
+  padding: 0 2px;
+  height: 16px;
+  background-color: #1ac1a1;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+}
+.u-icon-zt {
+  display: inline-block;
+  width: 28px;
+  height: 16px;
+  background-color: #6699ff;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+}
+/* é‡ç‚¹ */
+.u-icon-zd {
+  display: inline-block;
+  width: 28px;
+  height: 16px;
+  background-color: #ff6666;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+}
+/*  é¦†é…ï¼Œæ´»åŠ¨ï¼Œç”µå•†ï¼Œé›¶å”®ï¼Œå›¢è´­ï¼Œæ–‡æ•™ å¤§ä¸­ä¸“*/
+.u-icon-orderType {
+  display: inline-block;
+  padding: 0 2px;
+  height: 16px;
+  color: #3c89cd ;
+  background-color: #c2ebff;
+  line-height: 16px;
+}
+.u-icon-x {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #1ac1a1;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+}
+/* æ€¥ */
+.u-icon-j {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: #ff6666;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+}
+/* å·®å¼‚ */
+.u-icon-cy {
+  display: inline-block;
+  padding: 0 2px;
+  height: 16px;
+  background-color: #ffcccc;
+  color: #ff3333;
+  line-height: 16px;
+  text-align: center;
+}
+.u-icon-mess {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("../img/messIcon.png") no-repeat center #3c89cd;
+  color: #fff;
+  line-height: 16px;
+  text-align: center;
+}
+.u-icon-pen {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background: url("../img/glyphicons-halflings_hui.png") no-repeat 3px -69px;
+}
+.u-icon-pen:hover {
+  background: url("../img/glyphicons-halflings-blue.png") no-repeat 3px -69px;
+}
