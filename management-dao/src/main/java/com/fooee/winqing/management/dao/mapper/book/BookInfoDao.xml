@@ -132,8 +132,8 @@
 				</if>
 				<if  test="isbns != null">
 					AND isbn in
-					<foreach collection="isbns"  separator="," item="item" open="(" close=") ">
-						#{item}
+					<foreach collection="isbns" index="index" separator="," item="item" open="(" close=") ">
+						#{isbns[${index}]}
 					</foreach>
 				</if>
 				<if  test="pageNumber != null">
@@ -166,73 +166,6 @@
 		</where>   	
 	</select>
 
-	<select id="selectByPage_count" parameterType="BookInfoQc" resultMap="BookInfoResult">
-		SELECT count(1)
-		FROM book_info
-		<where>
-			<if  test="authorName != null">
-				AND author_name = #{authorName}
-			</if>
-			<if  test="bindingName != null">
-				AND binding_name = #{bindingName}
-			</if>
-			<if  test="bookName != null">
-				AND book_name = #{bookName}
-			</if>
-			<if  test="bookNames != null">
-				AND book_name in
-				<foreach collection="bookNames"  separator="," item="item" open="(" close=") ">
-					#{item}
-				</foreach>
-			</if>
-			<if  test="bookPrice != null">
-				AND book_price = #{bookPrice}
-			</if>
-			<if  test="createTime != null">
-				AND create_time = #{createTime}
-			</if>
-			<if  test="id != null">
-				AND id = #{id}
-			</if>
-			<if  test="isbn != null">
-				AND isbn = #{isbn}
-			</if>
-			<if  test="isbns != null">
-				AND isbn in
-				<foreach collection="isbns"  separator="," item="item" open="(" close=") ">
-					#{item}
-				</foreach>
-			</if>
-			<if  test="pageNumber != null">
-				AND page_number = #{pageNumber}
-			</if>
-			<if  test="pictureAddress != null">
-				AND picture_address = #{pictureAddress}
-			</if>
-			<if  test="pressName != null">
-				AND press_name = #{pressName}
-			</if>
-			<if  test="publishDate != null">
-				AND publish_date = #{publishDate}
-			</if>
-			<if  test="scoreNumber != null">
-				AND score_number = #{scoreNumber}
-			</if>
-			<if  test="commentNumber != null">
-				AND comment_number = #{commentNumber}
-			</if>
-			<if  test="wqId != null">
-				AND wq_id = #{wqId}
-			</if>
-			<if  test="translatorName != null">
-				AND translator_name = #{translatorName}
-			</if>
-			<if  test="subTitle != null">
-				AND sub_title = #{subTitle}
-			</if>
-		</where>
-	</select>
-	
 	<update id="update" parameterType="BookInfoDo">
 		UPDATE book_info
 		<trim prefix="SET" suffixOverrides=",">

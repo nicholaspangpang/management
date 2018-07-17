@@ -4,7 +4,9 @@ import com.fooee.commons.compontent.query.QueryCondition;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * BookInf查询条件
@@ -27,7 +29,7 @@ public class BookInfoQc extends QueryCondition {
 	/**
 	 *<p>图书名称列表
 	 */
-	private String bookNames;
+	private List<String> bookNames;
 	/**
 	 *<p>图书价格</p>
 	 */
@@ -47,7 +49,7 @@ public class BookInfoQc extends QueryCondition {
 	/**
 	 * isbn列表
      */
-	private String isbns;
+	private List<String> isbns;
 	/**
 	 *<p>页数</p>
 	 */
@@ -150,20 +152,24 @@ public class BookInfoQc extends QueryCondition {
 		this.bookName = bookName;
 	}
 
-	public String getBookNames() {
+	public List<String> getBookNames() {
 		return bookNames;
 	}
 
 	public void setBookNames(String bookNames) {
-		this.bookNames = bookNames;
+		if(null != bookNames && !"".equals(bookNames)) {
+			this.bookNames = Arrays.asList(bookNames.split(","));
+		}
 	}
 
-	public String getIsbns() {
+	public List<String> getIsbns() {
 		return isbns;
 	}
 
 	public void setIsbns(String isbns) {
-		this.isbns = isbns;
+		if(isbns != null && !"".equals(isbns)){
+			this.isbns = Arrays.asList(isbns.split(","));
+		}
 	}
 
 	/**
