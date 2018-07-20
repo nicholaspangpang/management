@@ -284,6 +284,15 @@
       <version>1.4.7</version>
     </dependency>
 
+    <!-- validated -->
+    <!--JSR-303的hibernate实现-->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>6.0.1.Final</version>
+    </dependency>
+
+
 
 
   </dependencies>

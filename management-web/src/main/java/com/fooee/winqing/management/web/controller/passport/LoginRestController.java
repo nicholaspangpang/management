@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018/7/8
  */
 @Controller
-public class LoginRestController extends BaseController{
+public class LoginRestController{
 
     @Autowired
     PassportService passportService;

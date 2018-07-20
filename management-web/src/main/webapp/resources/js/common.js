@@ -8,6 +8,10 @@ In.add('juicer',{path:baseUrl+'resources/js/lib/juicer/juicer-min.js',type:'js',
 In.add('select',{path:baseUrl+'resources/js/lib/fooee/select.js',type:'js',charset:'utf-8'});
 
 
+// In.add('datetimepicker-language',{path:baseUrl+'resources/js/lib/datetimepicker/locales/bootstrap-datetimepicker.zh-CN.js',type:'js',charset:'utf-8'});
+In.add('datetimepicker-css',{path:baseUrl+'resources/js/lib/datetimepicker/css/bootstrap-datetimepicker.min.css',type:'css',charset:'utf-8'});
+In.add('datetimepicker',{path:baseUrl+'resources/js/lib/datetimepicker/bootstrap-datetimepicker.min.js',type:'js',charset:'utf-8',rely:['datetimepicker-css']});
+
 In.add('json',{path:baseUrl+'resources/js/lib/jquery/jquery.json-2.4.js',type:'js',charset:'utf-8'});
 
 In.add('artDialog-css',{path:baseUrl+'resources/js/lib/artDialog/css/art-dialog.css',type:'css'});
@@ -101,7 +105,6 @@ In.ready('layer','bootstrap','fooee','juicer',function () {
 	});
 
 });
-
 
 
 

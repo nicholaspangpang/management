@@ -4,6 +4,7 @@ import com.fooee.commons.compontent.query.QueryResult;
 
 /**
  * Created by nicholas on 2017/9/16.
+ * @author pangzhenhua
  */
 public class BookDescriptionInfoDo extends QueryResult{
     /**
@@ -12,9 +13,9 @@ public class BookDescriptionInfoDo extends QueryResult{
     private Integer id;
 
     /**
-     * 文青ID
+     * 图书ID
      */
-    private Integer wqId;
+    private Integer bookId;
 
     /**
      * 目录信息
@@ -44,12 +45,12 @@ public class BookDescriptionInfoDo extends QueryResult{
         this.id = id;
     }
 
-    public Integer getWqId() {
-        return wqId;
+    public Integer getBookId() {
+        return bookId;
     }
 
-    public void setWqId(Integer wqId) {
-        this.wqId = wqId;
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
     }
 
     public String getCatelogInfo() {

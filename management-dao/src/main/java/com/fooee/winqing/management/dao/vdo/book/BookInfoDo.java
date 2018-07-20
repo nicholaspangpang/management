@@ -302,7 +302,7 @@ public class BookInfoDo extends QueryResult
 	public void setWqId(Integer wqId){
 		this.wqId=wqId;
 	}
-	
+
 	/**
 	 * 文青ID
 	 * @return

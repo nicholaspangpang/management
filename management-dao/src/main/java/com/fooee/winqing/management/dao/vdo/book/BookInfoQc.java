@@ -1,9 +1,10 @@
 package com.fooee.winqing.management.dao.vdo.book;
 
 import com.fooee.commons.compontent.query.QueryCondition;
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.math.BigDecimal;
-import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +26,7 @@ public class BookInfoQc extends QueryCondition {
 	/**
 	 *<p>图书名称</p>
 	 */
+	@NotBlank(message = "{book.bookName.null}")
 	private String bookName;
 	/**
 	 *<p>图书名称列表
@@ -87,6 +89,18 @@ public class BookInfoQc extends QueryCondition {
 	 */
 	private String subTitle;
 
+	/**
+	 * 图片信息
+     */
+	private MultipartFile file;
+
+	public MultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 
 	/**
 	 * 评论数量

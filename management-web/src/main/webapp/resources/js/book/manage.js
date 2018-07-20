@@ -122,7 +122,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	function queryParam(){
 
 		var queryRequest = {};
-		queryRequest.queryId = "selectByPage";
+		queryRequest.queryId = "selectBookByPage";
 		queryRequest.queryType = "JQGRID";
 		queryRequest.queryParameters = new Array();
 
@@ -132,8 +132,6 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 			var name = field.name;
 			var value = field.value;
 			var queryParameter = {};
-
-			// alert(name+':'+value);
 
 			//无值不加入条件
 			if(name == '' || value == ''){

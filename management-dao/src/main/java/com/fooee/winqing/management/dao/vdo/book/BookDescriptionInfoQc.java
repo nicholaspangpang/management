@@ -15,7 +15,7 @@ public class BookDescriptionInfoQc extends QueryCondition {
     /**
      * 文青ID
      */
-    private Integer wqId;
+    private Integer bookId;
 
     /**
      * 目录信息
@@ -45,12 +45,12 @@ public class BookDescriptionInfoQc extends QueryCondition {
         this.id = id;
     }
 
-    public Integer getWqId() {
-        return wqId;
+    public Integer getBookId() {
+        return bookId;
     }
 
-    public void setWqId(Integer wqId) {
-        this.wqId = wqId;
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
     }
 
     public String getCatelogInfo() {

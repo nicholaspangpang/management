@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @date 2018/7/8
  */
 @Controller
-public class LoginController extends BaseController{
+public class LoginController{
 
     @RequestMapping("login")
     String login(){

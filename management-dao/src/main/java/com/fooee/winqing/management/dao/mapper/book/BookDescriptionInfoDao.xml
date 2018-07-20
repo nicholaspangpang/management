@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	@author pangzhenhua
+	@version 2016-11-29 23:08:52
+-->
+<mapper namespace="com.fooee.winqing.management.dao.mapper.book.BookDescriptionInfoDao">
+
+	<resultMap type="BookDescriptionInfoDo" id="BookDescriptionInfoResult">
+		<result property="id" column="id" />
+		<result property="bookId" column="book_id" />
+		<result property="catelogInfo" column="catelog_info" />
+		<result property="contentBrief" column="content_brief" />
+		<result property="authorBrief" column="author_brief" />
+		<result property="editorRecommendInfo" column="editor_recommend_info" />
+	</resultMap>
+
+	<sql id="columns">
+			id,
+			book_id,
+			catelog_info,
+			content_brief,
+			author_brief,
+			editor_recommend_info
+	</sql>
+
+	<select id="select" parameterType="BookDescriptionInfoQc" resultMap="BookDescriptionInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM book_description_info
+		<where>
+			<if  test="authorBrief != null">
+				AND author_brief = #{authorBrief}
+			</if>
+			<if  test="contentBrief != null">
+				AND content_brief = #{contentBrief}
+			</if>
+			<if  test="catelogInfo != null">
+				AND catelog_info = #{catelogInfo}
+			</if>
+			<if  test="editorRecommendInfo != null">
+				AND editor_recommend_info = #{editorRecommendInfo}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="bookId != null">
+				AND book_id = #{bookId}
+			</if>
+		</where>
+	</select>
+
+	<select id="selectByPage" parameterType="BookDescriptionInfoQc" resultMap="BookDescriptionInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM book_description_info
+		<where>
+			<if  test="authorBrief != null">
+				AND author_brief = #{authorBrief}
+			</if>
+			<if  test="contentBrief != null">
+				AND content_brief = #{contentBrief}
+			</if>
+			<if  test="ctlgInf != null">
+				AND catelog_info = #{catelogInfo}
+			</if>
+			<if  test="editorRecommendInfo != null">
+				AND editor_recommend_info = #{editorRecommendInfo}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="bookId != null">
+				AND book_id = #{bookId}
+			</if>
+		</where>
+	</select>
+
+	<update id="update" parameterType="BookDescriptionInfoDo">
+		UPDATE book_description_info
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="authorBrief != null">
+				author_brief = #{authorBrief},
+			</if>
+			<if test="contentBrief != null">
+				content_brief = #{contentBrief},
+			</if>
+			<if test="ctlgInf != null">
+				catelog_info = #{catelogInfo},
+			</if>
+			<if test="editorRecommendInfo != null">
+				editor_recommend_info = #{editorRecommendInfo},
+			</if>
+			<if test="bookId != null">
+				book_id = #{bookId},
+			</if>
+		</trim>
+		<where>
+			id = #{id}
+		</where>
+	</update>
+
+	<insert id="insert" parameterType="BookDescriptionInfoDo">
+		INSERT INTO book_description_info
+		(
+		<trim suffixOverrides=",">
+			<if test="authorBrief != null">
+				author_brief,
+			</if>
+			<if test="contentBrief != null">
+				content_brief,
+			</if>
+			<if test="catelogInfo != null">
+				catelog_info,
+			</if>
+			<if test="editorRecommendInfo != null">
+				editor_recommend_info,
+			</if>
+			<if test="id != null">
+				id,
+			</if>
+			<if test="bookId != null">
+				book_id,
+			</if>
+		</trim>
+		) VALUES (
+		<trim suffixOverrides=",">
+			<if test="authorBrief != null">
+				#{authorBrief},
+			</if>
+			<if test="contentBrief != null">
+				#{contentBrief},
+			</if>
+			<if test="catelogInfo != null">
+				#{ctlgInf},
+			</if>
+			<if test="editorRecommendInfo != null">
+				#{editorRecommendInfo},
+			</if>
+			<if test="id != null">
+				#{id},
+			</if>
+			<if test="bookId != null">
+				#{bookId},
+			</if>
+		</trim>
+		)
+	</insert>
+
+	<delete id="delete" parameterType="BookDescriptionInfoDo">
+		DELETE
+		FROM  book_description_info
+		WHERE
+		ID = #{id}
+	</delete>
+</mapper>

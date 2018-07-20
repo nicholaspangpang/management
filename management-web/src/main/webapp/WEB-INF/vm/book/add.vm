@@ -1,0 +1,171 @@
+<script type="text/javascript" src="/resources/js/book/add.js"></script>
+
+
+<style>
+    #photo {
+        width: 300px;
+        height: 400px;
+        max-width: 100%;
+    }
+    .img-preview {
+        width: 300px;
+        height: 400px;
+        overflow: hidden;
+    }
+    label {
+        margin-top:10px;
+    }
+    #result {
+        width: 150px;
+        height: 150px;
+    }
+</style>
+
+<div class="container-full">
+
+    <!-- 面包导航开始 -->
+    <div class="headerBox">
+        <div class="active_com">
+            <span class="position"><b class="map-marker"></b>当前位置：</span>
+            <ul class="ul">
+                <li><a href="JavaScript:;"> <span>首 页</span>
+                </a> <b> > </b></li>
+                <li><a href="JavaScript:;"> <span>图书信息</span>
+                </a> <b> > </b></li>
+                <li><a href="JavaScript:;"> <span>图书信息录入</span>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 面包导航结束 -->
+
+    <div class="row">&nbsp;</div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6 ">
+                <img id="photo">
+            </div>
+            <div class="col-sm-2">
+                <div>
+                    <div class="img-preview img-rounded">
+                        <img src="${userInfo.headPictureAddress}" >
+                    </div>
+                </div>
+
+                <div>
+                    <p>
+                        <label for="input" class="btn btn-danger" id="">
+                            <span>选择图片</span>
+                            <input type="file" id="input" class="sr-only">
+                        </label>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">&nbsp;</div>
+
+        <form class="form-horizontal" id="form_book">
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">isbn</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="isbn" />
+                </div>
+                <label class="col-sm-1 control-label">定价</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="bookPrice" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">书名</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="bookName" />
+                </div>
+                <label class="col-sm-1 control-label">副标题</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="subTitle" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">作者</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="authorName" />
+                </div>
+                <label class="col-sm-1 control-label">译者</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="translatorName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">页码</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="pageNumber" />
+                </div>
+                <label class="col-sm-1 control-label">装帧</label>
+                <div class="col-md-4">
+                    <select class="form-control" name="bindingName">
+                        <option value="平装">平装</option>
+                        <option value="精装">精装</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">出版社</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="pressName" />
+                </div>
+                <label class="col-sm-1 control-label">出版日期</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="publishDate" id="datetimepicker" data-date-format="yyyy-mm-dd" />
+                </div>
+            </div>
+
+
+            <!-- 大字段 -->
+            <div class="form-group">
+                <label class="col-sm-1 control-label">作者简介</label>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="3" name="authorBrief"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">内容简介</label>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="3" name="contentBrief"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">目录</label>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="3" name="catelogInfo"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">编辑推荐</label>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="3" name="editorRecommendInfo"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">媒体评论</label>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="3"></textarea>
+                </div>
+            </div>
+
+            <a id="btn_save" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin '></i> 处理中...">提交</a>
+        </form>
+    </div>
+</div>
