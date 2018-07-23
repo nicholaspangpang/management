@@ -37,6 +37,19 @@ public class BookDescriptionInfoDo extends QueryResult{
      */
     private String editorRecommendInfo;
 
+    /**
+     * 媒体评论信息
+     */
+    private String mediaCommentInfo;
+
+    public String getMediaCommentInfo() {
+        return mediaCommentInfo;
+    }
+
+    public void setMediaCommentInfo(String mediaCommentInfo) {
+        this.mediaCommentInfo = mediaCommentInfo;
+    }
+
     public Integer getId() {
         return id;
     }

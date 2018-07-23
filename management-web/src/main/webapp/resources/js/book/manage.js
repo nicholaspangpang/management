@@ -19,6 +19,23 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 		$(this).parent().find('input').val('');
 	});
 
+
+	/**
+	 * 编辑按钮
+     */
+	$("#btn_update").click(function () {
+		var selectIds = jQuery("#tbList").jqGrid('getGridParam','selarrrow');
+		if (selectIds.length == 0){
+			alert('请选择一条数据!');
+			return false;
+		}
+		if (selectIds.length > 1) {
+			alert('只能选择一条数据!');
+			return false;
+		}
+		window.location.href = "/book/update/" + selectIds;
+	});
+
 	/**
 	 * 查询按钮
 	 */

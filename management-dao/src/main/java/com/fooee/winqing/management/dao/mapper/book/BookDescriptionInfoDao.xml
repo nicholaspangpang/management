@@ -13,6 +13,7 @@
 		<result property="contentBrief" column="content_brief" />
 		<result property="authorBrief" column="author_brief" />
 		<result property="editorRecommendInfo" column="editor_recommend_info" />
+		<result property="mediaComment" column="media_comment" />
 	</resultMap>
 
 	<sql id="columns">
@@ -21,7 +22,8 @@
 			catelog_info,
 			content_brief,
 			author_brief,
-			editor_recommend_info
+			editor_recommend_info,
+			media_comment_info
 	</sql>
 
 	<select id="select" parameterType="BookDescriptionInfoQc" resultMap="BookDescriptionInfoResult">
@@ -89,12 +91,12 @@
 			<if test="editorRecommendInfo != null">
 				editor_recommend_info = #{editorRecommendInfo},
 			</if>
-			<if test="bookId != null">
-				book_id = #{bookId},
+			<if test="mediaCommentInfo != null">
+				media_comment_info = #{mediaCommentInfo},
 			</if>
 		</trim>
 		<where>
-			id = #{id}
+			book_id = #{bookId}
 		</where>
 	</update>
 
@@ -120,6 +122,9 @@
 			<if test="bookId != null">
 				book_id,
 			</if>
+			<if test="mediaCommentInfo != null">
+				media_comment_info,
+			</if>
 		</trim>
 		) VALUES (
 		<trim suffixOverrides=",">
@@ -140,6 +145,9 @@
 			</if>
 			<if test="bookId != null">
 				#{bookId},
+			</if>
+			<if test="mediaCommentInfo != null">
+				#{mediaCommentInfo},
 			</if>
 		</trim>
 		)

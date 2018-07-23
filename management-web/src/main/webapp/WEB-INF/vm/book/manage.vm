@@ -125,8 +125,13 @@
             <div class="gridBox">
                 <div class="sortBox">
                     <div class="orderBox">
-                        <div class="com del">
-                            <span export-type="part" class='span exportBtn'>导出</span>
+                        <div class="com del" id="btn_">
+                            <span export-type="part" class='span'>导出</span>
+                        </div>
+                    </div>
+                    <div class="orderBox">
+                        <div class="com del" id="btn_update">
+                            <span export-type="part" class='span exportBtn'>编辑</span>
                         </div>
                     </div>
                 </div>

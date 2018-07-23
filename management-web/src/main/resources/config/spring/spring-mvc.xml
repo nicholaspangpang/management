@@ -13,7 +13,7 @@
 	default-lazy-init="true">
 
     <!-- 激活注解 -->
-    <mvc:annotation-driven />
+    <!--<mvc:annotation-driven />-->
 
     <!-- 配置SpringMVC @ResponseBody和@RequestBody注解  by pangzhenhua 20151230-->
     <mvc:annotation-driven>

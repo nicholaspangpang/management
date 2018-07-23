@@ -63,4 +63,14 @@ public class BookServiceImpl implements BookService{
         bookDescriptionInfoDo.setBookId(bookId);
         bookDescriptionInfoService.insert(bookDescriptionInfoDo);
     }
+
+    @Override
+    public BookInfoDo getBookinfo(BookInfoQc bookInfoQc) {
+        return bookInfoService.select(bookInfoQc);
+    }
+
+    @Override
+    public BookDescriptionInfoDo getBookDescriptionInfo(BookDescriptionInfoQc bookDescriptionInfoQc) {
+        return bookDescriptionInfoService.select(bookDescriptionInfoQc);
+    }
 }
