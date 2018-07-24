@@ -1,6 +1,5 @@
 package com.fooee.winqing.management.service.impl.book;
 
-import com.fooee.commons.dao.vdo.upload.ThumbnailVo;
 import com.fooee.commons.dao.vdo.upload.UploadFileVo;
 import com.fooee.commons.service.upload.inf.UploadService;
 import com.fooee.winqing.management.dao.vdo.book.BookDescriptionInfoDo;
@@ -13,9 +12,7 @@ import com.fooee.winqing.management.service.micro.inf.book.BookInfoService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * description
@@ -36,6 +33,34 @@ public class BookServiceImpl implements BookService{
     UploadService uploadService;
 
     @Override
+    public void update(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc) {
+        /**
+         * 如果没有图片则不更新
+         */
+        BookInfoDo bookInfoDo = new BookInfoDo();
+        BeanUtils.copyProperties(bookInfoQc,bookInfoDo);
+
+        //上传图片
+        if(null != bookInfoQc.getFile()){
+            UploadFileVo uploadFileVo = new UploadFileVo();
+            uploadFileVo.setMultipartFile(bookInfoQc.getFile());
+            uploadFileVo = uploadService.upload(uploadFileVo);
+            bookInfoDo.setPictureAddress(uploadFileVo.getFileUrl());
+        }
+
+        //更新图书基本信息
+        bookInfoService.update(bookInfoDo);
+
+        //保存图书描述信息
+        BookDescriptionInfoDo bookDescriptionInfoDo = new BookDescriptionInfoDo();
+        BeanUtils.copyProperties(bookDescriptionInfoQc,bookDescriptionInfoDo);
+        bookDescriptionInfoDo.setBookId(bookInfoDo.getId());
+        bookDescriptionInfoService.update(bookDescriptionInfoDo);
+
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
     public void add(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc) {
         /**
          * 上传图片

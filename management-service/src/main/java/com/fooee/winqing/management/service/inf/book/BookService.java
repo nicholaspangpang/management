@@ -18,6 +18,11 @@ public interface BookService {
     void add(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc);
 
     /**
+     * 更新图书
+     */
+    void update(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc);
+
+    /**
      * 获取图书基本信息
      * @return
      */

@@ -236,51 +236,51 @@
 	<update id="update" parameterType="BookInfoDo">
 		UPDATE book_info
 		<trim prefix="SET" suffixOverrides=",">
-								<if test="authorName != null">
-									author_name = #{authorName},
-								</if>
-								<if test="bindingName != null">
-									binding_name = #{bindingName},
-								</if>
-								<if test="bookName != null">
-									book_name = #{bookName},
-								</if>
-								<if test="bookPrice != null">
-									book_price = #{bookPrice},
-								</if>
-								<if test="createTime != null">
-									create_time = #{createTime},
-								</if>
-								<if test="isbn != null">
-									isbn = #{isbn},
-								</if>
-								<if test="pageNumber != null">
-									page_number = #{pageNumber},
-								</if>
-								<if test="pictureAddress != null">
-									picture_address = #{pictureAddress},
-								</if>
-								<if test="pressName != null">
-									press_name = #{pressName},
-								</if>
-								<if test="publishDate != null">
-									publish_date = #{publishDate},
-								</if>
-								<if test="scoreNumber != null">
-									score_number = #{scoreNumber},
-								</if>
-								<if  test="commentNumber != null">
-									comment_number = #{commentNumber},
-								</if>
-								<if test="wqId != null">
-									wq_id = #{wqId},
-								</if>
-								<if test="translatorName != null">
-									translator_name = #{translatorName},
-								</if>
-								<if test="subTitle != null">
-									sub_title = #{subTitle},
-								</if>
+			<if test="1 == 1">
+				author_name = #{authorName},
+			</if>
+			<if test="bindingName != null">
+				binding_name = #{bindingName},
+			</if>
+			<if test="bookName != null">
+				book_name = #{bookName},
+			</if>
+			<if test="bookPrice != null">
+				book_price = #{bookPrice},
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime},
+			</if>
+			<if test="isbn != null">
+				isbn = #{isbn},
+			</if>
+			<if test="pageNumber != null">
+				page_number = #{pageNumber},
+			</if>
+			<if test="pictureAddress != null">
+				picture_address = #{pictureAddress},
+			</if>
+			<if test="pressName != null">
+				press_name = #{pressName},
+			</if>
+			<if test="publishDate != null">
+				publish_date = #{publishDate},
+			</if>
+			<if test="scoreNumber != null">
+				score_number = #{scoreNumber},
+			</if>
+			<if  test="commentNumber != null">
+				comment_number = #{commentNumber},
+			</if>
+			<if test="wqId != null">
+				wq_id = #{wqId},
+			</if>
+			<if test="translatorName != null">
+				translator_name = #{translatorName},
+			</if>
+			<if test="subTitle != null">
+				sub_title = #{subTitle},
+			</if>
 		</trim>
 		<where>
 				id = #{id}

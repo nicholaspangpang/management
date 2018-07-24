@@ -101,7 +101,7 @@ In.ready('datetimepicker','cropper',function() {
 		// var data = new FormData($("#formUpload")[0]);
 		$.ajax({
 			type : "post",
-			url:baseUrl + "book",
+			url:baseUrl + "book/update",
 			data:formData,
 			cache: false,
 			contentType: false,
@@ -118,7 +118,7 @@ In.ready('datetimepicker','cropper',function() {
 					return false;
 				}
 				layer.alert("操作成功！",function () {
-					window.location.href = "manage";
+					window.location.href = "/book/manage";
 					return false;
 				});
 			},

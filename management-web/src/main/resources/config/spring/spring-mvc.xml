@@ -37,8 +37,8 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <!-- 扫描基包 -->
-    <context:component-scan base-package="com.fooee.winqing"/>
+    <!-- 扫描基包,注意springmvc不能扫描service,否则事务无效 -->
+    <context:component-scan base-package="com.fooee.winqing.management.web.controller"/>
     <context:component-scan base-package="com.fooee.commons"/>
 
     <!-- 静态资源访问映射 -->

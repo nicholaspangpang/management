@@ -13,7 +13,7 @@
 		<result property="contentBrief" column="content_brief" />
 		<result property="authorBrief" column="author_brief" />
 		<result property="editorRecommendInfo" column="editor_recommend_info" />
-		<result property="mediaComment" column="media_comment" />
+		<result property="mediaCommentInfo" column="media_comment_info" />
 	</resultMap>
 
 	<sql id="columns">
@@ -61,7 +61,7 @@
 			<if  test="contentBrief != null">
 				AND content_brief = #{contentBrief}
 			</if>
-			<if  test="ctlgInf != null">
+			<if  test="catelogInfo != null">
 				AND catelog_info = #{catelogInfo}
 			</if>
 			<if  test="editorRecommendInfo != null">
@@ -85,7 +85,7 @@
 			<if test="contentBrief != null">
 				content_brief = #{contentBrief},
 			</if>
-			<if test="ctlgInf != null">
+			<if test="catelogInfo != null">
 				catelog_info = #{catelogInfo},
 			</if>
 			<if test="editorRecommendInfo != null">
@@ -135,7 +135,7 @@
 				#{contentBrief},
 			</if>
 			<if test="catelogInfo != null">
-				#{ctlgInf},
+				#{catelogInfo},
 			</if>
 			<if test="editorRecommendInfo != null">
 				#{editorRecommendInfo},

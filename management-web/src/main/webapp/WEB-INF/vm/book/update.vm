@@ -69,6 +69,7 @@
         <div class="row">&nbsp;</div>
 
         <form class="form-horizontal" id="form_book">
+            <input type="hidden" name="id" value="${bookInfo.id}" />
 
             <div class="form-group">
                 <label class="col-sm-1 control-label">isbn</label>
@@ -120,7 +121,7 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label">出版社</label>
                 <div class="col-md-4">
-                    <input class="form-control" name="pressName" value="$!{bookInfo.bookName}" />
+                    <input class="form-control" name="pressName" value="$!{bookInfo.pressName}" />
                 </div>
                 <label class="col-sm-1 control-label">出版日期</label>
                 <div class="col-md-4">
