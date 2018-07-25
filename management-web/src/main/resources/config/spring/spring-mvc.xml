@@ -18,6 +18,8 @@
     <!-- 配置SpringMVC @ResponseBody和@RequestBody注解  by pangzhenhua 20151230-->
     <mvc:annotation-driven>
         <mvc:message-converters register-defaults="true">
+
+            <!-- responseBody -->
             <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                 <property name="supportedMediaTypes">
                     <list>
@@ -33,6 +35,11 @@
                     <!-- 	                    </property> -->
                     <!-- 	                </bean> -->
                 </property>
+            </bean>
+
+            <!-- 表单到后台 -->
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>

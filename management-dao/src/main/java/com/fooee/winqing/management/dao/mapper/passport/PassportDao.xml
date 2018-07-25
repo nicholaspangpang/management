@@ -75,17 +75,23 @@
 
 	<select id="getAllFunctionByDepartments" parameterType="java.util.List" resultMap="ManageFunctionDoResult">
 
-		SELECT tmf.*
-		FROM manage_department_function_relation tmdfr,manage_function tmf
-		where 1=1
-		and tmdfr.function_id=tmf.id
-		and tmf.is_enable=1
-
-		and tmdfr.is_enable=1
-		and tmdfr.department_id in
-		<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
-			#{item.id}
-		</foreach>
+		SELECT MF.* FROM manage_function MF WHERE MF.id IN (
+			SELECT
+			DISTINCT tmf.id
+			FROM
+			manage_department_function_relation tmdfr,
+			manage_function tmf
+			WHERE
+			1 = 1
+			AND tmdfr.function_id = tmf.id
+			AND tmf.is_enable = 1
+			AND tmdfr.is_enable = 1
+			AND tmdfr.department_id IN
+			<foreach collection="list" index="index" item="item" open="(" separator="," close=")">
+				#{item.id}
+			</foreach>
+		)
+		ORDER BY MF.parent_id, MF.sort_number ASC
 
 	</select>
 

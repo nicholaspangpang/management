@@ -56,8 +56,8 @@ public class PassportServiceImpl implements PassportService{
             allManageDepartmentDos.addAll(passportDao.getParentDepartments(dept));
         }
 
-        //循环读取用户组织机构所有的功能列表，用set不能重复
-        Set<ManageFunctionDo> manageFunctionDos = new HashSet<ManageFunctionDo>();
+        //循环读取用户组织机构所有的功能列表，用set不能重复(已经在sql中排重处理，不需要set)
+        List<ManageFunctionDo> manageFunctionDos = new ArrayList<>();
         manageFunctionDos = passportDao.getAllFunctionByDepartments(allManageDepartmentDos);
 
         //将用户所有功能转成树形list
@@ -74,7 +74,7 @@ public class PassportServiceImpl implements PassportService{
      * @param manageFunctionDos
      * @return
      */
-    List<ManageFunctionDo> convertMenuTree(Set<ManageFunctionDo> manageFunctionDos){
+    List<ManageFunctionDo> convertMenuTree(List<ManageFunctionDo> manageFunctionDos){
         List<ManageFunctionDo> tree = new ArrayList<ManageFunctionDo>();
         for(ManageFunctionDo item : manageFunctionDos){
             if(item.getParentId() == 0){
@@ -86,7 +86,7 @@ public class PassportServiceImpl implements PassportService{
     }
 
 
-    List<ManageFunctionDo> getChildren(ManageFunctionDo currFunction , Set<ManageFunctionDo> allFunction){
+    List<ManageFunctionDo> getChildren(ManageFunctionDo currFunction , List<ManageFunctionDo> allFunction){
         List<ManageFunctionDo> result = new ArrayList<ManageFunctionDo>();
         for(ManageFunctionDo item : allFunction){
             if(currFunction.getId().equals(item.getParentId())){

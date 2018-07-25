@@ -1,9 +1,11 @@
 package com.fooee.winqing.management.dao.mapper.passport;
 
-import com.fooee.winqing.management.dao.vdo.passport.*;
+import com.fooee.winqing.management.dao.vdo.passport.ManageDepartmentDo;
+import com.fooee.winqing.management.dao.vdo.passport.ManageFunctionDo;
+import com.fooee.winqing.management.dao.vdo.passport.ManageUserDo;
+import com.fooee.winqing.management.dao.vdo.passport.ManageUserQc;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * description
@@ -33,7 +35,7 @@ public interface PassportDao {
      * @param manageDepartmentDos
      * @return
      */
-    Set<ManageFunctionDo> getAllFunctionByDepartments(List<ManageDepartmentDo> manageDepartmentDos);
+    List<ManageFunctionDo> getAllFunctionByDepartments(List<ManageDepartmentDo> manageDepartmentDos);
 
     /**
      * 管理用户登陆

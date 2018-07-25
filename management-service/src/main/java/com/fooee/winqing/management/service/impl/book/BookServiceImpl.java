@@ -33,6 +33,7 @@ public class BookServiceImpl implements BookService{
     UploadService uploadService;
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void update(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc) {
         /**
          * 如果没有图片则不更新

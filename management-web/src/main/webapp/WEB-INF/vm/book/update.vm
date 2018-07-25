@@ -50,7 +50,7 @@
             <div class="col-sm-2">
                 <div>
                     <div class="img-preview img-rounded">
-                        <img src="${bookInfo.pictureAddress}" >
+                        <img src="$!{bookInfo.pictureAddress}" >
                     </div>
                 </div>
 
@@ -125,7 +125,7 @@
                 </div>
                 <label class="col-sm-1 control-label">出版日期</label>
                 <div class="col-md-4">
-                    <input class="form-control" name="publishDate" id="datetimepicker" data-date-format="yyyy-mm-dd" value="$!{bookInfo.publishDate}" />
+                    <input class="form-control" name="publishDate" id="datetimepicker" data-date-format="yyyy-mm-dd" value="$!date.format('yyyy-MM-dd',$!{bookInfo.publishDate})  " />
                 </div>
             </div>
 
@@ -162,7 +162,7 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label">媒体评论</label>
                 <div class="col-md-9">
-                    <textarea class="form-control" rows="3" name="">$!{bookDesc.mediaCommentInfo}</textarea>
+                    <textarea class="form-control" rows="3" name="mediaCommentInfo">$!{bookDesc.mediaCommentInfo}</textarea>
                 </div>
             </div>
 

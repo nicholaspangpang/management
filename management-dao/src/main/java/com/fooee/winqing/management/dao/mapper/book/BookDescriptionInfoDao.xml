@@ -79,7 +79,7 @@
 	<update id="update" parameterType="BookDescriptionInfoDo">
 		UPDATE book_description_info
 		<trim prefix="SET" suffixOverrides=",">
-			<if test="authorBrief != null">
+			<if test="1 == 1">
 				author_brief = #{authorBrief},
 			</if>
 			<if test="contentBrief != null">
