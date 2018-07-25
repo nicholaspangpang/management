@@ -36,7 +36,7 @@ public class BookController{
     }
 
     @RequestMapping("update/{id}")
-    String update(@PathVariable Integer id, HttpServletRequest request){
+    String update(@PathVariable Long id, HttpServletRequest request){
         //读取图书基本信息
         BookInfoQc bookInfoQc = new BookInfoQc();
         bookInfoQc.setId(id);
