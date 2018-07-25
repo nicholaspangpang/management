@@ -81,7 +81,7 @@ public class BookServiceImpl implements BookService{
 
         //保存图书基本信息
         bookInfoService.insert(bookInfoDo);
-        Integer bookId = bookInfoDo.getId();
+        Long bookId = bookInfoDo.getId();
 
         //保存图书描述信息
         BookDescriptionInfoDo bookDescriptionInfoDo = new BookDescriptionInfoDo();
