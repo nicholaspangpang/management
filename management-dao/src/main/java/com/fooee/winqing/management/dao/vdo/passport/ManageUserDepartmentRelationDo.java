@@ -10,11 +10,11 @@ public class ManageUserDepartmentRelationDo {
 	/**
 	 * 组织机构id
 	 */
-	private Integer departmentId;
+	private Long departmentId;
 	/**
 	 * 
 	 */
-	private Integer id;
+	private Long id;
 	/**
 	 * 是否启用
 	 */
@@ -22,20 +22,20 @@ public class ManageUserDepartmentRelationDo {
 	/**
 	 * 用户id
 	 */
-	private Integer userId;
+	private Long userId;
 	/**
 	 * 组织机构id
 	 * @param departmentId
 	 */
 	
-	public void setDepartmentId(Integer departmentId){
+	public void setDepartmentId(Long departmentId){
 		this.departmentId=departmentId;
 	}
 	/**
 	 * 组织机构id
 	 * @return
 	 */
-	public Integer getDepartmentId(){
+	public Long getDepartmentId(){
 		return this.departmentId;
 	}
 		
@@ -44,14 +44,14 @@ public class ManageUserDepartmentRelationDo {
 	 * @param id
 	 */
 	
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id=id;
 	}
 	/**
 	 * 
 	 * @return
 	 */
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 		
@@ -76,14 +76,14 @@ public class ManageUserDepartmentRelationDo {
 	 * @param userId
 	 */
 	
-	public void setUserId(Integer userId){
+	public void setUserId(Long userId){
 		this.userId=userId;
 	}
 	/**
 	 * 用户id
 	 * @return
 	 */
-	public Integer getUserId(){
+	public Long getUserId(){
 		return this.userId;
 	}
 		

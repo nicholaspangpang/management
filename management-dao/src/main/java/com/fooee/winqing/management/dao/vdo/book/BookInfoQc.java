@@ -44,7 +44,7 @@ public class BookInfoQc extends QueryCondition {
 	/**
 	 *<p></p>
 	 */
-	private Integer id;
+	private Long id;
 	/**
 	 *<p>ISBN</p>
 	 */
@@ -215,7 +215,7 @@ public class BookInfoQc extends QueryCondition {
 	 *
 	 * @param id
 	 */
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id=id;
 	}
 
@@ -223,7 +223,7 @@ public class BookInfoQc extends QueryCondition {
 	 *
 	 * @return
 	 */
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 	/**

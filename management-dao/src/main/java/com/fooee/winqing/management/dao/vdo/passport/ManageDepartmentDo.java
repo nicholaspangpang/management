@@ -18,7 +18,7 @@ public class ManageDepartmentDo {
 	/**
 	 * 
 	 */
-	private Integer id;
+	private Long id;
 	/**
 	 * 是否启用
 	 */
@@ -26,7 +26,7 @@ public class ManageDepartmentDo {
 	/**
 	 * 父级id
 	 */
-	private Integer parentId;
+	private Long parentId;
 	/**
 	 * 组织机构名称
 	 * @param departmentName
@@ -64,14 +64,14 @@ public class ManageDepartmentDo {
 	 * @param id
 	 */
 	
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id=id;
 	}
 	/**
 	 * 
 	 * @return
 	 */
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 		
@@ -96,14 +96,14 @@ public class ManageDepartmentDo {
 	 * @param parentId
 	 */
 	
-	public void setParentId(Integer parentId){
+	public void setParentId(Long parentId){
 		this.parentId=parentId;
 	}
 	/**
 	 * 父级id
 	 * @return
 	 */
-	public Integer getParentId(){
+	public Long getParentId(){
 		return this.parentId;
 	}
 		

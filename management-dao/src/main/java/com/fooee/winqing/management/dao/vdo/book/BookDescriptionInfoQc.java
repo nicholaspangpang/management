@@ -10,12 +10,12 @@ public class BookDescriptionInfoQc extends QueryCondition {
     /**
      *
      */
-    private Integer id;
+    private Long id;
 
     /**
      * 文青ID
      */
-    private Integer bookId;
+    private Long bookId;
 
     /**
      * 目录信息
@@ -50,19 +50,19 @@ public class BookDescriptionInfoQc extends QueryCondition {
         this.mediaCommentInfo = mediaCommentInfo;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public Integer getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(Integer bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 

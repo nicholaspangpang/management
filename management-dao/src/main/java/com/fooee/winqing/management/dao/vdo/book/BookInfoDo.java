@@ -56,7 +56,7 @@ public class BookInfoDo extends QueryResult
 	/**
 	*<p></p>
 	*/
-	private Integer id;
+	private Long id;
 	/**
 	*<p>ISBN</p>
 	*/
@@ -191,7 +191,7 @@ public class BookInfoDo extends QueryResult
 	 * 
 	 * @param id
 	 */
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id=id;
 	}
 	
@@ -199,7 +199,7 @@ public class BookInfoDo extends QueryResult
 	 * 
 	 * @return
 	 */
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 	/**

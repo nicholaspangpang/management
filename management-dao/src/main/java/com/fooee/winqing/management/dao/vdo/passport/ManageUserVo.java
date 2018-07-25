@@ -12,7 +12,7 @@ public class ManageUserVo {
 	/**
 	 * 
 	 */
-	private Integer id;
+	private Long id;
 	/**
 	 * 是否启用
 	 */
@@ -49,14 +49,14 @@ public class ManageUserVo {
 	 * @param id
 	 */
 	
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id=id;
 	}
 	/**
 	 * 
 	 * @return
 	 */
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 		

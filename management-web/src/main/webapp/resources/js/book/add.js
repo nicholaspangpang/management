@@ -5,6 +5,8 @@ In.ready('datetimepicker','cropper',function() {
 		var $image = img;
 		var options = {
 			aspectRatio: 2.8/4, // 纵横比
+			minCropBoxWidth:280,
+			minCropBoxHeight:400,
 			viewMode: 2,
 			preview: '.img-preview' // 预览图的class名
 		};

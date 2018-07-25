@@ -291,6 +291,7 @@
 		INSERT INTO book_info
 		(
 			<trim suffixOverrides=",">
+				create_time,
 				<if test="authorName != null">
 					author_name,
 				</if>
@@ -302,9 +303,6 @@
 				</if>
 				<if test="bookPrice != null">
 					book_price,
-				</if>
-				<if test="createTime != null">
-					create_time,
 				</if>
 				<if test="id != null">
 					id,
@@ -342,6 +340,7 @@
 			</trim>
 		) VALUES (
 			<trim suffixOverrides=",">
+				now(),
 				<if test="authorName != null">
 					#{authorName},
 				</if>
@@ -353,9 +352,6 @@
 				</if>
 				<if test="bookPrice != null">
 					#{bookPrice},
-				</if>
-				<if test="createTime != null">
-					#{createTime},
 				</if>
 				<if test="id != null">
 					#{id},

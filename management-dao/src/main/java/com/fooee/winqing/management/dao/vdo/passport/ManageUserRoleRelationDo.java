@@ -10,7 +10,7 @@ public class ManageUserRoleRelationDo {
 	/**
 	 * 
 	 */
-	private Integer id;
+	private Long id;
 	/**
 	 * 是否启用
 	 */
@@ -18,24 +18,24 @@ public class ManageUserRoleRelationDo {
 	/**
 	 * 角色id
 	 */
-	private Integer roleId;
+	private Long roleId;
 	/**
 	 * 用户id
 	 */
-	private Integer userId;
+	private Long userId;
 	/**
 	 * 
 	 * @param id
 	 */
 	
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id=id;
 	}
 	/**
 	 * 
 	 * @return
 	 */
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 		
@@ -60,14 +60,14 @@ public class ManageUserRoleRelationDo {
 	 * @param roleId
 	 */
 	
-	public void setRoleId(Integer roleId){
+	public void setRoleId(Long roleId){
 		this.roleId=roleId;
 	}
 	/**
 	 * 角色id
 	 * @return
 	 */
-	public Integer getRoleId(){
+	public Long getRoleId(){
 		return this.roleId;
 	}
 		
@@ -76,14 +76,14 @@ public class ManageUserRoleRelationDo {
 	 * @param userId
 	 */
 	
-	public void setUserId(Integer userId){
+	public void setUserId(Long userId){
 		this.userId=userId;
 	}
 	/**
 	 * 用户id
 	 * @return
 	 */
-	public Integer getUserId(){
+	public Long getUserId(){
 		return this.userId;
 	}
 		

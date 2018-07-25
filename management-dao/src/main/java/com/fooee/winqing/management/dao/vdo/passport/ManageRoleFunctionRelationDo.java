@@ -10,11 +10,11 @@ public class ManageRoleFunctionRelationDo {
 	/**
 	 * 功能id
 	 */
-	private Integer functionId;
+	private Long functionId;
 	/**
 	 * 
 	 */
-	private Integer id;
+	private Long id;
 	/**
 	 * 是否启用
 	 */
@@ -22,20 +22,20 @@ public class ManageRoleFunctionRelationDo {
 	/**
 	 * 角色id
 	 */
-	private Integer roleId;
+	private Long roleId;
 	/**
 	 * 功能id
 	 * @param functionId
 	 */
 	
-	public void setFunctionId(Integer functionId){
+	public void setFunctionId(Long functionId){
 		this.functionId=functionId;
 	}
 	/**
 	 * 功能id
 	 * @return
 	 */
-	public Integer getFunctionId(){
+	public Long getFunctionId(){
 		return this.functionId;
 	}
 		
@@ -44,14 +44,14 @@ public class ManageRoleFunctionRelationDo {
 	 * @param id
 	 */
 	
-	public void setId(Integer id){
+	public void setId(Long id){
 		this.id=id;
 	}
 	/**
 	 * 
 	 * @return
 	 */
-	public Integer getId(){
+	public Long getId(){
 		return this.id;
 	}
 		
@@ -76,14 +76,14 @@ public class ManageRoleFunctionRelationDo {
 	 * @param roleId
 	 */
 	
-	public void setRoleId(Integer roleId){
+	public void setRoleId(Long roleId){
 		this.roleId=roleId;
 	}
 	/**
 	 * 角色id
 	 * @return
 	 */
-	public Integer getRoleId(){
+	public Long getRoleId(){
 		return this.roleId;
 	}
 		
