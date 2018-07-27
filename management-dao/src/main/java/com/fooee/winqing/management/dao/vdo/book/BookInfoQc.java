@@ -21,6 +21,10 @@ public class BookInfoQc extends QueryCondition {
 	 */
 	private String authorName;
 	/**
+	 * 文青分类代码
+	 */
+	private String wqCategoryCode;
+	/**
 	 *<p>装帧名称</p>
 	 */
 	private String bindingName;
@@ -101,6 +105,14 @@ public class BookInfoQc extends QueryCondition {
 
 	public void setFile(MultipartFile file) {
 		this.file = file;
+	}
+
+	public String getWqCategoryCode() {
+		return wqCategoryCode;
+	}
+
+	public void setWqCategoryCode(String wqCategoryCode) {
+		this.wqCategoryCode = wqCategoryCode;
 	}
 
 	/**

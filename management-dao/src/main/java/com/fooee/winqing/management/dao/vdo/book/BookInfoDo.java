@@ -38,6 +38,10 @@ public class BookInfoDo extends QueryResult
 	*/
 	private String authorName;
 	/**
+	 * 文青分类代码
+     */
+	private String wqCategoryCode;
+	/**
 	*<p>装帧名称</p>
 	*/
 	private String bindingName;
@@ -98,6 +102,13 @@ public class BookInfoDo extends QueryResult
 	*/
 	private String subTitle;
 
+	public String getWqCategoryCode() {
+		return wqCategoryCode;
+	}
+
+	public void setWqCategoryCode(String wqCategoryCode) {
+		this.wqCategoryCode = wqCategoryCode;
+	}
 
 	/**
 	 * 评论数量

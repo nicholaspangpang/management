@@ -23,9 +23,11 @@
 		<result property="commentNumber" column="comment_number" />
 		<result property="translatorName" column="translator_name" />
 		<result property="subTitle" column="sub_title" />
+		<result property="wqCategoryCode" column="wq_category_code" />
 	</resultMap>
 
 	<sql id="columns">
+			wq_category_code,
 			author_name,
 			binding_name,
 			book_name,
@@ -48,54 +50,57 @@
 		SELECT <include refid="columns"></include>
 		FROM book_info
 		<where>
-				<if  test="authorName != null">
-					AND author_name = #{authorName}
-				</if>
-				<if  test="bindingName != null">
-					AND binding_name = #{bindingName}
-				</if>
-				<if  test="bookName != null">
-					AND book_name = #{bookName}
-				</if>
-				<if  test="bookPrice != null">
-					AND book_price = #{bookPrice}
-				</if>
-				<if  test="createTime != null">
-					AND create_time = #{createTime}
-				</if>
-				<if  test="id != null">
-					AND id = #{id}
-				</if>
-				<if  test="isbn != null">
-					AND isbn = #{isbn}
-				</if>
-				<if  test="pageNumber != null">
-					AND page_number = #{pageNumber}
-				</if>
-				<if  test="pictureAddress != null">
-					AND picture_address = #{pictureAddress}
-				</if>
-				<if  test="pressName != null">
-					AND press_name = #{pressName}
-				</if>
-				<if  test="publishDate != null">
-					AND publish_date = #{publishDate}
-				</if>
-				<if  test="scoreNumber != null">
-					AND score_number = #{scoreNumber}
-				</if>
-				<if  test="commentNumber != null">
-					AND comment_number = #{commentNumber}
-				</if>
-				<if  test="wqId != null">
-					AND wq_id = #{wqId}
-				</if>
-				<if  test="translatorName != null">
-					AND translator_name = #{translatorName}
-				</if>
-				<if  test="subTitle != null">
-					AND sub_title = #{subTitle}
-				</if>
+			<if  test="authorName != null">
+				AND author_name = #{authorName}
+			</if>
+			<if  test="bindingName != null">
+				AND binding_name = #{bindingName}
+			</if>
+			<if  test="bookName != null">
+				AND book_name = #{bookName}
+			</if>
+			<if  test="bookPrice != null">
+				AND book_price = #{bookPrice}
+			</if>
+			<if  test="createTime != null">
+				AND create_time = #{createTime}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="isbn != null">
+				AND isbn = #{isbn}
+			</if>
+			<if  test="pageNumber != null">
+				AND page_number = #{pageNumber}
+			</if>
+			<if  test="pictureAddress != null">
+				AND picture_address = #{pictureAddress}
+			</if>
+			<if  test="pressName != null">
+				AND press_name = #{pressName}
+			</if>
+			<if  test="publishDate != null">
+				AND publish_date = #{publishDate}
+			</if>
+			<if  test="scoreNumber != null">
+				AND score_number = #{scoreNumber}
+			</if>
+			<if  test="commentNumber != null">
+				AND comment_number = #{commentNumber}
+			</if>
+			<if  test="wqId != null">
+				AND wq_id = #{wqId}
+			</if>
+			<if  test="translatorName != null">
+				AND translator_name = #{translatorName}
+			</if>
+			<if  test="subTitle != null">
+				AND sub_title = #{subTitle}
+			</if>
+			<if  test="wqCategoryCode != null">
+				AND wq_category_code = #{wqCategoryCode}
+			</if>
 		</where>   		
 	</select>
 
@@ -163,6 +168,9 @@
 			<if  test="subTitle != null">
 				AND sub_title = #{subTitle}
 			</if>
+			<if  test="wqCategoryCode != null">
+				AND wq_category_code = #{wqCategoryCode}
+			</if>
 		</where>
 	</select>
 	
@@ -170,66 +178,69 @@
 		SELECT <include refid="columns"></include>
 		FROM book_info
 		<where>
-				<if  test="authorName != null">
-					AND author_name = #{authorName}
-				</if>
-				<if  test="bindingName != null">
-					AND binding_name = #{bindingName}
-				</if>
-				<if  test="bookName != null">
-					AND book_name = #{bookName}
-				</if>
-				<if  test="bookNames != null">
-					AND book_name in
-					<foreach collection="bookNames"  separator="," item="item" open="(" close=") ">
-						#{item}
-					</foreach>
-				</if>
-				<if  test="bookPrice != null">
-					AND book_price = #{bookPrice}
-				</if>
-				<if  test="createTime != null">
-					AND create_time = #{createTime}
-				</if>
-				<if  test="id != null">
-					AND id = #{id}
-				</if>
-				<if  test="isbn != null">
-					AND isbn = #{isbn}
-				</if>
-				<if  test="isbns != null">
-					AND isbn in
-					<foreach collection="isbns" index="index" separator="," item="item" open="(" close=") ">
-						#{isbns[${index}]}
-					</foreach>
-				</if>
-				<if  test="pageNumber != null">
-					AND page_number = #{pageNumber}
-				</if>
-				<if  test="pictureAddress != null">
-					AND picture_address = #{pictureAddress}
-				</if>
-				<if  test="pressName != null">
-					AND press_name = #{pressName}
-				</if>
-				<if  test="publishDate != null">
-					AND publish_date = #{publishDate}
-				</if>
-				<if  test="scoreNumber != null">
-					AND score_number = #{scoreNumber}
-				</if>
-				<if  test="commentNumber != null">
-					AND comment_number = #{commentNumber}
-				</if>
-				<if  test="wqId != null">
-					AND wq_id = #{wqId}
-				</if>
-				<if  test="translatorName != null">
-					AND translator_name = #{translatorName}
-				</if>
-				<if  test="subTitle != null">
-					AND sub_title = #{subTitle}
-				</if>
+			<if  test="authorName != null">
+				AND author_name = #{authorName}
+			</if>
+			<if  test="bindingName != null">
+				AND binding_name = #{bindingName}
+			</if>
+			<if  test="bookName != null">
+				AND book_name = #{bookName}
+			</if>
+			<if  test="bookNames != null">
+				AND book_name in
+				<foreach collection="bookNames"  separator="," item="item" open="(" close=") ">
+					#{item}
+				</foreach>
+			</if>
+			<if  test="bookPrice != null">
+				AND book_price = #{bookPrice}
+			</if>
+			<if  test="createTime != null">
+				AND create_time = #{createTime}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="isbn != null">
+				AND isbn = #{isbn}
+			</if>
+			<if  test="isbns != null">
+				AND isbn in
+				<foreach collection="isbns" index="index" separator="," item="item" open="(" close=") ">
+					#{isbns[${index}]}
+				</foreach>
+			</if>
+			<if  test="pageNumber != null">
+				AND page_number = #{pageNumber}
+			</if>
+			<if  test="pictureAddress != null">
+				AND picture_address = #{pictureAddress}
+			</if>
+			<if  test="pressName != null">
+				AND press_name = #{pressName}
+			</if>
+			<if  test="publishDate != null">
+				AND publish_date = #{publishDate}
+			</if>
+			<if  test="scoreNumber != null">
+				AND score_number = #{scoreNumber}
+			</if>
+			<if  test="commentNumber != null">
+				AND comment_number = #{commentNumber}
+			</if>
+			<if  test="wqId != null">
+				AND wq_id = #{wqId}
+			</if>
+			<if  test="translatorName != null">
+				AND translator_name = #{translatorName}
+			</if>
+			<if  test="subTitle != null">
+				AND sub_title = #{subTitle}
+			</if>
+			<if  test="wqCategoryCode != null">
+				AND wq_category_code = #{wqCategoryCode}
+			</if>
 		</where>   	
 	</select>
 
@@ -280,6 +291,9 @@
 			</if>
 			<if test="subTitle != null">
 				sub_title = #{subTitle},
+			</if>
+			<if test="wqCategoryCode != null">
+				wq_category_code = #{wqCategoryCode},
 			</if>
 		</trim>
 		<where>
@@ -337,6 +351,9 @@
 				<if test="subTitle != null">
 					sub_title,
 				</if>
+				<if test="wqCategoryCode != null">
+					wq_category_code,
+				</if>
 			</trim>
 		) VALUES (
 			<trim suffixOverrides=",">
@@ -385,6 +402,9 @@
 				</if>
 				<if test="subTitle != null">
 					#{subTitle},
+				</if>
+				<if test="wqCategoryCode != null">
+					#{wqCategoryCode},
 				</if>
 			</trim>
 		)

@@ -108,11 +108,14 @@
                 <div class="col-md-4">
                     <input class="form-control" name="pageNumber" />
                 </div>
-                <label class="col-sm-1 control-label">装帧</label>
+                <label class="col-sm-1 control-label">文青分类</label>
                 <div class="col-md-4">
-                    <select class="form-control" name="bindingName">
-                        <option value="平装">平装</option>
-                        <option value="精装">精装</option>
+                    <select class="form-control" name="wqCategoryCode">
+                        <option value="JSJ">计算机</option>
+                        <option value="WX">文学</option>
+                        <option value="SH">生活</option>
+                        <option value="JG">经管</option>
+                        <option value="WH">文化</option>
                     </select>
                 </div>
             </div>
