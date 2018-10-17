@@ -1,10 +1,8 @@
 package com.fooee.winqing.management.dao.vdo.book;
 
 import com.fooee.commons.compontent.query.QueryCondition;
-import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Date;
@@ -31,7 +29,7 @@ public class BookInfoQc extends QueryCondition {
 	/**
 	 *<p>图书名称</p>
 	 */
-	@NotEmpty(message = "{book.bookName.null}")
+//	@NotEmpty(message = "{book.bookName.null}")
 	private String bookName;
 	/**
 	 *<p>图书名称列表
