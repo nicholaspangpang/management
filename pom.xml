@@ -292,6 +292,13 @@
       <version>6.0.1.Final</version>
     </dependency>
 
+    <!-- druid连接池 -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>1.1.10</version>
+    </dependency>
+
 
 
 
