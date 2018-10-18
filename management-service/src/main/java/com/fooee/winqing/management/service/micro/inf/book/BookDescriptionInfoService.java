@@ -1,8 +1,8 @@
 package com.fooee.winqing.management.service.micro.inf.book;
 
 import com.fooee.commons.service.BaseService;
-import com.fooee.winqing.management.dao.vdo.book.BookDescriptionInfoDo;
-import com.fooee.winqing.management.dao.vdo.book.BookDescriptionInfoQc;
+import com.fooee.winqing.bean.book.BookDescriptionInfoDo;
+import com.fooee.winqing.bean.book.BookDescriptionInfoQc;
 
 /**
  * description

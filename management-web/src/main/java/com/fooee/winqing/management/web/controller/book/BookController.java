@@ -1,9 +1,9 @@
 package com.fooee.winqing.management.web.controller.book;
 
-import com.fooee.winqing.management.dao.vdo.book.BookDescriptionInfoDo;
-import com.fooee.winqing.management.dao.vdo.book.BookDescriptionInfoQc;
-import com.fooee.winqing.management.dao.vdo.book.BookInfoDo;
-import com.fooee.winqing.management.dao.vdo.book.BookInfoQc;
+import com.fooee.winqing.bean.book.BookDescriptionInfoDo;
+import com.fooee.winqing.bean.book.BookDescriptionInfoQc;
+import com.fooee.winqing.bean.book.BookInfoDo;
+import com.fooee.winqing.bean.book.BookInfoQc;
 import com.fooee.winqing.management.service.inf.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

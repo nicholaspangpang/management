@@ -74,7 +74,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 			{name:"authorName", index:"authorName",align:'center'},
 			{name:"pressName", index:"pressName",align:'center'},
 			{name:"publishDate", index:"publishDate",align:'center',formatter:'date',formatoptions: {newformat:'Y-m-d'}},
-			{name:"createTime", index:"createTime",align:'center',formatter:'date',formatoptions: {newformat:'Y-m-d'}},
+			{name:"createTime", index:"createTime",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyymmdd');}},
 		],
 		rowNum:20,
 		rowList:[20,50,100,500],
@@ -86,7 +86,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 			$("#tbList").jqGrid('clearGridData');
 		},
 		loadError:function(){
-			layer.msg("系统报错！",{icon:5});
+			layer.msg("网络错误！",{icon:5});
 		},
 		onPaging : function(pgButton){
 			// $("#tbList").jqGrid('setGridParam',
@@ -96,6 +96,9 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 			// 	});
 		},
 		loadComplete : function(data) {
+			if(data.error){
+				layer.msg(data.message,{icon:5});
+			}
 		}
 	});
 	$("[data-toggle='popover']").popover();

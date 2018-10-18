@@ -20,7 +20,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <source.jdk>1.7</source.jdk>
     <target.jdk>1.7</target.jdk>
-    <spring.version>4.1.6.RELEASE</spring.version>
+    <spring.version>4.3.16.RELEASE</spring.version>
     <org.slf4j-version>1.6.1</org.slf4j-version>
   </properties>
 

@@ -2,12 +2,11 @@ package com.fooee.winqing.management.web.controller.book;
 
 import com.fooee.commons.exception.PageException;
 import com.fooee.commons.web.vo.JsonResult;
-import com.fooee.winqing.management.dao.vdo.book.BookDescriptionInfoQc;
-import com.fooee.winqing.management.dao.vdo.book.BookInfoQc;
+import com.fooee.winqing.bean.book.BookDescriptionInfoQc;
+import com.fooee.winqing.bean.book.BookInfoQc;
 import com.fooee.winqing.management.service.inf.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

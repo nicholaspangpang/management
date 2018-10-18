@@ -16,6 +16,7 @@
 	
 	 <typeAliases>
         <package name="com.fooee.winqing.management.dao.vdo"/>
+		 <package name="com.fooee.winqing.bean"/>
 		 <package name="com.fooee.commons.dao.vdo"/>
     </typeAliases>
 	

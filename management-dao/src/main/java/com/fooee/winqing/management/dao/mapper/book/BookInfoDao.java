@@ -1,8 +1,8 @@
 package com.fooee.winqing.management.dao.mapper.book;
 
 import com.fooee.commons.dao.BaseDao;
-import com.fooee.winqing.management.dao.vdo.book.BookInfoDo;
-import com.fooee.winqing.management.dao.vdo.book.BookInfoQc;
+import com.fooee.winqing.bean.book.BookInfoDo;
+import com.fooee.winqing.bean.book.BookInfoQc;
 
 /**
  * @author pangzhenhua

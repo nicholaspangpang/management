@@ -2,10 +2,10 @@ package com.fooee.winqing.management.service.impl.book;
 
 import com.fooee.commons.dao.vdo.upload.UploadFileVo;
 import com.fooee.commons.service.upload.inf.UploadService;
-import com.fooee.winqing.management.dao.vdo.book.BookDescriptionInfoDo;
-import com.fooee.winqing.management.dao.vdo.book.BookDescriptionInfoQc;
-import com.fooee.winqing.management.dao.vdo.book.BookInfoDo;
-import com.fooee.winqing.management.dao.vdo.book.BookInfoQc;
+import com.fooee.winqing.bean.book.BookDescriptionInfoDo;
+import com.fooee.winqing.bean.book.BookDescriptionInfoQc;
+import com.fooee.winqing.bean.book.BookInfoDo;
+import com.fooee.winqing.bean.book.BookInfoQc;
 import com.fooee.winqing.management.service.inf.book.BookService;
 import com.fooee.winqing.management.service.micro.inf.book.BookDescriptionInfoService;
 import com.fooee.winqing.management.service.micro.inf.book.BookInfoService;
