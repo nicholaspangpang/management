@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	@author pangzhenhua
+	@version 2016-11-22 22:46:22 
+-->
+<mapper namespace="com.fooee.winqing.management.dao.mapper.user.UserInfoDao">
+
+	<resultMap type="UserInfoDo" id="UserInfoResult">
+		<result property="id" column="id" />
+			<result property="alipayOpenId" column="alipay_open_id" />
+			<result property="emailAddress" column="email_address" />
+			<result property="lastLoginTime" column="last_login_time" />
+			<result property="loginCount" column="login_count" />
+			<result property="loginPassword" column="login_password" />
+			<result property="mobilePhoneNo" column="mobile_phone_no" />
+			<result property="headPictureAddress" column="head_picture_address" />
+			<result property="qqOpenId" column="qq_open_id" />
+			<result property="registerTime" column="register_time" />
+			<result property="residenceName" column="residence_name" />
+			<result property="nickName" column="nick_name" />
+			<result property="wxOpenId" column="wx_open_id" />
+			<result property="loginUsername" column="login_username" />
+		<result property="pointNumber" column="point_number" />
+		<result property="selfBrief" column="self_brief" />
+		<result property="statusCode" column="status_code" />
+	</resultMap>
+
+	<sql id="columns">
+			id,
+			alipay_open_id,
+			email_address,
+			last_login_time,
+			login_count,
+			login_password,
+			mobile_phone_no,
+			head_picture_address,
+			qq_open_id,
+			register_time,
+			residence_name,
+			nick_name,
+			wx_open_id,
+			login_username,
+			point_number,
+			self_brief,
+			status_code
+	</sql>
+
+	<select id="selectUserForLogin" parameterType="UserInfoQc" resultMap="UserInfoResult">
+		SELECT <include refid="columns"></include>
+		  FROM user_info TUI
+		 WHERE TUI.login_username = #{loginUsername}
+		    OR TUI.email_address = #{loginUsername}
+		    OR TUI.mobile_phone_no = #{loginUsername}
+	</select>
+
+	<update id="unbind" parameterType="UserInfoQc">
+		update user_info
+			<if test="unbindType == 'qq'">
+				set qq_open_id = NULL
+			</if>
+			<if test="unbindType == 'wx'">
+				set wx_open_id = NULL
+			</if>
+			<if test="unbindType == 'email'">
+				set email_address = NULL
+			</if>
+		 where id = #{id}
+	</update>
+
+	<select id="selectFollowsByUserByPage" parameterType="UserInfoQc" resultMap="UserInfoResult">
+		/*查询某人关注的人*/
+		SELECT
+			tui.id,
+			tui.nick_name,
+			tui.head_picture_address
+		FROM
+			user_follow_info tufi,
+			user_info tui
+		WHERE
+			1 = 1
+		AND tufi.is_enable = 1
+		AND tufi.follow_user_id = tui.id
+		AND tufi.user_id = #{id}
+	</select>
+
+	<select id="selectFansByUserByPage" parameterType="UserInfoQc" resultMap="UserInfoResult">
+		/*查询某人的粉丝*/
+		SELECT
+			tui.id,
+			tui.nick_name,
+			tui.head_picture_address
+		FROM
+			user_follow_info tufi,
+			user_info tui
+		WHERE
+			1 = 1
+		AND tufi.is_enable = 1
+		AND tufi.user_id = tui.id
+		AND tufi.follow_user_id = #{id}
+	</select>
+
+	<select id="select" parameterType="UserInfoQc" resultMap="UserInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM user_info 
+		<where>
+			<if  test="loginUsername != null">
+				AND login_username = #{loginUsername}
+			</if>
+				<if  test="alipayOpenId != null">
+					AND alipay_open_id = #{alipayOpenId}
+				</if>
+				<if  test="emailAddress != null">
+					AND email_address = #{emailAddress}
+				</if>
+				<if  test="id != null">
+					AND id = #{id}
+				</if>
+				<if  test="lastLoginTime != null">
+					AND last_login_time = #{lastLoginTime}
+				</if>
+				<if  test="loginCount != null">
+					AND login_count = #{loginCount}
+				</if>
+				<if  test="loginPassword != null">
+					AND login_password = #{loginPassword}
+				</if>
+				<if  test="mobilePhoneNo != null">
+					AND mobile_phone_no = #{mobilePhoneNo}
+				</if>
+				<if  test="headPictureAddress != null">
+					AND head_picture_address = #{headPictureAddress}
+				</if>
+				<if  test="qqOpenId != null">
+					AND qq_open_id = #{qqOpenId}
+				</if>
+				<if  test="registerTime != null">
+					AND register_time = #{registerTime}
+				</if>
+				<if  test="residenceName != null">
+					AND residence_name = #{residenceName}
+				</if>
+				<if  test="nickName != null">
+					AND nick_name = #{nickName}
+				</if>
+				<if  test="wxOpenId != null">
+					AND wx_open_id = #{wxOpenId}
+				</if>
+			<if  test="statusCode != null">
+				AND status_code = #{statusCode}
+			</if>
+		</where>   		
+	</select>
+
+	<select id="selectUserByPage" parameterType="UserInfoQc" resultMap="UserInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM user_info
+		<where>
+			<if  test="loginUsername != null">
+				AND login_username = #{loginUsername}
+			</if>
+			<if  test="alipayOpenId != null">
+				AND alipay_open_id = #{alipayOpenId}
+			</if>
+			<if  test="emailAddress != null">
+				AND email_address = #{emailAddress}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="lastLoginTime != null">
+				AND last_login_time = #{lastLoginTime}
+			</if>
+			<if  test="loginCount != null">
+				AND login_count = #{loginCount}
+			</if>
+			<if  test="loginPassword != null">
+				AND login_password = #{loginPassword}
+			</if>
+			<if  test="mobilePhoneNo != null">
+				AND mobile_phone_no = #{mobilePhoneNo}
+			</if>
+			<if  test="mobilePhoneNos != null">
+				AND mobile_phone_no in
+				<foreach collection="mobilePhoneNos"  separator="," item="item" open="(" close=") ">
+					#{item}
+				</foreach>
+			</if>
+			<if  test="headPictureAddress != null">
+				AND head_picture_address = #{headPictureAddress}
+			</if>
+			<if  test="qqOpenId != null">
+				AND qq_open_id = #{qqOpenId}
+			</if>
+			<if  test="registerTime != null">
+				AND register_time = #{registerTime}
+			</if>
+			<if  test="residenceName != null">
+				AND residence_name = #{residenceName}
+			</if>
+			<if  test="nickName != null">
+				AND nick_name = #{nickName}
+			</if>
+			<if  test="nickNames != null">
+				AND nick_name in
+				<foreach collection="nickNames"  separator="," item="item" open="(" close=") ">
+					#{item}
+				</foreach>
+			</if>
+			<if  test="wxOpenId != null">
+				AND wx_open_id = #{wxOpenId}
+			</if>
+			<if  test="statusCode != null">
+				AND status_code = #{statusCode}
+			</if>
+		</where>
+		<choose>
+			<when test="sortField != null and sortMode != null and sortField != '' and sortMode != ''">
+				ORDER BY ${sortField} ${sortMode}
+			</when>
+			<otherwise>
+				ORDER BY register_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="selectByPage" parameterType="UserInfoQc" resultMap="UserInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM user_info 
+		<where>
+			<if  test="loginUsername != null">
+				AND login_username = #{loginUsername}
+			</if>
+			<if  test="alipayOpenId != null">
+				AND alipay_open_id = #{alipayOpenId}
+			</if>
+			<if  test="emailAddress != null">
+				AND email_address = #{emailAddress}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="lastLoginTime != null">
+				AND last_login_time = #{lastLoginTime}
+			</if>
+			<if  test="loginCount != null">
+				AND login_count = #{loginCount}
+			</if>
+			<if  test="loginPassword != null">
+				AND login_password = #{loginPassword}
+			</if>
+			<if  test="mobilePhoneNo != null">
+				AND mobile_phone_no = #{mobilePhoneNo}
+			</if>
+			<if  test="headPictureAddress != null">
+				AND head_picture_address = #{headPictureAddress}
+			</if>
+			<if  test="qqOpenId != null">
+				AND qq_open_id = #{qqOpenId}
+			</if>
+			<if  test="registerTime != null">
+				AND register_time = #{registerTime}
+			</if>
+			<if  test="residenceName != null">
+				AND residence_name = #{residenceName}
+			</if>
+			<if  test="nickName != null">
+				AND nick_name = #{nickName}
+			</if>
+			<if  test="wxOpenId != null">
+				AND wx_open_id = #{wxOpenId}
+			</if>
+			<if  test="statusCode != null">
+				AND status_code = #{statusCode}
+			</if>
+		</where>   	
+	</select>
+	
+	<update id="update" parameterType="UserInfoDo">
+		UPDATE user_info
+		<trim prefix="SET" suffixOverrides=",">
+			<if  test="loginUsername != null">
+				login_username = #{loginUsername},
+			</if>
+			<if test="alipayOpenId != null">
+				alipay_open_id = #{alipayOpenId},
+			</if>
+			<if test="emailAddress != null">
+				email_address = #{emailAddress},
+			</if>
+			<if test="lastLoginTime != null">
+				last_login_time = #{lastLoginTime},
+			</if>
+			<if test="loginCount != null">
+				login_count = #{loginCount},
+			</if>
+			<if test="loginPassword != null">
+				login_password = #{loginPassword},
+			</if>
+			<if test="mobilePhoneNo != null">
+				mobile_phone_no = #{mobilePhoneNo},
+			</if>
+			<if test="headPictureAddress != null">
+				head_picture_address = #{headPictureAddress},
+			</if>
+			<if test="qqOpenId != null">
+				qq_open_id = #{qqOpenId},
+			</if>
+			<if test="registerTime != null">
+				register_time = #{registerTime},
+			</if>
+			<if test="residenceName != null">
+				residence_name = #{residenceName},
+			</if>
+			<if test="nickName != null">
+				nick_name = #{nickName},
+			</if>
+			<if test="wxOpenId != null">
+				wx_open_id = #{wxOpenId},
+			</if>
+			<if test="pointNumber != null">
+				point_number = #{pointNumber},
+			</if>
+			<if test="selfBrief != null">
+				self_brief = #{selfBrief},
+			</if>
+			<if test="statusCode != null">
+				status_code = #{statusCode},
+			</if>
+		</trim>
+		<where>
+				id = #{id}
+		</where>
+	</update>
+	
+	<insert id="insert" parameterType="UserInfoDo">
+		INSERT INTO user_info
+		(
+			<trim suffixOverrides=",">
+				<if  test="loginUsername != null">
+					login_username,
+				</if>
+				<if test="alipayOpenId != null">
+					alipay_open_id,
+				</if>
+				<if test="emailAddress != null">
+					email_address,
+				</if>
+				<if test="id != null">
+					id,
+				</if>
+				<if test="lastLoginTime != null">
+					last_login_time,
+				</if>
+				<if test="loginCount != null">
+					login_count,
+				</if>
+				<if test="loginPassword != null">
+					login_password,
+				</if>
+				<if test="mobilePhoneNo != null">
+					mobile_phone_no,
+				</if>
+				<if test="headPictureAddress != null">
+					head_picture_address,
+				</if>
+				<if test="qqOpenId != null">
+					qq_open_id,
+				</if>
+				<if test="registerTime != null">
+					register_time,
+				</if>
+				<if test="residenceName != null">
+					residence_name,
+				</if>
+				<if test="nickName != null">
+					nick_name,
+				</if>
+				<if test="wxOpenId != null">
+					wx_open_id,
+				</if>
+				<if test="pointNumber != null">
+					point_number,
+				</if>
+			</trim>
+		) VALUES (
+			<trim suffixOverrides=",">
+				<if  test="loginUsername != null">
+					#{loginUsername},
+				</if>
+				<if test="alipayOpenId != null">
+					#{alipayOpenId},
+				</if>
+				<if test="emailAddress != null">
+					#{emailAddress},
+				</if>
+				<if test="id != null">
+					#{id},
+				</if>
+				<if test="lastLoginTime != null">
+					#{lastLoginTime},
+				</if>
+				<if test="loginCount != null">
+					#{loginCount},
+				</if>
+				<if test="loginPassword != null">
+					#{loginPassword},
+				</if>
+				<if test="mobilePhoneNo != null">
+					#{mobilePhoneNo},
+				</if>
+				<if test="headPictureAddress != null">
+					#{headPictureAddress},
+				</if>
+				<if test="qqOpenId != null">
+					#{qqOpenId},
+				</if>
+				<if test="registerTime != null">
+					#{registerTime},
+				</if>
+				<if test="residenceName != null">
+					#{residenceName},
+				</if>
+				<if test="nickName != null">
+					#{nickName},
+				</if>
+				<if test="wxOpenId != null">
+					#{wxOpenId},
+				</if>
+				<if test="pointNumber != null">
+					#{pointNumber},
+				</if>
+			</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="UserInfoDo">
+		DELETE 
+		  FROM  user_info  
+		 WHERE 
+			id = #{id}
+	</delete>
+	
+	
+	<!--<sql id="columns">
+			ALIPAY_OPEN_ID,
+			email_address,
+			ID,
+			last_login_time,
+			login_count,
+			login_password,
+			mobile_phone_no,
+			head_picture_address,
+			QQ_OPEN_ID,
+			register_time,
+			residence_name,
+			nick_name,
+			WX_OPEN_ID
+	</sql>
+	<sql id="columnsAs">
+			ALIPAY_OPEN_ID as alipayOpenId,
+			email_address as emailAddress,
+			ID as id,
+			last_login_time as lastLoginTime,
+			login_count as loginCount,
+			login_password as loginPassword,
+			mobile_phone_no as mobilePhoneNo,
+			head_picture_address as headPictureAddress,
+			QQ_OPEN_ID as qqOpenId,
+			register_time as registerTime,
+			residence_name as residenceName,
+			nick_name as nickName,
+			WX_OPEN_ID as wxOpenId
+	</sql>
+	<sql id="values">
+			#alipayOpenId#,
+			#emailAddress#,
+			#id#,
+			#lastLoginTime#,
+			#loginCount#,
+			#loginPassword#,
+			#mobilePhoneNo#,
+			#headPictureAddress#,
+			#qqOpenId#,
+			#registerTime#,
+			#residenceName#,
+			#nickName#,
+			#wxOpenId#
+	</sql>-->
+</mapper>

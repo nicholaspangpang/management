@@ -1,5 +1,7 @@
 In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 
+	var jqGrid = $("#jqGrid");
+
 	//供应商插件
 	$('.query-btn').queryDataBox({
 		url:appPath+'/system/json/findSupplierList?temp='+new Date(),//请求地址
@@ -24,7 +26,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	 * 编辑按钮
      */
 	$("#btn_update").click(function () {
-		var selectIds = jQuery("#tbList").jqGrid('getGridParam','selarrrow');
+		var selectIds = jQuery("#jqGrid").jqGrid('getGridParam','selarrrow');
 		if (selectIds.length == 0){
 			alert('请选择一条数据!');
 			return false;
@@ -40,17 +42,17 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	 * 查询按钮
 	 */
 	$("#queryBtn").bind("click",function(){
-		var postData = $('#tbList').jqGrid("getGridParam", "postData");
+		var postData = $('#jqGrid').jqGrid("getGridParam", "postData");
 		$.each(postData, function (k, v) {
 			delete postData[k];
 		});
-		$("#tbList").jqGrid("setGridParam",{
+		jqGrid.jqGrid("setGridParam",{
 			page:1,
 			postData:queryParam()
 		}).triggerHandler("reloadGrid");
 	});
 
-	$("#tbList").jqGrid({
+	jqGrid.jqGrid({
 		styleUI: 'Bootstrap',//设置jqgrid的全局样式为bootstrap样式
 	    ajaxGridOptions:{contentType : "application/json; charset=utf-8"},
         mtype:"post",
@@ -65,26 +67,27 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 		autowidth: true,
 		shrinkToFit: true,
 		height:"auto",
-		colNames:["id","isbn","书名","定价","作者","出版社","出版日期","分类","创建时间"],
+		colNames:["id","昵称","手机号","电子邮箱","长居地","积分","状态","注册时间"],
 		colModel :[
 			{name:"id", index:"id", hidden:true},
-			{name:"isbn", index:"isbn",align:'center'},
-			{name:"bookName", index:"bookName",align:'center'},
-			{name:"bookPrice", index:"bookPrice",align:'center',formatter:'currency',formatoptions:{decimalSeparator:".", thousandsSeparator: " ",decimalPlaces: 2, prefix: ""}},
-			{name:"authorName", index:"authorName",align:'center'},
-			{name:"pressName", index:"pressName",align:'center'},
-			{name:"publishDate", index:"publishDate",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
-			{name:"wqCategoryCode", index:"wqCategoryCode",align:'center'},
-			{name:"createTime", index:"createTime",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
+			{name:"nickName", index:"nickName",align:'center'},
+			{name:"mobilePhoneNo", index:"mobilePhoneNo",align:'center'},
+			{name:"emailAddress", index:"emailAddress",align:'center'},
+			{name:"residenceName", index:"residenceName",align:'center'},
+			{name:"pointNumber", index:"pointNumber",align:'center'},
+			{name:"statusCode", index:"statusCode",align:'center'},
+			{name:"registerTime", index:"register_time",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
 		],
 		rowNum:20,
 		rowList:[20,50,100,500],
 		viewrecords: true,
 		multiselect : true,  //显示checkbox选择框
 		rownumbers: true,    //显示左边排名列表
+		sortname: 'register_time', 	//设置默认的排序列
+		sortorder: 'desc',	//默认排序方式
 		pager: '#page',
 		loadBeforeSend:function(){
-			$("#tbList").jqGrid('clearGridData');
+			jqGrid.jqGrid('clearGridData');
 		},
 		loadError:function(){
 			layer.msg("网络错误！",{icon:5});
@@ -143,7 +146,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	function queryParam(){
 
 		var queryRequest = {};
-		queryRequest.queryId = "selectBookByPage";
+		queryRequest.queryId = "selectUserByPage";
 		queryRequest.queryType = "JQGRID";
 		queryRequest.queryParameters = new Array();
 
@@ -159,21 +162,21 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 				return true;
 			}
 
-			//isbn处理单条查询还是批量查询
-			if(name =='isbns'){
+			//昵称处理单条查询还是批量查询
+			if(name =='nickNames'){
 				if(value.indexOf(",") == -1){
-					name = 'isbn';
+					name = 'nickName';
 				}else{
-					name = 'isbns';
+					name = 'nickNames';
 				}
 			}
 
-			//书名处理单条查询还是批量查询
-			if(name =='bookNames'){
+			//手机号处理单条查询还是批量查询
+			if(name =='mobilePhoneNos'){
 				if(value.indexOf(",") == -1){
-					name = 'bookName';
+					name = 'mobilePhoneNo';
 				}else{
-					name = 'bookNames';
+					name = 'mobilePhoneNos';
 				}
 			}
 

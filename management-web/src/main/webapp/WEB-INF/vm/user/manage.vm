@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/resources/js/book/manage.js"></script>
+<script type="text/javascript" src="/resources/js/user/manage.js"></script>
 
 <div class="container-full">
 
@@ -9,9 +9,9 @@
             <ul class="ul">
                 <li><a href="JavaScript:;"> <span>首 页</span>
                 </a> <b> > </b></li>
-                <li><a href="JavaScript:;"> <span>图书信息</span>
+                <li><a href="JavaScript:;"> <span>用户管理</span>
                 </a> <b> > </b></li>
-                <li><a href="JavaScript:;"> <span>图书信息查询</span>
+                <li><a href="JavaScript:;"> <span>用户列表</span>
                 </a></li>
             </ul>
         </div>
@@ -30,28 +30,28 @@
                     <div class="left">
                         <ul>
                             <li>
-                                <span class="name">isbn</span>
+                                <span class="name">用户昵称</span>
                                 <div class="com gys">
-                                    <input id="isbns" name="isbns" type="text" value="">
+                                    <input id="nickNames" name="nickNames" type="text" value="">
                                     <span class="add conditions-isbn-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>
-                                <span class="name">书名</span>
+                                <span class="name">手机号</span>
                                 <div class="com gys">
-                                    <input id="bookNames" name="bookNames" type="text" value="">
+                                    <input id="mobilePhoneNos" name="mobilePhoneNos" type="text" value="">
                                     <span class="add conditions-bookNames-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>
-                                <span class="name">作者</span>
+                                <span class="name">电子邮箱</span>
                                 <div class="com gys">
                                     <input id="authorName" name="authorName" type="text" value="">
                                     <span class="add conditions-purchaserCommoditiesIds-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>
-                                <span class="name">发货日期</span>
+                                <span class="name">注册时间</span>
                                 <div class="com time">
                                     <input type="text" onClick="WdatePicker();" id="startOrderSendOutDate">
                                     <b></b>
@@ -61,7 +61,7 @@
                                 </div>
                             </li>
                             <li>
-                                <span class="name">供应商</span>
+                                <span class="name">长居地</span>
                                 <div class="com gys">
                                     <input type="text" id="supplierid" value=""> <span
                                         class="add query-btn"></span> <span class="del"></span>
@@ -134,9 +134,14 @@
                             <span export-type="part" class='span exportBtn'>编辑</span>
                         </div>
                     </div>
+                    <div class="orderBox">
+                        <div class="com del" id="btn_update">
+                            <span export-type="part" class='span exportBtn'>禁用</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="jqGrid">
-                    <table id="tbList"></table>
+                    <table id="jqGrid"></table>
                     <div id="page"></div>
                 </div>
             </div>
