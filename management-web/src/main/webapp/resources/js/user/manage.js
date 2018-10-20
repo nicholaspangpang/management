@@ -10,12 +10,6 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	//多条件查询控件
 	$('.conditions-btn').multipleDataBox({
 	});
-	//多条件查询ISBN控件
-	$('.conditions-isbn-btn').multipleDataBox({
-	});
-	//多条件查询商品名称
-	$('.conditions-bookTitles-btn').multipleDataBox({
-	});
 	//清空按钮
 	$('.del').click(function(){
 		$(this).parent().find('input').val('');
@@ -67,14 +61,16 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 		autowidth: true,
 		shrinkToFit: true,
 		height:"auto",
-		colNames:["id","昵称","手机号","电子邮箱","长居地","积分","状态","注册时间"],
+		colNames:["id","昵称","手机号","电子邮箱","长居地","积分","关注","粉丝","状态","注册时间"],
 		colModel :[
 			{name:"id", index:"id", hidden:true},
 			{name:"nickName", index:"nickName",align:'center'},
 			{name:"mobilePhoneNo", index:"mobilePhoneNo",align:'center'},
 			{name:"emailAddress", index:"emailAddress",align:'center'},
 			{name:"residenceName", index:"residenceName",align:'center'},
-			{name:"pointNumber", index:"pointNumber",align:'center'},
+			{name:"pointNumber", index:"point_number",align:'center'},
+            {name:"followNumber", index:"follow_number",align:'center'},
+            {name:"fansNumber", index:"fans_number",align:'center'},
 			{name:"statusCode", index:"statusCode",align:'center'},
 			{name:"registerTime", index:"register_time",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
 		],

@@ -8,22 +8,24 @@
 
 	<resultMap type="UserInfoDo" id="UserInfoResult">
 		<result property="id" column="id" />
-			<result property="alipayOpenId" column="alipay_open_id" />
-			<result property="emailAddress" column="email_address" />
-			<result property="lastLoginTime" column="last_login_time" />
-			<result property="loginCount" column="login_count" />
-			<result property="loginPassword" column="login_password" />
-			<result property="mobilePhoneNo" column="mobile_phone_no" />
-			<result property="headPictureAddress" column="head_picture_address" />
-			<result property="qqOpenId" column="qq_open_id" />
-			<result property="registerTime" column="register_time" />
-			<result property="residenceName" column="residence_name" />
-			<result property="nickName" column="nick_name" />
-			<result property="wxOpenId" column="wx_open_id" />
-			<result property="loginUsername" column="login_username" />
+		<result property="alipayOpenId" column="alipay_open_id" />
+		<result property="emailAddress" column="email_address" />
+		<result property="lastLoginTime" column="last_login_time" />
+		<result property="loginCount" column="login_count" />
+		<result property="loginPassword" column="login_password" />
+		<result property="mobilePhoneNo" column="mobile_phone_no" />
+		<result property="headPictureAddress" column="head_picture_address" />
+		<result property="qqOpenId" column="qq_open_id" />
+		<result property="registerTime" column="register_time" />
+		<result property="residenceName" column="residence_name" />
+		<result property="nickName" column="nick_name" />
+		<result property="wxOpenId" column="wx_open_id" />
+		<result property="loginUsername" column="login_username" />
 		<result property="pointNumber" column="point_number" />
 		<result property="selfBrief" column="self_brief" />
 		<result property="statusCode" column="status_code" />
+		<result property="followNumber" column="follow_number" />
+		<result property="fansNumber" column="fans_number" />
 	</resultMap>
 
 	<sql id="columns">
@@ -43,7 +45,9 @@
 			login_username,
 			point_number,
 			self_brief,
-			status_code
+			status_code,
+			follow_number,
+			fans_number
 	</sql>
 
 	<select id="selectUserForLogin" parameterType="UserInfoQc" resultMap="UserInfoResult">
@@ -178,12 +182,12 @@
 				AND login_password = #{loginPassword}
 			</if>
 			<if  test="mobilePhoneNo != null">
-				AND mobile_phone_no = #{mobilePhoneNo}
+				AND mobile_phone_no like concat('%',#{mobilePhoneNo},'%')
 			</if>
 			<if  test="mobilePhoneNos != null">
 				AND mobile_phone_no in
-				<foreach collection="mobilePhoneNos"  separator="," item="item" open="(" close=") ">
-					#{item}
+				<foreach collection="mobilePhoneNos" index="index" separator="," item="item" open="(" close=") ">
+					#{mobilePhoneNos[${index}]}
 				</foreach>
 			</if>
 			<if  test="headPictureAddress != null">
@@ -199,12 +203,12 @@
 				AND residence_name = #{residenceName}
 			</if>
 			<if  test="nickName != null">
-				AND nick_name = #{nickName}
+				AND nick_name like concat('%',#{nickName},'%')
 			</if>
 			<if  test="nickNames != null">
 				AND nick_name in
-				<foreach collection="nickNames"  separator="," item="item" open="(" close=") ">
-					#{item}
+				<foreach collection="nickNames" index="index" separator="," item="item" open="(" close=") ">
+					#{nickNames[${index}]}
 				</foreach>
 			</if>
 			<if  test="wxOpenId != null">

@@ -8,12 +8,6 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	//多条件查询控件
 	$('.conditions-btn').multipleDataBox({
 	});
-	//多条件查询ISBN控件
-	$('.conditions-isbn-btn').multipleDataBox({
-	});
-	//多条件查询商品名称
-	$('.conditions-bookTitles-btn').multipleDataBox({
-	});
 	//清空按钮
 	$('.del').click(function(){
 		$(this).parent().find('input').val('');
@@ -65,23 +59,27 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 		autowidth: true,
 		shrinkToFit: true,
 		height:"auto",
-		colNames:["id","isbn","书名","定价","作者","出版社","出版日期","分类","创建时间"],
+		colNames:["id","isbn","书名","定价","作者","出版社","出版日期","分类","评分","评分人数","创建时间"],
 		colModel :[
 			{name:"id", index:"id", hidden:true},
 			{name:"isbn", index:"isbn",align:'center'},
 			{name:"bookName", index:"bookName",align:'center'},
-			{name:"bookPrice", index:"bookPrice",align:'center',formatter:'currency',formatoptions:{decimalSeparator:".", thousandsSeparator: " ",decimalPlaces: 2, prefix: ""}},
+			{name:"bookPrice", index:"book_price",align:'center',formatter:'currency',formatoptions:{decimalSeparator:".", thousandsSeparator: " ",decimalPlaces: 2, prefix: ""}},
 			{name:"authorName", index:"authorName",align:'center'},
 			{name:"pressName", index:"pressName",align:'center'},
-			{name:"publishDate", index:"publishDate",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
+			{name:"publishDate", index:"publish_date",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
 			{name:"wqCategoryCode", index:"wqCategoryCode",align:'center'},
-			{name:"createTime", index:"createTime",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
+            {name:"scoreNumber", index:"score_number",align:'center'},
+            {name:"commentNumber", index:"comment_number",align:'center'},
+			{name:"createTime", index:"create_time",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
 		],
 		rowNum:20,
 		rowList:[20,50,100,500],
 		viewrecords: true,
 		multiselect : true,  //显示checkbox选择框
 		rownumbers: true,    //显示左边排名列表
+        sortname: 'create_time', 	//设置默认的排序列
+        sortorder: 'desc',	//默认排序方式
 		pager: '#page',
 		loadBeforeSend:function(){
 			$("#tbList").jqGrid('clearGridData');

@@ -33,21 +33,21 @@
                                 <span class="name">isbn</span>
                                 <div class="com gys">
                                     <input id="isbns" name="isbns" type="text" value="">
-                                    <span class="add conditions-isbn-btn"></span> <span class="del"></span>
+                                    <span class="add conditions-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>
                                 <span class="name">书名</span>
                                 <div class="com gys">
                                     <input id="bookNames" name="bookNames" type="text" value="">
-                                    <span class="add conditions-bookNames-btn"></span> <span class="del"></span>
+                                    <span class="add conditions-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>
                                 <span class="name">作者</span>
                                 <div class="com gys">
                                     <input id="authorName" name="authorName" type="text" value="">
-                                    <span class="add conditions-purchaserCommoditiesIds-btn"></span> <span class="del"></span>
+                                    <span class="add conditions-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>

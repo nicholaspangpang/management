@@ -5,12 +5,7 @@
         <div class="active_com">
             <span class="position"><b class="map-marker"></b>当前位置：</span>
             <ul class="ul">
-                <li><a href="JavaScript:;"> <span>首 页</span>
-                </a> <b> > </b></li>
-                <li><a href="JavaScript:;"> <span>收发货查询</span>
-                </a> <b> > </b></li>
-                <li><a href="JavaScript:;"> <span>供应商发货单查询</span>
-                </a></li>
+                <li><a href="JavaScript:;"> <span>首 页</span></a></li>
             </ul>
         </div>
     </div>
@@ -18,118 +13,7 @@
 
 
     <div class="bodyBox">
-        <input id="purchaserId" type="hidden" value="${sapvendorId}" />
-        <!-- 待发送开始 -->
-        <div class="Tab" id="TabA">
-            <div class="screenBox">
-                <div class="screenTable">
-                    <div class="left">
-                        <ul>
-                            <li>
-                                <span class="name">订单号</span>
-                                <div class="com gys">
-                                    <input id="orderCodes" type="text" value="">
-                                    <span class="add conditions-orders-btn"></span> <span class="del"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="name">发货日期</span>
-                                <div class="com time">
-                                    <input type="text" onClick="WdatePicker();" id="startOrderSendOutDate">
-                                    <b></b>
-                                    <span></span>
-                                    <input type="text" onClick="WdatePicker();" id="endOrderSendOutDate">
-                                    <b></b>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="name">发货单号</span>
-                                <div class="com gys">
-                                    <input type="text" id="sendoutCode" value=""> <span
-                                        class="add conditions-btn"></span> <span class="del"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="name">供应商</span>
-                                <div class="com gys">
-                                    <input type="text" id="supplierid" value=""> <span
-                                        class="add query-btn"></span> <span class="del"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="name">采购商商品ID</span>
-                                <div class="com gys">
-                                    <input type="text" id="purchaserCommoditiesIds" value="">
-                                    <span class="add conditions-purchaserCommoditiesIds-btn"></span> <span class="del"></span>
-                                </div>
-                            </li>
-                            <li>
-                                <span class="name">商品名称</span>
-                                <div class="com gys">
-                                    <input type="text" id="bookTitles" value=""><span
-                                        class="add conditions-bookTitles-btn"></span> <span class="del"></span>
-                                </div>
-                            </li>
-                            <li class="hide">
-                                <span class="name">ISBN</span>
-                                <div class="com gys">
-                                    <input type="text" id="isbns" value=""><span
-                                        class="add conditions-isbn-btn"></span> <span class="del"></span>
-                                </div>
-                            </li>
-                            <li class="hide">
-                                <span class="name">收货仓位</span>
-                                <div class="com">
-                                    <select id="warehouse" class="warehouse">
-                                        <option selected="" value="">全部</option>
-                                    </select>
-                                </div>
-                            </li>
-                            <li class="hide">
-                                <span class="name">发货单状态</span>
-                                <div class="com">
-                                    <select id="status" id="status">
-                                        <option selected="" value="">全部</option>
-                                        <option value="5">未收货</option>
-                                        <option value="10">部分收货</option>
-                                        <option value="15">全部收货</option>
-                                    </select>
-                                </div>
-                            </li>
-                            <li class="hide">
-                                <span class="name">主发标识</span>
-                                <div class="com">
-                                    <select id="isInitiative" class="isInitiative">
-                                        <option selected="" value="">全部</option>
-                                        <option value="Y">主发</option>
-                                        <option value="N">非主发</option>
-                                    </select>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="right">
-                        <div class="btn">
-                            <span class="span1" id="queryBtn"><i></i>搜 索</span>
-                            <span id="open" class="span2"><i class="open"></i><b>展 开</b></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="gridBox">
-                <div class="sortBox">
-                    <div class="orderBox">
-                        <div class="com del">
-                            <span export-type="part" class='span exportBtn'>导出</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="jqGrid">
-                    <table id="tbList"></table>
-                    <div id="page"></div>
-                </div>
-            </div>
-        </div>
+    welcome
     </div>
 
 </div>

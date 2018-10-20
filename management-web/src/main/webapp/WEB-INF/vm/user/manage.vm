@@ -33,21 +33,21 @@
                                 <span class="name">用户昵称</span>
                                 <div class="com gys">
                                     <input id="nickNames" name="nickNames" type="text" value="">
-                                    <span class="add conditions-isbn-btn"></span> <span class="del"></span>
+                                    <span class="add conditions-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>
                                 <span class="name">手机号</span>
                                 <div class="com gys">
                                     <input id="mobilePhoneNos" name="mobilePhoneNos" type="text" value="">
-                                    <span class="add conditions-bookNames-btn"></span> <span class="del"></span>
+                                    <span class="add conditions-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>
                                 <span class="name">电子邮箱</span>
                                 <div class="com gys">
                                     <input id="authorName" name="authorName" type="text" value="">
-                                    <span class="add conditions-purchaserCommoditiesIds-btn"></span> <span class="del"></span>
+                                    <span class="add conditions-btn"></span> <span class="del"></span>
                                 </div>
                             </li>
                             <li>

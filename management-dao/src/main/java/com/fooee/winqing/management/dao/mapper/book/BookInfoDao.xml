@@ -119,8 +119,8 @@
 			</if>
 			<if  test="bookNames != null">
 				AND book_name in
-				<foreach collection="bookNames"  separator="," item="item" open="(" close=") ">
-					#{item}
+				<foreach collection="bookNames" index="index" separator="," item="item" open="(" close=") ">
+					#{bookNames[${index}]}
 				</foreach>
 			</if>
 			<if  test="bookPrice != null">
@@ -172,6 +172,14 @@
 				AND wq_category_code = #{wqCategoryCode}
 			</if>
 		</where>
+		<choose>
+			<when test="sortField != null and sortMode != null and sortField != '' and sortMode != ''">
+				ORDER BY ${sortField} ${sortMode}
+			</when>
+			<otherwise>
+				ORDER BY create_time DESC
+			</otherwise>
+		</choose>
 	</select>
 	
 	<select id="selectByPage" parameterType="BookInfoQc" resultMap="BookInfoResult">
@@ -189,8 +197,8 @@
 			</if>
 			<if  test="bookNames != null">
 				AND book_name in
-				<foreach collection="bookNames"  separator="," item="item" open="(" close=") ">
-					#{item}
+				<foreach collection="bookNames" index="index" separator="," item="item" open="(" close=") ">
+					#{bookNames[${index}]}
 				</foreach>
 			</if>
 			<if  test="bookPrice != null">
