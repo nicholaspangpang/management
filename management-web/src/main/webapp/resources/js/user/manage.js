@@ -63,7 +63,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 		height:"auto",
 		colNames:["id","昵称","手机号","电子邮箱","长居地","积分","关注","粉丝","状态","注册时间"],
 		colModel :[
-			{name:"id", index:"id", hidden:true},
+			{name:"id", index:"id",width:"30"},
 			{name:"nickName", index:"nickName",align:'center'},
 			{name:"mobilePhoneNo", index:"mobilePhoneNo",align:'center'},
 			{name:"emailAddress", index:"emailAddress",align:'center'},
