@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	@author pangzhenhua
+	@version 2016-12-30 15:56:34 
+-->
+<mapper namespace="com.fooee.winqing.management.dao.mapper.comment.CommentInfoDao">
+
+	<resultMap id="CommentInfoResult" type="CommentInfoDo">
+			<result property="agreeNumber" column="agree_number" />
+			<result property="commentContent" column="comment_content" />
+			<result property="scoreNumber" column="score_number" />
+			<result property="commentTitle" column="comment_title" />
+			<result property="createTime" column="create_time" />
+			<result property="id" column="id" />
+			<result property="objectId" column="object_id" />
+			<result property="objectTypeCode" column="object_type_code" />
+			<result property="tagContent" column="tag_content" />
+			<result property="userId" column="user_id" />
+	</resultMap>
+
+	<resultMap id="CommentInfoVoResult" type="CommentInfoVo">
+		<result property="agreeNumber" column="agree_number" />
+		<result property="commentContent" column="comment_content" />
+		<result property="scoreNumber" column="score_number" />
+		<result property="commentTitle" column="comment_title" />
+		<result property="createTime" column="create_time" />
+		<result property="id" column="id" />
+		<result property="objectId" column="object_id" />
+		<result property="objectTypeCode" column="object_type_code" />
+		<result property="tagContent" column="tag_content" />
+		<result property="userId" column="user_id" />
+		<result property="userNickname" column="nick_name" />
+		<result property="userPictureAddress" column="head_picture_address" />
+	</resultMap>
+
+	<sql id="columns">
+			agree_number,
+			comment_content,
+			score_number,
+			comment_title,
+			create_time,
+			id,
+			object_id,
+			object_type_code,
+			tag_content,
+			user_id
+	</sql>
+
+	<update id="updateScoreNumberByUserAndBook" parameterType="CommentInfoQc">
+		/*更新某人对某书的全部评论评分*/
+		UPDATE comment_info tci
+		SET tci.score_number = #{scoreNumber}
+		WHERE
+			1 = 1
+		AND tci.object_type_code = #{objectTypeCode}
+		AND tci.object_id = #{objectId}
+		AND tci.user_id = #{userId}
+	</update>
+
+	<update id="agreeComment" parameterType="CommentInfoDo">
+		UPDATE comment_info
+		   SET agree_number = agree_number + 1
+		 WHERE ID = #{id}
+	</update>
+
+	<select id="select" parameterType="CommentInfoQc" resultMap="CommentInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM comment_info
+		<where>
+				<if  test="agreeNumber != null">
+					AND agree_number = #{agreeNumber}
+				</if>
+				<if  test="commentContent != null">
+					AND comment_content = #{commentContent}
+				</if>
+				<if  test="scoreNumber != null">
+					AND score_number = #{scoreNumber}
+				</if>
+				<if  test="commentTitle != null">
+					AND comment_title = #{commentTitle}
+				</if>
+				<if  test="createTime != null">
+					AND create_time = #{createTime}
+				</if>
+				<if  test="id != null">
+					AND ID = #{id}
+				</if>
+				<if  test="objectId != null">
+					AND object_id = #{objectId}
+				</if>
+				<if  test="objectTypeCode != null">
+					AND object_type_code = #{objectTypeCode}
+				</if>
+				<if  test="tagContent != null">
+					AND tag_content = #{tagContent}
+				</if>
+				<if  test="userId != null">
+					AND user_id = #{userId}
+				</if>
+		</where>
+	</select>
+
+	<select id="getCommentVoById" parameterType="CommentInfoQc" resultMap="CommentInfoVoResult">
+		SELECT
+			TUI.nick_name,
+			TUI.head_picture_address,
+			TCI.comment_title,
+			TCI.create_time,
+			TCI.comment_content,
+			TCI.score_number,
+			TCI.agree_number,
+			TCI.object_id,
+			TCI.id,
+			TCI.user_id,
+			TCI.tag_content
+		FROM comment_info tci,user_info tui
+		WHERE tci.id = #{id}
+		AND tci.user_id = tui.id
+	</select>
+
+
+	<select id="getCommentsByObjIdByPage" parameterType="CommentInfoQc" resultMap="CommentInfoVoResult">
+		SELECT
+			TUI.nick_name,
+			TUI.head_picture_address,
+			TCI.comment_title,
+			TCI.create_time,
+			TCI.comment_content,
+			TCI.score_number,
+			TCI.agree_number,
+			TCI.id,
+			TCI.user_id
+		FROM
+			comment_info TCI,
+			user_info TUI
+		WHERE
+			TCI.user_id = TUI.ID
+		AND TCI.object_id = #{objectId}
+		<choose>
+			<when test="sortField != null and sortMode != null">
+				ORDER BY TCI.${sortField} ${sortMode}
+			</when>
+			<otherwise>
+				ORDER BY TCI.create_time DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="selectByPage" parameterType="CommentInfoQc" resultMap="CommentInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM comment_info
+		<where>
+				<if  test="agreeNumber != null">
+					AND agree_number = #{agreeNumber}
+				</if>
+				<if  test="commentContent != null">
+					AND comment_content = #{commentContent}
+				</if>
+				<if  test="scoreNumber != null">
+					AND score_number = #{scoreNumber}
+				</if>
+				<if  test="commentTitle != null">
+					AND comment_title = #{commentTitle}
+				</if>
+				<if  test="createTime != null">
+					AND create_time = #{createTime}
+				</if>
+				<if  test="id != null">
+					AND id = #{id}
+				</if>
+				<if  test="objectId != null">
+					AND object_id = #{objectId}
+				</if>
+				<if  test="objectTypeCode != null">
+					AND object_type_code = #{objectTypeCode}
+				</if>
+				<if  test="tagContent != null">
+					AND tag_content = #{tagContent}
+				</if>
+				<if  test="userId != null">
+					AND user_id = #{userId}
+				</if>
+		</where>
+	</select>
+
+	<select id="getAgreeUsers" parameterType="CommentInfoQc" resultMap="CommentInfoVoResult">
+		SELECT
+			tui.ID user_id,
+			tui.head_picture_address,
+			tui.nick_name
+		FROM
+			user_agree_comment_relation tuacr, user_info tui
+		WHERE
+			tuacr.comment_id = #{id}
+		and tuacr.user_id = tui.ID
+	</select>
+
+	<update id="update" parameterType="CommentInfoDo">
+		UPDATE comment_info
+		<trim prefix="SET" suffixOverrides=",">
+								<if test="agreeNumber != null">
+									agree_number = #{agreeNumber},
+								</if>
+								<if test="commentContent != null">
+									comment_content = #{commentContent},
+								</if>
+								<if test="scoreNumber != null">
+									score_number = #{scoreNumber},
+								</if>
+								<if test="commentTitle != null">
+									comment_title = #{commentTitle},
+								</if>
+								<if test="createTime != null">
+									create_time = #{createTime},
+								</if>
+								<if test="objectId != null">
+									object_id = #{objectId},
+								</if>
+								<if test="objectTypeCode != null">
+									object_type_code = #{objectTypeCode},
+								</if>
+								<if test="tagContent != null">
+									tag_content = #{tagContent},
+								</if>
+								<if test="userId != null">
+									user_id = #{userId},
+								</if>
+		</trim>
+		<where>
+				ID = #{id}
+		</where>
+	</update>
+
+	<insert id="insert" parameterType="CommentInfoDo" keyProperty="id">
+		INSERT INTO comment_info
+		(
+			<trim suffixOverrides=",">
+				<if test="agreeNumber != null">
+					agree_number,
+				</if>
+				<if test="commentContent != null">
+					comment_content,
+				</if>
+				<if test="scoreNumber != null">
+					score_number,
+				</if>
+				<if test="commentTitle != null">
+					comment_title,
+				</if>
+				<if test="id != null">
+					ID,
+				</if>
+				<if test="objectId != null">
+					object_id,
+				</if>
+				<if test="objectTypeCode != null">
+					object_type_code,
+				</if>
+				<if test="tagContent != null">
+					tag_content,
+				</if>
+				<if test="userId != null">
+					user_id,
+				</if>
+				create_time
+			</trim>
+		) VALUES (
+			<trim suffixOverrides=",">
+				<if test="agreeNumber != null">
+					#{agreeNumber},
+				</if>
+				<if test="commentContent != null">
+					#{commentContent},
+				</if>
+				<if test="scoreNumber != null">
+					#{scoreNumber},
+				</if>
+				<if test="commentTitle != null">
+					#{commentTitle},
+				</if>
+				<if test="id != null">
+					#{id},
+				</if>
+				<if test="objectId != null">
+					#{objectId},
+				</if>
+				<if test="objectTypeCode != null">
+					#{objectTypeCode},
+				</if>
+				<if test="tagContent != null">
+					#{tagContent},
+				</if>
+				<if test="userId != null">
+					#{userId},
+				</if>
+					now()
+			</trim>
+		)
+	</insert>
+
+	<delete id="delete" parameterType="CommentInfoDo">
+		DELETE
+		  FROM  comment_info
+		 WHERE
+			ID = #{id}
+	</delete>
+
+
+	<!--<sql id="columns">
+			agree_number,
+			comment_content,
+			score_number,
+			comment_title,
+			create_time,
+			ID,
+			object_id,
+			object_type_code,
+			tag_content,
+			TP_CD,
+			user_id
+	</sql>
+	<sql id="columnsAs">
+			agree_number as agreeNumber,
+			comment_content as commentContent,
+			score_number as scoreNumber,
+			comment_title as commentTitle,
+			create_time as createTime,
+			ID as id,
+			object_id as objectId,
+			object_type_code as objectTypeCode,
+			tag_content as tagContent,
+			user_id as userId
+	</sql>
+	<sql id="values">
+			#agreeNumber#,
+			#commentContent#,
+			#scoreNumber#,
+			#commentTitle#,
+			#createTime#,
+			#id#,
+			#objectId#,
+			#objectTypeCode#,
+			#tagContent#,
+			#userId#
+	</sql>-->
+</mapper>
