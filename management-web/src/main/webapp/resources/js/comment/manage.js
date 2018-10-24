@@ -142,7 +142,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	function queryParam(){
 
 		var queryRequest = {};
-		queryRequest.queryId = "selectUserByPage";
+		queryRequest.queryId = "selectCommentByPage";
 		queryRequest.queryType = "JQGRID";
 		queryRequest.queryParameters = new Array();
 

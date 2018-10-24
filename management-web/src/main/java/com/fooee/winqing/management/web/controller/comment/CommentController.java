@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @date 2018/10/24
  */
 @Controller
-@RequestMapping("user")
+@RequestMapping("comment")
 public class CommentController {
 
     @RequestMapping("manage")
     String manage(){
-        return "user/manage";
+        return "comment/manage";
     }
 }

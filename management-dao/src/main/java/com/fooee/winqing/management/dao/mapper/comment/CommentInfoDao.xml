@@ -147,40 +147,77 @@
 		</choose>
 	</select>
 
+	<select id="selectCommentByPage" parameterType="CommentInfoQc" resultMap="CommentInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM comment_info
+		<where>
+			<if  test="agreeNumber != null">
+				AND agree_number = #{agreeNumber}
+			</if>
+			<if  test="commentContent != null">
+				AND comment_content = #{commentContent}
+			</if>
+			<if  test="scoreNumber != null">
+				AND score_number = #{scoreNumber}
+			</if>
+			<if  test="commentTitle != null">
+				AND comment_title = #{commentTitle}
+			</if>
+			<if  test="createTime != null">
+				AND create_time = #{createTime}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="objectId != null">
+				AND object_id = #{objectId}
+			</if>
+			<if  test="objectTypeCode != null">
+				AND object_type_code = #{objectTypeCode}
+			</if>
+			<if  test="tagContent != null">
+				AND tag_content = #{tagContent}
+			</if>
+			<if  test="userId != null">
+				AND user_id = #{userId}
+			</if>
+		</where>
+	</select>
+
 	<select id="selectByPage" parameterType="CommentInfoQc" resultMap="CommentInfoResult">
 		SELECT <include refid="columns"></include>
 		FROM comment_info
 		<where>
-				<if  test="agreeNumber != null">
-					AND agree_number = #{agreeNumber}
-				</if>
-				<if  test="commentContent != null">
-					AND comment_content = #{commentContent}
-				</if>
-				<if  test="scoreNumber != null">
-					AND score_number = #{scoreNumber}
-				</if>
-				<if  test="commentTitle != null">
-					AND comment_title = #{commentTitle}
-				</if>
-				<if  test="createTime != null">
-					AND create_time = #{createTime}
-				</if>
-				<if  test="id != null">
-					AND id = #{id}
-				</if>
-				<if  test="objectId != null">
-					AND object_id = #{objectId}
-				</if>
-				<if  test="objectTypeCode != null">
-					AND object_type_code = #{objectTypeCode}
-				</if>
-				<if  test="tagContent != null">
-					AND tag_content = #{tagContent}
-				</if>
-				<if  test="userId != null">
-					AND user_id = #{userId}
-				</if>
+			<if  test="agreeNumber != null">
+				AND agree_number = #{agreeNumber}
+			</if>
+			<if  test="commentContent != null">
+				AND comment_content = #{commentContent}
+			</if>
+			<if  test="scoreNumber != null">
+				AND score_number = #{scoreNumber}
+			</if>
+			<if  test="commentTitle != null">
+				AND comment_title = #{commentTitle}
+			</if>
+			<if  test="createTime != null">
+				AND create_time = #{createTime}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="objectId != null">
+				AND object_id = #{objectId}
+			</if>
+			<if  test="objectTypeCode != null">
+				AND object_type_code = #{objectTypeCode}
+			</if>
+			<if  test="tagContent != null">
+				AND tag_content = #{tagContent}
+			</if>
+			<if  test="userId != null">
+				AND user_id = #{userId}
+			</if>
 		</where>
 	</select>
 
