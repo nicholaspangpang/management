@@ -68,7 +68,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 
 		$.ajax({
 			type:"post",
-			url:appPath + "/user/unable",
+			url:appPath + "/user/enable",
 			contentType:'application/json',
 			datType:"JSON",
 			beforeSend:function(){
