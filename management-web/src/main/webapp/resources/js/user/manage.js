@@ -33,6 +33,18 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	});
 
 	/**
+	 * 禁用按钮
+     */
+	$("#btn_unable").click(function () {
+		var selectIds = jQuery("#jqGrid").jqGrid('getGridParam','selarrrow');
+		if (selectIds.length == 0){
+			layer.msg("请选择数据后再操作");
+			return false;
+		}
+
+	});
+
+	/**
 	 * 查询按钮
 	 */
 	$("#queryBtn").bind("click",function(){

@@ -135,7 +135,7 @@
                         </div>
                     </div>
                     <div class="orderBox">
-                        <div class="com del" id="btn_update">
+                        <div class="com del" id="btn_unable">
                             <span export-type="part" class='span exportBtn'>禁用</span>
                         </div>
                     </div>
