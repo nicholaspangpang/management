@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * description
  *
@@ -26,10 +28,12 @@ public class UserRestController {
      * @return
      */
     @RequestMapping("unable")
-    JsonResult unable(UserInfoQc userInfoQc){
+    JsonResult unable(List<UserInfoQc> userInfoQcs){
         JsonResult jsonResult = new JsonResult();
 
-        userService.unable(userInfoQc);
+        for (UserInfoQc item : userInfoQcs){
+            userService.unable(item);
+        }
 
         return jsonResult;
     }

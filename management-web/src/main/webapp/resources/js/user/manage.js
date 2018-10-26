@@ -35,13 +35,51 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	/**
 	 * 禁用按钮
      */
-	$("#btn_unable").click(function () {
-		var selectIds = jQuery("#jqGrid").jqGrid('getGridParam','selarrrow');
+	var btnUnable = $("#btn_unable");
+	btnUnable.click(function () {
+		var selectIds = jQuery("#jqGrid").jqGrid("getGridParam","selarrrow");
 		if (selectIds.length == 0){
 			layer.msg("请选择数据后再操作");
 			return false;
 		}
+		alert(selectIds);
 
+		var userQcs = [];
+		for(var i=0; i<selectIds.length; i++){
+			alert(selectIds[i]);
+			var userQc = {};
+			userQc.id = selectIds[i];
+			userQcs.push(userQc);
+		}
+
+		$.ajax({
+			type:"post",
+			url:appPath + "/user/unable",
+			contentType:'application/json',
+			datType:"JSON",
+			beforeSend:function(){
+				$("#loading").modal("show");
+			},
+			data:JSON.stringify(userQcs),
+			async: true,
+			error : function(data) {
+				layer.alert("网络异常！");
+				$("#loading").modal("hide");
+			},
+			success : function(data) {
+				$("#loading").modal("hide");
+				if(data.error){
+					layer.alert(data.message);
+					return false;
+				}
+				layer.alert("操作成功！",function () {
+					jqGrid.jqGrid("setGridParam",{
+						page:1,
+						postData:queryParam()
+					}).triggerHandler("reloadGrid");
+				});
+			}
+		});
 	});
 
 	/**
