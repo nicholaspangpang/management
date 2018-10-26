@@ -59,9 +59,9 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 			var userQc = {};
 			userQc.id = selectIds[i];
 			if(enable){
-				userQc.statusCode = 1;
-			}else{
 				userQc.statusCode = 0;
+			}else{
+				userQc.statusCode = 1;
 			}
 			userQcs.push(userQc);
 		}
