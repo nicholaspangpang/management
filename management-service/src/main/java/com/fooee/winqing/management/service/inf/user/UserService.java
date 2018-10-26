@@ -13,5 +13,5 @@ public interface UserService {
     /**
      * 禁用用户
      */
-    void unable(UserInfoQc userInfoQc);
+    void enable(UserInfoQc userInfoQc);
 }

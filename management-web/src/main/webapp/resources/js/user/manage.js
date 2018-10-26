@@ -37,18 +37,32 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
      */
 	var btnUnable = $("#btn_unable");
 	btnUnable.click(function () {
+		enable(false);
+	});
+	/**
+	 * 启用按钮
+	 */
+	var btnEnable = $("#btn_enable");
+	btnEnable.click(function () {
+		enable(true);
+	});
+	//启用禁用函数
+	function enable(enable){
 		var selectIds = jQuery("#jqGrid").jqGrid("getGridParam","selarrrow");
 		if (selectIds.length == 0){
 			layer.msg("请选择数据后再操作");
 			return false;
 		}
-		alert(selectIds);
 
 		var userQcs = [];
 		for(var i=0; i<selectIds.length; i++){
-			alert(selectIds[i]);
 			var userQc = {};
 			userQc.id = selectIds[i];
+			if(enable){
+				userQc.statusCode = 1;
+			}else{
+				userQc.statusCode = 0;
+			}
 			userQcs.push(userQc);
 		}
 
@@ -79,7 +93,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 				}).triggerHandler("reloadGrid");
 			}
 		});
-	});
+	}
 
 	/**
 	 * 查询按钮
@@ -120,7 +134,21 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 			{name:"pointNumber", index:"point_number",align:'center'},
             {name:"followNumber", index:"follow_number",align:'center'},
             {name:"fansNumber", index:"fans_number",align:'center'},
-			{name:"statusCode", index:"statusCode",align:'center'},
+			{name:"statusCode", index:"statusCode",align:'center',formatter:function(value, options, row) {
+				if (value == null) {
+					return "";
+				} else {
+					if(value == "1"){
+						return "禁用"
+					}
+					if(value = "0"){
+						return "正常"
+					}
+					else{
+						return "";
+					}
+				}}
+			},
 			{name:"registerTime", index:"register_time",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
 		],
 		rowNum:20,

@@ -25,14 +25,14 @@ public class UserServiceImpl implements UserService{
      * @param userInfoQc
      */
     @Override
-    public void unable(UserInfoQc userInfoQc) {
+    public void enable(UserInfoQc userInfoQc) {
         /**
          * 校验参数
          */
 
         UserInfoDo userInfoDo = new UserInfoDo();
         userInfoDo.setId(userInfoQc.getId());
-        userInfoDo.setStatusCode(1L);
+//        userInfoDo.setStatusCode(1L);
         userCommonService.update(userInfoDo);
     }
 }

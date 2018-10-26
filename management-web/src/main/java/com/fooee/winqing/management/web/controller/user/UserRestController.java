@@ -24,15 +24,15 @@ public class UserRestController {
     UserService userService;
 
     /**
-     * 禁用用户
+     * 启用/禁用用户
      * @return
      */
-    @RequestMapping("unable")
-    JsonResult unable(@RequestBody List<UserInfoQc> userInfoQcs){
+    @RequestMapping("enable")
+    JsonResult enable(@RequestBody List<UserInfoQc> userInfoQcs){
         JsonResult jsonResult = new JsonResult();
 
         for (UserInfoQc item : userInfoQcs){
-            userService.unable(item);
+            userService.enable(item);
         }
 
         return jsonResult;

@@ -139,6 +139,11 @@
                             <span export-type="part" class='span exportBtn'>禁用</span>
                         </div>
                     </div>
+                    <div class="orderBox">
+                        <div class="com del" id="btn_enable">
+                            <span export-type="part" class='span exportBtn'>启用</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="jqGrid">
                     <table id="jqGrid"></table>
