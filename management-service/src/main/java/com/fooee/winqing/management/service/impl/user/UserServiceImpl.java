@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService{
 
         UserInfoDo userInfoDo = new UserInfoDo();
         userInfoDo.setId(userInfoQc.getId());
-//        userInfoDo.setStatusCode(1L);
+        userInfoDo.setStatusCode(userInfoQc.getStatusCode());
         userCommonService.update(userInfoDo);
     }
 }
