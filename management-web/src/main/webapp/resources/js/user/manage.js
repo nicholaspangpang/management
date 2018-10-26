@@ -72,12 +72,11 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 					layer.alert(data.message);
 					return false;
 				}
-				layer.alert("操作成功！",function () {
-					jqGrid.jqGrid("setGridParam",{
-						page:1,
-						postData:queryParam()
-					}).triggerHandler("reloadGrid");
-				});
+				layer.msg("操作成功！");
+				jqGrid.jqGrid("setGridParam",{
+					page:1,
+					postData:queryParam()
+				}).triggerHandler("reloadGrid");
 			}
 		});
 	});
