@@ -1,5 +1,7 @@
 In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 
+    var jqGrid = $("#jqGrid");
+
 	//供应商插件
 	$('.query-btn').queryDataBox({
 		url:appPath+'/system/json/findSupplierList?temp='+new Date(),//请求地址
@@ -18,33 +20,97 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	 * 编辑按钮
      */
 	$("#btn_update").click(function () {
-		var selectIds = jQuery("#tbList").jqGrid('getGridParam','selarrrow');
+		var selectIds = jqGrid.jqGrid('getGridParam','selarrrow');
 		if (selectIds.length == 0){
-			alert('请选择一条数据!');
+			layer.msg('请选择一条数据!');
 			return false;
 		}
 		if (selectIds.length > 1) {
-			alert('只能选择一条数据!');
+            layer.msg('只能选择一条数据!');
 			return false;
 		}
 		window.location.href = "/book/update/" + selectIds;
 	});
 
+
+    /**
+     * 启用禁用按钮
+     */
+    var btnUnable = $("#btn_unable");
+    btnUnable.click(function () {
+        enable(false);
+    });
+    var btnEnable = $("#btn_enable");
+    btnEnable.click(function () {
+        enable(true);
+    });
+    //启用禁用函数
+    function enable(enable){
+        var selectIds = jqGrid.jqGrid("getGridParam","selarrrow");
+        if (selectIds.length == 0){
+            layer.msg("请选择数据后再操作");
+            return false;
+        }
+
+        var userQcs = [];
+        for(var i=0; i<selectIds.length; i++){
+            var userQc = {};
+            userQc.id = selectIds[i];
+            if(enable){
+                userQc.statusCode = 0;
+            }else{
+                userQc.statusCode = 1;
+            }
+            userQcs.push(userQc);
+        }
+
+        $.ajax({
+            type:"post",
+            url:appPath + "/user/enable",
+            contentType:'application/json',
+            datType:"JSON",
+            beforeSend:function(){
+                $("#loading").modal("show");
+            },
+            data:JSON.stringify(userQcs),
+            async: true,
+            error : function(data) {
+                layer.msg("网络异常！");
+                $("#loading").modal("hide");
+            },
+            success : function(data) {
+                $("#loading").modal("hide");
+                if(data.error){
+                    layer.msg(data.message);
+                    return false;
+                }
+                layer.msg("操作成功！");
+                jqGrid.jqGrid("setGridParam",{
+                    page:1,
+                    postData:queryParam()
+                }).triggerHandler("reloadGrid");
+            }
+        });
+    }
+    /**
+     * 启用禁用按钮结束
+     */
+
 	/**
 	 * 查询按钮
 	 */
 	$("#queryBtn").bind("click",function(){
-		var postData = $('#tbList').jqGrid("getGridParam", "postData");
+		var postData = jqGrid.jqGrid("getGridParam", "postData");
 		$.each(postData, function (k, v) {
 			delete postData[k];
 		});
-		$("#tbList").jqGrid("setGridParam",{
+        jqGrid.jqGrid("setGridParam",{
 			page:1,
 			postData:queryParam()
 		}).triggerHandler("reloadGrid");
 	});
 
-	$("#tbList").jqGrid({
+    jqGrid.jqGrid({
 		styleUI: 'Bootstrap',//设置jqgrid的全局样式为bootstrap样式
 	    ajaxGridOptions:{contentType : "application/json; charset=utf-8"},
         mtype:"post",
@@ -82,7 +148,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
         sortorder: 'desc',	//默认排序方式
 		pager: '#page',
 		loadBeforeSend:function(){
-			$("#tbList").jqGrid('clearGridData');
+            jqGrid.jqGrid('clearGridData');
 		},
 		loadError:function(){
 			layer.msg("网络错误！",{icon:5});

@@ -134,9 +134,19 @@
                             <span export-type="part" class='span exportBtn'>编辑</span>
                         </div>
                     </div>
+                    <div class="orderBox">
+                        <div class="com del" id="btn_unable">
+                            <span export-type="part" class='span exportBtn'>禁用</span>
+                        </div>
+                    </div>
+                    <div class="orderBox">
+                        <div class="com del" id="btn_enable">
+                            <span export-type="part" class='span exportBtn'>启用</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="jqGrid">
-                    <table id="tbList"></table>
+                    <table id="jqGrid"></table>
                     <div id="page"></div>
                 </div>
             </div>

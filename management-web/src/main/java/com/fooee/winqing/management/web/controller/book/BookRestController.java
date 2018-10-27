@@ -7,9 +7,12 @@ import com.fooee.winqing.bean.book.BookInfoQc;
 import com.fooee.winqing.management.service.inf.book.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * description
@@ -24,6 +27,13 @@ public class BookRestController{
     @Autowired
     BookService bookService;
 
+    /**
+     * 新增图书
+     * @param bookInfoQc
+     * @param bindingResult
+     * @param bookDescriptionInfoQc
+     * @return
+     */
     @RequestMapping(method = RequestMethod.POST)
     JsonResult add(BookInfoQc bookInfoQc, BindingResult bindingResult, BookDescriptionInfoQc bookDescriptionInfoQc){
         JsonResult jsonResult = new JsonResult();
@@ -50,6 +60,22 @@ public class BookRestController{
         }
 
         bookService.update(bookInfoQc, bookDescriptionInfoQc);
+
+        return jsonResult;
+    }
+
+    /**
+     * 启用禁用图书
+     * @param bookInfoQcs
+     * @return
+     */
+    @RequestMapping(value="enable", method = RequestMethod.POST)
+    JsonResult enable(@RequestBody List<BookInfoQc> bookInfoQcs){
+        JsonResult jsonResult = new JsonResult();
+
+        for (BookInfoQc item : bookInfoQcs){
+            bookService.enable(item);
+        }
 
         return jsonResult;
     }

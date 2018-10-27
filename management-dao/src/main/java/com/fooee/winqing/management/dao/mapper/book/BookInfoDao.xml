@@ -24,6 +24,7 @@
 		<result property="translatorName" column="translator_name" />
 		<result property="subTitle" column="sub_title" />
 		<result property="wqCategoryCode" column="wq_category_code" />
+		<result property="isEnable" column="is_enable" />
 	</resultMap>
 
 	<sql id="columns">
@@ -43,7 +44,8 @@
 			comment_number,
 			wq_id,
 			translator_name,
-			sub_title
+			sub_title,
+			is_enable
 	</sql>
 
 	<select id="select" parameterType="BookInfoQc" resultMap="BookInfoResult">
@@ -255,7 +257,7 @@
 	<update id="update" parameterType="BookInfoDo">
 		UPDATE book_info
 		<trim prefix="SET" suffixOverrides=",">
-			<if test="1 == 1">
+			<if test="authorName != null">
 				author_name = #{authorName},
 			</if>
 			<if test="bindingName != null">
@@ -302,6 +304,9 @@
 			</if>
 			<if test="wqCategoryCode != null">
 				wq_category_code = #{wqCategoryCode},
+			</if>
+			<if test="isEnable != null">
+				is_enable = #{isEnable},
 			</if>
 		</trim>
 		<where>

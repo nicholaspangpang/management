@@ -20,7 +20,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	 * 编辑按钮
      */
 	$("#btn_update").click(function () {
-		var selectIds = jQuery("#jqGrid").jqGrid('getGridParam','selarrrow');
+		var selectIds = jqGrid.jqGrid('getGridParam','selarrrow');
 		if (selectIds.length == 0){
 			alert('请选择一条数据!');
 			return false;
@@ -33,22 +33,19 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	});
 
 	/**
-	 * 禁用按钮
+	 * 启用禁用按钮
      */
 	var btnUnable = $("#btn_unable");
 	btnUnable.click(function () {
 		enable(false);
 	});
-	/**
-	 * 启用按钮
-	 */
 	var btnEnable = $("#btn_enable");
 	btnEnable.click(function () {
 		enable(true);
 	});
 	//启用禁用函数
 	function enable(enable){
-		var selectIds = jQuery("#jqGrid").jqGrid("getGridParam","selarrrow");
+		var selectIds = jqGrid.jqGrid("getGridParam","selarrrow");
 		if (selectIds.length == 0){
 			layer.msg("请选择数据后再操作");
 			return false;
@@ -94,12 +91,15 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 			}
 		});
 	}
+    /**
+	 * 启用禁用按钮结束
+     */
 
 	/**
 	 * 查询按钮
 	 */
 	$("#queryBtn").bind("click",function(){
-		var postData = $('#jqGrid').jqGrid("getGridParam", "postData");
+		var postData = jqGrid.jqGrid("getGridParam", "postData");
 		$.each(postData, function (k, v) {
 			delete postData[k];
 		});

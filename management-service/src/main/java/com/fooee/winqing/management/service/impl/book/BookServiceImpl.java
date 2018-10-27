@@ -33,6 +33,18 @@ public class BookServiceImpl implements BookService{
     UploadService uploadService;
 
     @Override
+    public void enable(BookInfoQc bookInfoQc) {
+        /**
+         * 校验参数
+         */
+
+        BookInfoDo bookInfoDo = new BookInfoDo();
+        bookInfoDo.setId(bookInfoQc.getId());
+        bookInfoDo.setIsEnable(bookInfoQc.getIsEnable());
+        bookInfoService.update(bookInfoDo);
+    }
+
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public void update(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc) {
         /**
@@ -99,4 +111,6 @@ public class BookServiceImpl implements BookService{
     public BookDescriptionInfoDo getBookDescriptionInfo(BookDescriptionInfoQc bookDescriptionInfoQc) {
         return bookDescriptionInfoService.select(bookDescriptionInfoQc);
     }
+
+
 }

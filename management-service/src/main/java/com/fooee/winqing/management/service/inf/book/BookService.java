@@ -35,4 +35,9 @@ public interface BookService {
      */
     BookDescriptionInfoDo getBookDescriptionInfo(BookDescriptionInfoQc bookDescriptionInfoQc);
 
+    /**
+     * 启用禁用图书
+     * @param bookInfoQc
+     */
+    void enable(BookInfoQc bookInfoQc);
 }
