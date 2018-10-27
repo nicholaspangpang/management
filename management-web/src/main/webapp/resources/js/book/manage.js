@@ -52,27 +52,27 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
             return false;
         }
 
-        var userQcs = [];
+        var bookQcs = [];
         for(var i=0; i<selectIds.length; i++){
-            var userQc = {};
-            userQc.id = selectIds[i];
+            var bookQc = {};
+            bookQc.id = selectIds[i];
             if(enable){
-                userQc.statusCode = 0;
+                bookQc.isEnable = 1;
             }else{
-                userQc.statusCode = 1;
+                bookQc.isEnable = 0;
             }
-            userQcs.push(userQc);
+            bookQcs.push(bookQc);
         }
 
         $.ajax({
             type:"post",
-            url:appPath + "/user/enable",
+            url:appPath + "/book/enable",
             contentType:'application/json',
             datType:"JSON",
             beforeSend:function(){
                 $("#loading").modal("show");
             },
-            data:JSON.stringify(userQcs),
+            data:JSON.stringify(bookQcs),
             async: true,
             error : function(data) {
                 layer.msg("网络异常！");
@@ -128,16 +128,22 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 		colNames:["id","isbn","书名","定价","作者","出版社","出版日期","分类","评分","评分人数","创建时间"],
 		colModel :[
 			{name:"id", index:"id", hidden:true},
-			{name:"isbn", index:"isbn",align:'center'},
+			{name:"isbn", index:"isbn",align:'center',formatter:function (value, options, row) {
+				if(row["isEnable"]==1){
+					return value;
+				}else{
+					return "<span style='color: #cc0000'>" + value + "</span>";
+				}
+            }},
 			{name:"bookName", index:"bookName",align:'center'},
 			{name:"bookPrice", index:"book_price",align:'center',formatter:'currency',formatoptions:{decimalSeparator:".", thousandsSeparator: " ",decimalPlaces: 2, prefix: ""}},
 			{name:"authorName", index:"authorName",align:'center'},
 			{name:"pressName", index:"pressName",align:'center'},
-			{name:"publishDate", index:"publish_date",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
+			{name:"publishDate", index:"publish_date",align:'center',formatter:function(value, options, row){return fooee.format.date.timestampToDate(value,'yyyy-MM-dd');}},
 			{name:"wqCategoryCode", index:"wqCategoryCode",align:'center'},
             {name:"scoreNumber", index:"score_number",align:'center'},
             {name:"commentNumber", index:"comment_number",align:'center'},
-			{name:"createTime", index:"create_time",align:'center',formatter:function(cellvalue, options, row){return fooee.format.date.timestampToDate(cellvalue,'yyyy-MM-dd');}},
+			{name:"createTime", index:"create_time",align:'center',formatter:function(value, options, row){return fooee.format.date.timestampToDate(value,'yyyy-MM-dd');}},
 		],
 		rowNum:20,
 		rowList:[20,50,100,500],
