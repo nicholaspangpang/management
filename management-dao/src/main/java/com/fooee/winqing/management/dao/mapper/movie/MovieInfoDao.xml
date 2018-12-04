@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	@author pangzhenhua
+	@version 2018-11-26 17:41:42 
+-->
+<mapper namespace="com.fooee.winqing.management.dao.mapper.movie.MovieInfoDao">
+
+	<resultMap type="MovieInfoDo" id="MovieInfoResult">
+		<result property="id" column="id" />
+		<result property="categoryCode" column="category_code" />
+		<result property="commentNumber" column="comment_number" />
+		<result property="conturyName" column="contury_name" />
+		<result property="directorName" column="director_name" />
+		<result property="episodeNumber" column="episode_number" />
+		<result property="favoriteNumber" column="favorite_number" />
+		<result property="isEnable" column="is_enable" />
+		<result property="languageName" column="language_name" />
+		<result property="listNumber" column="list_number" />
+		<result property="mainActorName" column="main_actor_name" />
+		<result property="movieLengthNumber" column="movie_length_number" />
+		<result property="movieName" column="movie_name" />
+		<result property="pictureAddress" column="picture_address" />
+		<result property="releaseDate" column="release_date" />
+		<result property="scoreNumber" column="score_number" />
+		<result property="screenwriterName" column="screenwriter_name" />
+		<result property="aliasName" column="alias_name" />
+		<result property="realName" column="real_name" />
+		<result property="typeName" column="type_name" />
+		<result property="createTime" column="create_time" />
+	</resultMap>
+
+	<sql id="columns">
+		id,
+		category_code,
+		comment_number,
+		contury_name,
+		director_name,
+		episode_number,
+		favorite_number,
+		is_enable,
+		language_name,
+		list_number,
+		main_actor_name,
+		movie_length_number,
+		movie_name,
+		picture_address,
+		release_date,
+		score_number,
+		screenwriter_name,
+		alias_name,
+		real_name,
+		type_name,
+		create_time
+	</sql>
+
+	<select id="getScorePercentage" parameterType="ScorePercentageVo" statementType="CALLABLE">
+		{call CMT_PCT(
+		#{objectId, jdbcType=INTEGER, mode=IN},
+		#{typeCode, jdbcType=VARCHAR, mode=IN},
+		#{pct5, jdbcType=DECIMAL,mode=OUT},
+		#{pct4, jdbcType=DECIMAL,mode=OUT},
+		#{pct3, jdbcType=DECIMAL,mode=OUT},
+		#{pct2, jdbcType=DECIMAL,mode=OUT},
+		#{pct1, jdbcType=DECIMAL,mode=OUT}
+		)}
+	</select>
+
+	<select id="select" parameterType="MovieInfoQc" resultMap="MovieInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM movie_info 
+		<where>
+				<if  test="categoryCode != null">
+					AND category_code = #{categoryCode}
+				</if>
+				<if  test="commentNumber != null">
+					AND comment_number = #{commentNumber}
+				</if>
+				<if  test="conturyName != null">
+					AND contury_name = #{conturyName}
+				</if>
+				<if  test="directorName != null">
+					AND director_name = #{directorName}
+				</if>
+				<if  test="episodeNumber != null">
+					AND episode_number = #{episodeNumber}
+				</if>
+				<if  test="favoriteNumber != null">
+					AND favorite_number = #{favoriteNumber}
+				</if>
+				<if  test="id != null">
+					AND id = #{id}
+				</if>
+				<if  test="isEnable != null">
+					AND is_enable = #{isEnable}
+				</if>
+				<if  test="languageName != null">
+					AND language_name = #{languageName}
+				</if>
+				<if  test="listNumber != null">
+					AND list_number = #{listNumber}
+				</if>
+				<if  test="mainActorName != null">
+					AND main_actor_name = #{mainActorName}
+				</if>
+				<if  test="movieLengthNumber != null">
+					AND movie_length_number = #{movieLengthNumber}
+				</if>
+				<if  test="movieName != null">
+					AND movie_name = #{movieName}
+				</if>
+				<if  test="pictureAddress != null">
+					AND picture_address = #{pictureAddress}
+				</if>
+				<if  test="releaseDate != null">
+					AND release_date = #{releaseDate}
+				</if>
+				<if  test="scoreNumber != null">
+					AND score_number = #{scoreNumber}
+				</if>
+				<if  test="screenwriterName != null">
+					AND screenwriter_name = #{screenwriterName}
+				</if>
+				<if  test="aliasName != null">
+					AND alias_name = #{aliasName}
+				</if>
+			<if  test="realName != null">
+				AND real_name = #{realName}
+			</if>
+			<if  test="typeName != null">
+				AND type_name = #{typeName}
+			</if>
+		</where>   		
+	</select>
+
+	<select id="selectMovieByPage" parameterType="MovieInfoQc" resultMap="MovieInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM movie_info
+		<where>
+			<if  test="categoryCode != null">
+				AND category_code = #{categoryCode}
+			</if>
+			<if  test="commentNumber != null">
+				AND comment_number = #{commentNumber}
+			</if>
+			<if  test="conturyName != null">
+				AND contury_name = #{conturyName}
+			</if>
+			<if  test="directorName != null">
+				AND director_name = #{directorName}
+			</if>
+			<if  test="episodeNumber != null">
+				AND episode_number = #{episodeNumber}
+			</if>
+			<if  test="favoriteNumber != null">
+				AND favorite_number = #{favoriteNumber}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="isEnable != null">
+				AND is_enable = #{isEnable}
+			</if>
+			<if  test="languageName != null">
+				AND language_name = #{languageName}
+			</if>
+			<if  test="listNumber != null">
+				AND list_number = #{listNumber}
+			</if>
+			<if  test="mainActorName != null">
+				AND main_actor_name = #{mainActorName}
+			</if>
+			<if  test="movieLengthNumber != null">
+				AND movie_length_number = #{movieLengthNumber}
+			</if>
+			<if  test="movieName != null">
+				AND movie_name = #{movieName}
+			</if>
+			<if  test="pictureAddress != null">
+				AND picture_address = #{pictureAddress}
+			</if>
+			<if  test="releaseDate != null">
+				AND release_date = #{releaseDate}
+			</if>
+			<if  test="scoreNumber != null">
+				AND score_number = #{scoreNumber}
+			</if>
+			<if  test="screenwriterName != null">
+				AND screenwriter_name = #{screenwriterName}
+			</if>
+			<if  test="aliasName != null">
+				AND alias_name = #{aliasName}
+			</if>
+			<if  test="realName != null">
+				AND real_name = #{realName}
+			</if>
+			<if  test="typeName != null">
+				AND type_name = #{typeName}
+			</if>
+		</where>
+
+		<choose>
+			<when test="sortField != null and sortMode != null">
+				ORDER BY ${sortField} ${sortMode}
+			</when>
+			<otherwise>
+				ORDER BY create_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="selectByPage" parameterType="MovieInfoQc" resultMap="MovieInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM movie_info 
+		<where>
+			<if  test="categoryCode != null">
+				AND category_code = #{categoryCode}
+			</if>
+			<if  test="commentNumber != null">
+				AND comment_number = #{commentNumber}
+			</if>
+			<if  test="conturyName != null">
+				AND contury_name = #{conturyName}
+			</if>
+			<if  test="directorName != null">
+				AND director_name = #{directorName}
+			</if>
+			<if  test="episodeNumber != null">
+				AND episode_number = #{episodeNumber}
+			</if>
+			<if  test="favoriteNumber != null">
+				AND favorite_number = #{favoriteNumber}
+			</if>
+			<if  test="id != null">
+				AND id = #{id}
+			</if>
+			<if  test="isEnable != null">
+				AND is_enable = #{isEnable}
+			</if>
+			<if  test="languageName != null">
+				AND language_name = #{languageName}
+			</if>
+			<if  test="listNumber != null">
+				AND list_number = #{listNumber}
+			</if>
+			<if  test="mainActorName != null">
+				AND main_actor_name = #{mainActorName}
+			</if>
+			<if  test="movieLengthNumber != null">
+				AND movie_length_number = #{movieLengthNumber}
+			</if>
+			<if  test="movieName != null">
+				AND movie_name = #{movieName}
+			</if>
+			<if  test="pictureAddress != null">
+				AND picture_address = #{pictureAddress}
+			</if>
+			<if  test="releaseDate != null">
+				AND release_date = #{releaseDate}
+			</if>
+			<if  test="scoreNumber != null">
+				AND score_number = #{scoreNumber}
+			</if>
+			<if  test="screenwriterName != null">
+				AND screenwriter_name = #{screenwriterName}
+			</if>
+			<if  test="aliasName != null">
+				AND alias_name = #{aliasName}
+			</if>
+			<if  test="realName != null">
+				AND real_name = #{realName}
+			</if>
+			<if  test="typeName != null">
+				AND type_name = #{typeName}
+			</if>
+		</where>   	
+	</select>
+	
+	<update id="update" parameterType="MovieInfoDo">
+		UPDATE movie_info
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="categoryCode != null">
+				category_code = #{categoryCode},
+			</if>
+			<if test="commentNumber != null">
+				comment_number = #{commentNumber},
+			</if>
+			<if test="conturyName != null">
+				contury_name = #{conturyName},
+			</if>
+			<if test="directorName != null">
+				director_name = #{directorName},
+			</if>
+			<if test="episodeNumber != null">
+				episode_number = #{episodeNumber},
+			</if>
+			<if test="favoriteNumber != null">
+				favorite_number = #{favoriteNumber},
+			</if>
+			<if test="isEnable != null">
+				is_enable = #{isEnable},
+			</if>
+			<if test="languageName != null">
+				language_name = #{languageName},
+			</if>
+			<if test="listNumber != null">
+				list_number = #{listNumber},
+			</if>
+			<if test="mainActorName != null">
+				main_actor_name = #{mainActorName},
+			</if>
+			<if test="movieLengthNumber != null">
+				movie_length_number = #{movieLengthNumber},
+			</if>
+			<if test="movieName != null">
+				movie_name = #{movieName},
+			</if>
+			<if test="pictureAddress != null">
+				picture_address = #{pictureAddress},
+			</if>
+			<if test="releaseDate != null">
+				release_date = #{releaseDate},
+			</if>
+			<if test="scoreNumber != null">
+				score_number = #{scoreNumber},
+			</if>
+			<if test="screenwriterName != null">
+				screenwriter_name = #{screenwriterName},
+			</if>
+			<if test="aliasName != null">
+				alias_name = #{aliasName},
+			</if>
+			<if test="realName != null">
+				real_name = #{realName},
+			</if>
+			<if test="typeName != null">
+				type_name = #{typeName},
+			</if>
+		</trim>
+		<where>
+				id = #{id}   
+		</where>
+	</update>
+	
+	<insert id="insert" parameterType="MovieInfoDo">
+		INSERT INTO movie_info
+		(
+			<trim suffixOverrides=",">
+				create_time,
+				<if test="categoryCode != null">
+					category_code,
+				</if>
+				<if test="commentNumber != null">
+					comment_number,
+				</if>
+				<if test="conturyName != null">
+					contury_name,
+				</if>
+				<if test="directorName != null">
+					director_name,
+				</if>
+				<if test="episodeNumber != null">
+					episode_number,
+				</if>
+				<if test="favoriteNumber != null">
+					favorite_number,
+				</if>
+				<if test="id != null">
+					id,
+				</if>
+				<if test="isEnable != null">
+					is_enable,
+				</if>
+				<if test="languageName != null">
+					language_name,
+				</if>
+				<if test="listNumber != null">
+					list_number,
+				</if>
+				<if test="mainActorName != null">
+					main_actor_name,
+				</if>
+				<if test="movieLengthNumber != null">
+					movie_length_number,
+				</if>
+				<if test="movieName != null">
+					movie_name,
+				</if>
+				<if test="pictureAddress != null">
+					picture_address,
+				</if>
+				<if test="releaseDate != null">
+					release_date,
+				</if>
+				<if test="scoreNumber != null">
+					score_number,
+				</if>
+				<if test="screenwriterName != null">
+					screenwriter_name,
+				</if>
+				<if test="aliasName != null">
+					alias_name,
+				</if>
+				<if test="realName != null">
+					real_name,
+				</if>
+				<if test="typeName != null">
+					type_name,
+				</if>
+			</trim>
+		) VALUES (
+			<trim suffixOverrides=",">
+				now(),
+				<if test="categoryCode != null">
+					#{categoryCode},
+				</if>
+				<if test="commentNumber != null">
+					#{commentNumber},
+				</if>
+				<if test="conturyName != null">
+					#{conturyName},
+				</if>
+				<if test="directorName != null">
+					#{directorName},
+				</if>
+				<if test="episodeNumber != null">
+					#{episodeNumber},
+				</if>
+				<if test="favoriteNumber != null">
+					#{favoriteNumber},
+				</if>
+				<if test="id != null">
+					#{id},
+				</if>
+				<if test="isEnable != null">
+					#{isEnable},
+				</if>
+				<if test="languageName != null">
+					#{languageName},
+				</if>
+				<if test="listNumber != null">
+					#{listNumber},
+				</if>
+				<if test="mainActorName != null">
+					#{mainActorName},
+				</if>
+				<if test="movieLengthNumber != null">
+					#{movieLengthNumber},
+				</if>
+				<if test="movieName != null">
+					#{movieName},
+				</if>
+				<if test="pictureAddress != null">
+					#{pictureAddress},
+				</if>
+				<if test="releaseDate != null">
+					#{releaseDate},
+				</if>
+				<if test="scoreNumber != null">
+					#{scoreNumber},
+				</if>
+				<if test="screenwriterName != null">
+					#{screenwriterName},
+				</if>
+				<if test="aliasName != null">
+					#{aliasName},
+				</if>
+				<if test="realName != null">
+					#{realName},
+				</if>
+				<if test="typeName != null">
+					#{typeName},
+				</if>
+			</trim>
+		)
+	</insert>
+
+	<select id="getMoviesByTagByPage" parameterType="TagInfoQc" resultMap="MovieInfoResult">
+		/*查询某tag下的影视列表*/
+		SELECT
+		t.*
+		FROM
+		movie_info t
+		WHERE
+		t.id IN (
+			SELECT DISTINCT
+			tmi.id
+			FROM
+			movie_info tmi,
+			comment_info tci,
+			comment_tag_relation tctr,
+			tag_info tti
+			WHERE
+			1 = 1
+			AND tmi.id = tci.object_id
+			AND tmi.is_enable = 1
+			AND tci.id = tctr.comment_id
+			AND tci.object_type_code = 'MOVIE'
+			AND tctr.tag_id = tti.id
+			AND tti.tag_name = #{tagName}
+		)
+		<choose>
+			<when test="sortField != null and sortMode != null">
+				ORDER BY t.${sortField} ${sortMode}
+			</when>
+			<otherwise>
+				ORDER BY t.create_time DESC
+			</otherwise>
+		</choose>
+	</select>
+
+	<select id="getMoviesByListByPage" parameterType="ListInfoQc" resultMap="MovieInfoResult">
+		/*查询影单下的电影列表*/
+		SELECT
+		t.*
+		FROM
+		movie_info t
+		WHERE
+		t.is_enable = 1
+		AND
+		t.id IN (
+			SELECT
+			tli.object_id
+			FROM
+			list_item tli
+			WHERE
+			1 = 1
+			AND tli.list_id = #{id}
+		)
+		<choose>
+			<when test="sortField != null and sortMode != null">
+				ORDER BY t.${sortField} ${sortMode}
+			</when>
+			<otherwise>
+				ORDER BY t.create_time DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

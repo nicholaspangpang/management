@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+	@author pangzhenhua
+	@version 2018-11-27 12:50:19 
+-->
+<mapper namespace="com.fooee.winqing.management.dao.mapper.movie.MovieDescriptionInfoDao">
+
+	<resultMap type="MovieDescriptionInfoDo" id="MovieDescriptionInfoResult">
+			<result property="editorRecommendInfo" column="editor_recommend_info" />
+			<result property="id" column="id" />
+			<result property="movieId" column="movie_id" />
+			<result property="plotBrief" column="plot_brief" />
+	</resultMap>
+
+	<sql id="columns">
+			editor_recommend_info,
+			id,
+			movie_id,
+			plot_brief
+	</sql>
+
+	<select id="select" parameterType="MovieDescriptionInfoQc" resultMap="MovieDescriptionInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM movie_description_info 
+		<where>
+				<if  test="editorRecommendInfo != null">
+					AND editor_recommend_info = #{editorRecommendInfo}
+				</if>
+				<if  test="id != null">
+					AND id = #{id}
+				</if>
+				<if  test="movieId != null">
+					AND movie_id = #{movieId}
+				</if>
+				<if  test="plotBrief != null">
+					AND plot_brief = #{plotBrief}
+				</if>
+		</where>   		
+	</select>
+	
+	<select id="selectByPage" parameterType="MovieDescriptionInfoQc" resultMap="MovieDescriptionInfoResult">
+		SELECT <include refid="columns"></include>
+		FROM movie_description_info 
+		<where>
+				<if  test="editorRecommendInfo != null">
+					AND editor_recommend_info = #{editorRecommendInfo}
+				</if>
+				<if  test="id != null">
+					AND id = #{id}
+				</if>
+				<if  test="movieId != null">
+					AND movie_id = #{movieId}
+				</if>
+				<if  test="plotBrief != null">
+					AND plot_brief = #{plotBrief}
+				</if>
+		</where>   	
+	</select>
+	
+	<update id="update" parameterType="MovieDescriptionInfoDo">
+		UPDATE movie_description_info
+		<trim prefix="SET" suffixOverrides=",">
+								<if test="editorRecommendInfo != null">
+									editor_recommend_info = #{editorRecommendInfo},
+								</if>
+								<if test="movieId != null">
+									movie_id = #{movieId},
+								</if>
+								<if test="plotBrief != null">
+									plot_brief = #{plotBrief},
+								</if>
+		</trim>
+		<where>
+				id = #{id}   
+		</where>
+	</update>
+	
+	<insert id="insert" parameterType="MovieDescriptionInfoDo">
+		INSERT INTO movie_description_info
+		(
+			<trim suffixOverrides=",">
+				<if test="editorRecommendInfo != null">
+					editor_recommend_info,
+				</if>
+				<if test="id != null">
+					id,
+				</if>
+				<if test="movieId != null">
+					movie_id,
+				</if>
+				<if test="plotBrief != null">
+					plot_brief,
+				</if>
+			</trim>
+		) VALUES (
+			<trim suffixOverrides=",">
+				<if test="editorRecommendInfo != null">
+					#{editorRecommendInfo},
+				</if>
+				<if test="id != null">
+					#{id},
+				</if>
+				<if test="movieId != null">
+					#{movieId},
+				</if>
+				<if test="plotBrief != null">
+					#{plotBrief},
+				</if>
+			</trim>
+		)
+	</insert>
+	
+	<delete id="delete" parameterType="MovieDescriptionInfoDo">
+		DELETE 
+		  FROM  movie_description_info  
+		 WHERE 
+			id = #{id}   
+	</delete>
+	
+	
+	<!--<sql id="columns">
+			editor_recommend_info,
+			id,
+			movie_id,
+			plot_brief
+	</sql>
+	<sql id="columnsAs">
+			editor_recommend_info as editorRecommendInfo,
+			id as id,
+			movie_id as movieId,
+			plot_brief as plotBrief
+	</sql>
+	<sql id="values">
+			#editorRecommendInfo#,
+			#id#,
+			#movieId#,
+			#plotBrief#
+	</sql>-->
+</mapper>

@@ -1,0 +1,166 @@
+<script type="text/javascript" src="/resources/js/movie/add.js"></script>
+
+<style>
+    #photo {
+        width: 300px;
+        height: 400px;
+        max-width: 100%;
+    }
+    .img-preview {
+        width: 300px;
+        height: 400px;
+        overflow: hidden;
+    }
+    label {
+        margin-top:10px;
+    }
+    #result {
+        width: 150px;
+        height: 150px;
+    }
+</style>
+
+<div class="container-full">
+
+    <!-- 面包导航开始 -->
+    <div class="headerBox">
+        <div class="active_com">
+            <span class="position"><b class="map-marker"></b>当前位置：</span>
+            <ul class="ul">
+                <li><a href="JavaScript:;"> <span>首 页</span>
+                </a> <b> > </b></li>
+                <li><a href="JavaScript:;"> <span>电影信息</span>
+                </a> <b> > </b></li>
+                <li><a href="JavaScript:;"> <span>电影信息录入</span>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- 面包导航结束 -->
+
+    <div class="row">&nbsp;</div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-sm-6 ">
+                <img id="photo">
+            </div>
+            <div class="col-sm-2">
+                <div>
+                    <div class="img-preview img-rounded">
+                        <img src="" >
+                    </div>
+                </div>
+
+                <div>
+                    <p>
+                        <label for="input" class="btn btn-danger" id="">
+                            <span>选择图片</span>
+                            <input type="file" id="input" class="sr-only">
+                        </label>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row">&nbsp;</div>
+
+        <form class="form-horizontal" id="form_object">
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">片名</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="movieName" />
+                </div>
+                <label class="col-sm-1 control-label">又名</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="aliasName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">原名</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="realName" />
+                </div>
+                <label class="col-sm-1 control-label">主演</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="mainActorName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">导演</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="directorName" />
+                </div>
+                <label class="col-sm-1 control-label">编剧</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="screenwriterName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">类型</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="typeName" />
+                </div>
+                <label class="col-sm-1 control-label">语言</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="languageName" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">片长</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="movieLengthNumber" />
+                </div>
+                <label class="col-sm-1 control-label">集数(电视)</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="episodeNumber" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">国家/地区</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="conturyName" />
+                </div>
+                <label class="col-sm-1 control-label">首映日期</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="releaseDate" id="datetimepicker" data-date-format="yyyy-mm-dd" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">分类</label>
+                <div class="col-md-4">
+                    <select class="form-control" name="CategoryCode">
+                        <option value="DY">电影</option>
+                        <option value="DSJ">电视剧</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 大字段 -->
+            <div class="form-group">
+                <label class="col-sm-1 control-label">剧情简介</label>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="3" name="plotBrief"></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">编辑推荐</label>
+                <div class="col-md-9">
+                    <textarea class="form-control" rows="3" name="editorRecommendInfo"></textarea>
+                </div>
+            </div>
+
+            <a id="btn_save" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin '></i> 处理中...">提交</a>
+        </form>
+    </div>
+</div>
