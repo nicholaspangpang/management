@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/resources/js/book/update.js"></script>
+<script type="text/javascript" src="/resources/js/movie/update.js"></script>
 
 
 <style>
@@ -30,9 +30,9 @@
             <ul class="ul">
                 <li><a href="JavaScript:;"> <span>首 页</span>
                 </a> <b> > </b></li>
-                <li><a href="JavaScript:;"> <span>图书信息</span>
+                <li><a href="JavaScript:;"> <span>电影信息</span>
                 </a> <b> > </b></li>
-                <li><a href="JavaScript:;"> <span>图书信息录入</span>
+                <li><a href="JavaScript:;"> <span>电影信息编辑</span>
                 </a></li>
             </ul>
         </div>
@@ -50,7 +50,7 @@
             <div class="col-sm-2">
                 <div>
                     <div class="img-preview img-rounded">
-                        <img src="$!{bookInfo.pictureAddress}" >
+                        <img src="$!{movieInfo.pictureAddress}" >
                     </div>
                 </div>
 
@@ -68,109 +68,103 @@
 
         <div class="row">&nbsp;</div>
 
-        <form class="form-horizontal" id="form_book">
-            <input type="hidden" name="id" value="${bookInfo.id}" />
+        <form class="form-horizontal" id="form_object">
+            <input type="hidden" name="id" value="${movieInfo.id}" />
 
             <div class="form-group">
-                <label class="col-sm-1 control-label">isbn</label>
+                <label class="col-sm-1 control-label">片名</label>
                 <div class="col-md-4">
-                    <input class="form-control" name="isbn" value="$!{bookInfo.isbn}" />
+                    <input class="form-control" name="movieName" value="$!{movieInfo.movieName}" />
                 </div>
-                <label class="col-sm-1 control-label">定价</label>
+                <label class="col-sm-1 control-label">又名</label>
                 <div class="col-md-4">
-                    <input class="form-control" name="bookPrice" value="$!{bookInfo.bookPrice}" />
+                    <input class="form-control" name="aliasName" value="$!{movieInfo.aliasName}" />
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-1 control-label">书名</label>
+                <label class="col-sm-1 control-label">原名</label>
                 <div class="col-md-4">
-                    <input class="form-control" name="bookName" value="$!{bookInfo.bookName}" />
+                    <input class="form-control" name="realName" value="$!{movieInfo.realName}" />
                 </div>
-                <label class="col-sm-1 control-label">副标题</label>
+                <label class="col-sm-1 control-label">主演</label>
                 <div class="col-md-4">
-                    <input class="form-control" name="subTitle" value="$!{bookInfo.subTitle}" />
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-1 control-label">作者</label>
-                <div class="col-md-4">
-                    <input class="form-control" name="authorName" value="$!{bookInfo.authorName}" />
-                </div>
-                <label class="col-sm-1 control-label">译者</label>
-                <div class="col-md-4">
-                    <input class="form-control" name="translatorName" value="$!{bookInfo.translatorName}" />
+                    <input class="form-control" name="mainActorName" value="$!{movieInfo.mainActorName}" />
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-1 control-label">页码</label>
+                <label class="col-sm-1 control-label">导演</label>
                 <div class="col-md-4">
-                    <input class="form-control" name="pageNumber" value="$!{bookInfo.pageNumber}" />
+                    <input class="form-control" name="directorName" value="$!{movieInfo.directorName}" />
                 </div>
-                <label class="col-sm-1 control-label">文青分类</label>
+                <label class="col-sm-1 control-label">编剧</label>
                 <div class="col-md-4">
-                    <select class="form-control" name="wqCategoryCode">
-                        <option value="JSJ" #if($bookInfo.wqCategoryCode=='JSJ') selected #end>计算机</option>
-                        <option value="WX" #if($bookInfo.wqCategoryCode=='WX') selected #end>文学</option>
-                        <option value="SH" #if($bookInfo.wqCategoryCode=='SH') selected #end>生活</option>
-                        <option value="JG" #if($bookInfo.wqCategoryCode=='JG') selected #end>经管</option>
-                        <option value="WH" #if($bookInfo.wqCategoryCode=='WH') selected #end>文化</option>
+                    <input class="form-control" name="screenwriterName" value="$!{movieInfo.screenwriterName}" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">类型</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="typeName" value="$!{movieInfo.typeName}" />
+                </div>
+                <label class="col-sm-1 control-label">语言</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="languageName" value="$!{movieInfo.languageName}" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">片长</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="movieLengthNumber" value="$!{movieInfo.movieLengthNumber}" />
+                </div>
+                <label class="col-sm-1 control-label">集数(电视)</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="episodeNumber" value="$!{movieInfo.episodeNumber}" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">国家/地区</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="conturyName" value="$!{movieInfo.conturyName}" />
+                </div>
+                <label class="col-sm-1 control-label">首映日期</label>
+                <div class="col-md-4">
+                    <input class="form-control" name="releaseDate" id="datetimepicker" data-date-format="yyyy-mm-dd" value="$!date.format('yyyy-MM-dd',$!{movieInfo.releaseDate})  " />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-1 control-label">分类</label>
+                <div class="col-md-4">
+                    <select class="form-control" name="categoryCode">
+                        <option value="DY" #if($movieInfo.categoryCode=='DY') selected #end>电影</option>
+                        <option value="DSJ" #if($movieInfo.categoryCode=='DSJ') selected #end>电视剧</option>
                     </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-1 control-label">出版社</label>
-                <div class="col-md-4">
-                    <input class="form-control" name="pressName" value="$!{bookInfo.pressName}" />
-                </div>
-                <label class="col-sm-1 control-label">出版日期</label>
-                <div class="col-md-4">
-                    <input class="form-control" name="publishDate" id="datetimepicker" data-date-format="yyyy-mm-dd" value="$!date.format('yyyy-MM-dd',$!{bookInfo.publishDate})  " />
                 </div>
             </div>
 
 
             <!-- 大字段 -->
             <div class="form-group">
-                <label class="col-sm-1 control-label">作者简介</label>
+                <label class="col-sm-1 control-label">剧情简介</label>
                 <div class="col-md-9">
-                    <textarea class="form-control" rows="3" name="authorBrief">$!{bookDesc.authorBrief}</textarea>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-1 control-label">内容简介</label>
-                <div class="col-md-9">
-                    <textarea class="form-control" rows="3" name="contentBrief">$!{bookDesc.contentBrief}</textarea>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-1 control-label">目录</label>
-                <div class="col-md-9">
-                    <textarea class="form-control" rows="3" name="catelogInfo">$!{bookDesc.catelogInfo}</textarea>
+                    <textarea class="form-control" rows="3" name="plotBrief">$!{movieDesc.plotBrief}</textarea>
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="col-sm-1 control-label">编辑推荐</label>
                 <div class="col-md-9">
-                    <textarea class="form-control" rows="3" name="editorRecommendInfo">$!{bookDesc.editorRecommendInfo}</textarea>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-1 control-label">媒体评论</label>
-                <div class="col-md-9">
-                    <textarea class="form-control" rows="3" name="mediaCommentInfo">$!{bookDesc.mediaCommentInfo}</textarea>
+                    <textarea class="form-control" rows="3" name="editorRecommendInfo">$!{movieDesc.editorRecommendInfo}</textarea>
                 </div>
             </div>
 
             <a id="btn_save" class="btn btn-primary" data-loading-text="<i class='fa fa-spinner fa-spin '></i> 处理中...">提交</a>
-            <a class="btn btn-primary" href="/book/manage">返回列表</a>
+            <a class="btn btn-primary" href="/movie/manage">返回列表</a>
         </form>
     </div>
 </div>

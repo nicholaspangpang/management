@@ -138,7 +138,7 @@
             <div class="form-group">
                 <label class="col-sm-1 control-label">分类</label>
                 <div class="col-md-4">
-                    <select class="form-control" name="CategoryCode">
+                    <select class="form-control" name="categoryCode">
                         <option value="DY">电影</option>
                         <option value="DSJ">电视剧</option>
                     </select>

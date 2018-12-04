@@ -4,7 +4,12 @@ import com.fooee.winqing.bean.book.BookDescriptionInfoDo;
 import com.fooee.winqing.bean.book.BookDescriptionInfoQc;
 import com.fooee.winqing.bean.book.BookInfoDo;
 import com.fooee.winqing.bean.book.BookInfoQc;
+import com.fooee.winqing.bean.movie.MovieDescriptionInfoDo;
+import com.fooee.winqing.bean.movie.MovieDescriptionInfoQc;
+import com.fooee.winqing.bean.movie.MovieInfoDo;
+import com.fooee.winqing.bean.movie.MovieInfoQc;
 import com.fooee.winqing.management.service.inf.book.BookService;
+import com.fooee.winqing.management.service.inf.movie.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 public class MovieController {
 
     @Autowired
-    BookService bookService;
+    MovieService movieService;
 
     @RequestMapping("manage")
     String manage(){
@@ -37,18 +42,18 @@ public class MovieController {
 
     @RequestMapping("update/{id}")
     String update(@PathVariable Long id, HttpServletRequest request){
-        //读取图书基本信息
-        BookInfoQc bookInfoQc = new BookInfoQc();
-        bookInfoQc.setId(id);
-        BookInfoDo bookInfoDo = bookService.getBookinfo(bookInfoQc);
+        //读取基本信息
+        MovieInfoQc movieInfoQc = new MovieInfoQc();
+        movieInfoQc.setId(id);
+        MovieInfoDo movieInfoDo = movieService.getBaseInfo(movieInfoQc);
 
         //读取图书描述信息
-        BookDescriptionInfoQc bookDescriptionInfoQc = new BookDescriptionInfoQc();
-        bookDescriptionInfoQc.setBookId(id);
-        BookDescriptionInfoDo bookDescriptionInfoDo = bookService.getBookDescriptionInfo(bookDescriptionInfoQc);
+        MovieDescriptionInfoQc movieDescriptionInfoQc = new MovieDescriptionInfoQc();
+        movieDescriptionInfoQc.setMovieId(id);
+        MovieDescriptionInfoDo movieDescriptionInfoDo = movieService.getDescriptionInfo(movieDescriptionInfoQc);
 
-        request.setAttribute("bookInfo",bookInfoDo);
-        request.setAttribute("bookDesc",bookDescriptionInfoDo);
+        request.setAttribute("movieInfo",movieInfoDo);
+        request.setAttribute("movieDesc",movieDescriptionInfoDo);
 
         return "movie/update";
     }

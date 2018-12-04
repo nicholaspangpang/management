@@ -29,7 +29,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
             layer.msg('只能选择一条数据!');
 			return false;
 		}
-		window.location.href = "/book/update/" + selectIds;
+		window.location.href = "/movie/update/" + selectIds;
 	});
 
 

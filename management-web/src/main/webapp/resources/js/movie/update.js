@@ -88,7 +88,7 @@ In.ready('datetimepicker','cropper',function() {
 		}
 
 		//获取基本信息
-		var formArray = $("#form_book").serializeArray();
+		var formArray = $("#form_object").serializeArray();
 
 		$.each(formArray,function (index,item) {
 			if(item.name && item.value){
@@ -101,7 +101,7 @@ In.ready('datetimepicker','cropper',function() {
 		// var data = new FormData($("#formUpload")[0]);
 		$.ajax({
 			type : "post",
-			url:baseUrl + "book/update",
+			url:baseUrl + "movie/update",
 			data:formData,
 			cache: false,
 			contentType: false,
@@ -118,7 +118,7 @@ In.ready('datetimepicker','cropper',function() {
 					return false;
 				}
 				layer.alert("操作成功！",function () {
-					window.location.href = "/book/manage";
+					window.location.href = "/movie/manage";
 					return false;
 				});
 			},
