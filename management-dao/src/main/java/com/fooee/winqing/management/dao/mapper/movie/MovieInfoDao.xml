@@ -342,7 +342,7 @@
 		</where>
 	</update>
 	
-	<insert id="insert" parameterType="MovieInfoDo">
+	<insert id="insert" parameterType="MovieInfoDo" keyProperty="id">
 		INSERT INTO movie_info
 		(
 			<trim suffixOverrides=",">
