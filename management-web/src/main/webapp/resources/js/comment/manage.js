@@ -61,13 +61,11 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 		autowidth: true,
 		shrinkToFit: true,
 		height:"auto",
-		colNames:["id","昵称","标题","电子邮箱","长居地","类型","评分","点赞","状态","注册时间"],
+		colNames:["id","昵称","标题","类型","评分","点赞","状态","注册时间"],
 		colModel :[
 			{name:"id", index:"id",width:"30"},
-			{name:"nickName", index:"nickName",align:'center'},
+			{name:"userNickname", index:"userNickname",align:'center'},
 			{name:"commentTitle", index:"commentTitle",align:'center'},
-			{name:"emailAddress", index:"emailAddress",align:'center'},
-			{name:"residenceName", index:"residenceName",align:'center'},
 			{name:"objectTypeCode", index:"objectTypeCode",align:'center'},
             {name:"scoreNumber", index:"score_number",align:'center'},
             {name:"agreeNumber", index:"agree_umber",align:'center'},
@@ -79,7 +77,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 		viewrecords: true,
 		multiselect : true,  //显示checkbox选择框
 		rownumbers: true,    //显示左边排名列表
-		sortname: 'register_time', 	//设置默认的排序列
+		sortname: 'create_time', 	//设置默认的排序列
 		sortorder: 'desc',	//默认排序方式
 		pager: '#page',
 		loadBeforeSend:function(){
@@ -142,7 +140,7 @@ In.ready('jqGrid','queryDataBox','multipleDataBox','select',function() {
 	function queryParam(){
 
 		var queryRequest = {};
-		queryRequest.queryId = "selectCommentByPage";
+		queryRequest.queryId = "selectCommentVoByPage";
 		queryRequest.queryType = "JQGRID";
 		queryRequest.queryParameters = new Array();
 
