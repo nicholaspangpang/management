@@ -66,7 +66,7 @@ In.ready('datetimepicker','cropper',function() {
 
 		for (var i = 0; i < bytes.length; i++) {          ia[i] = bytes.charCodeAt(i);      }
 
-		return new Blob( [ab] , {type : 'image/png'});
+		return new Blob( [ab] , {type : 'image/jpeg'});
 
 	}
 
@@ -83,7 +83,7 @@ In.ready('datetimepicker','cropper',function() {
 		var $image = $('#photo');
 		var data = $image.cropper('getCroppedCanvas',{width:280,height:400});
 		if(data){
-			var blob = convertBase64UrlToBlob(data.toDataURL());
+			var blob = convertBase64UrlToBlob(data.toDataURL('image/jpeg'));
 			formData.append('file', blob, "photo.jpg");
 		}
 
