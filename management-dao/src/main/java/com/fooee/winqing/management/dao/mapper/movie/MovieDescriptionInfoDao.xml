@@ -61,18 +61,15 @@
 	<update id="update" parameterType="MovieDescriptionInfoDo">
 		UPDATE movie_description_info
 		<trim prefix="SET" suffixOverrides=",">
-								<if test="editorRecommendInfo != null">
-									editor_recommend_info = #{editorRecommendInfo},
-								</if>
-								<if test="movieId != null">
-									movie_id = #{movieId},
-								</if>
-								<if test="plotBrief != null">
-									plot_brief = #{plotBrief},
-								</if>
+			<if test="editorRecommendInfo != null">
+				editor_recommend_info = #{editorRecommendInfo},
+			</if>
+			<if test="plotBrief != null">
+				plot_brief = #{plotBrief},
+			</if>
 		</trim>
 		<where>
-				id = #{id}   
+			movie_id = #{movieId}
 		</where>
 	</update>
 	
