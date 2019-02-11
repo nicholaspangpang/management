@@ -2,6 +2,7 @@ package com.fooee.winqing.management.service.impl.movie;
 
 import com.fooee.commons.dao.vdo.upload.UploadFileVo;
 import com.fooee.commons.service.upload.inf.UploadService;
+import com.fooee.commons.util.XssUtil;
 import com.fooee.winqing.bean.movie.MovieDescriptionInfoDo;
 import com.fooee.winqing.bean.movie.MovieDescriptionInfoQc;
 import com.fooee.winqing.bean.movie.MovieInfoDo;
@@ -64,6 +65,10 @@ public class MovieServiceImpl implements MovieService{
         //更新图书基本信息
         movieInfoService.update(movieInfoDo);
 
+        //处理大字段xss过滤
+        movieDescriptionInfoQc.setPlotBrief(XssUtil.filterInput(movieDescriptionInfoQc.getPlotBrief()));
+        movieDescriptionInfoQc.setEditorRecommendInfo(XssUtil.filterInput(movieDescriptionInfoQc.getEditorRecommendInfo()));
+
         //保存图书描述信息
         MovieDescriptionInfoDo movieDescriptionInfoDo = new MovieDescriptionInfoDo();
         BeanUtils.copyProperties(movieDescriptionInfoQc,movieDescriptionInfoDo);
@@ -94,6 +99,10 @@ public class MovieServiceImpl implements MovieService{
         //保存图书基本信息
         movieInfoService.insert(movieInfoDo);
         Long objectId = movieInfoDo.getId();
+
+        //处理大字段xss过滤
+        movieDescriptionInfoQc.setPlotBrief(XssUtil.filterInput(movieDescriptionInfoQc.getPlotBrief()));
+        movieDescriptionInfoQc.setEditorRecommendInfo(XssUtil.filterInput(movieDescriptionInfoQc.getEditorRecommendInfo()));
 
         //保存图书描述信息
         MovieDescriptionInfoDo movieDescriptionInfoDo = new MovieDescriptionInfoDo();

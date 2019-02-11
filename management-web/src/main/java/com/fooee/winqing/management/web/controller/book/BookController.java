@@ -1,5 +1,6 @@
 package com.fooee.winqing.management.web.controller.book;
 
+import com.fooee.commons.util.XssUtil;
 import com.fooee.winqing.bean.book.BookDescriptionInfoDo;
 import com.fooee.winqing.bean.book.BookDescriptionInfoQc;
 import com.fooee.winqing.bean.book.BookInfoDo;
@@ -46,6 +47,13 @@ public class BookController{
         BookDescriptionInfoQc bookDescriptionInfoQc = new BookDescriptionInfoQc();
         bookDescriptionInfoQc.setBookId(id);
         BookDescriptionInfoDo bookDescriptionInfoDo = bookService.getBookDescriptionInfo(bookDescriptionInfoQc);
+
+        //处理大字段前端textarea展示
+        bookDescriptionInfoDo.setAuthorBrief(XssUtil.encodeBr(bookDescriptionInfoDo.getAuthorBrief()));
+        bookDescriptionInfoDo.setContentBrief(XssUtil.encodeBr(bookDescriptionInfoDo.getContentBrief()));
+        bookDescriptionInfoDo.setCatelogInfo(XssUtil.encodeBr(bookDescriptionInfoDo.getCatelogInfo()));
+        bookDescriptionInfoDo.setEditorRecommendInfo(XssUtil.encodeBr(bookDescriptionInfoDo.getEditorRecommendInfo()));
+        bookDescriptionInfoDo.setMediaCommentInfo(XssUtil.encodeBr(bookDescriptionInfoDo.getMediaCommentInfo()));
 
         request.setAttribute("bookInfo",bookInfoDo);
         request.setAttribute("bookDesc",bookDescriptionInfoDo);

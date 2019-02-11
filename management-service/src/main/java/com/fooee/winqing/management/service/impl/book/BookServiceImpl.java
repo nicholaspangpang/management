@@ -2,6 +2,7 @@ package com.fooee.winqing.management.service.impl.book;
 
 import com.fooee.commons.dao.vdo.upload.UploadFileVo;
 import com.fooee.commons.service.upload.inf.UploadService;
+import com.fooee.commons.util.XssUtil;
 import com.fooee.winqing.bean.book.BookDescriptionInfoDo;
 import com.fooee.winqing.bean.book.BookDescriptionInfoQc;
 import com.fooee.winqing.bean.book.BookInfoDo;
@@ -64,7 +65,14 @@ public class BookServiceImpl implements BookService{
         //更新图书基本信息
         bookInfoService.update(bookInfoDo);
 
-        //保存图书描述信息
+        //处理大字段xss过滤
+        bookDescriptionInfoQc.setAuthorBrief(XssUtil.filterInput(bookDescriptionInfoQc.getAuthorBrief()));
+        bookDescriptionInfoQc.setContentBrief(XssUtil.filterInput(bookDescriptionInfoQc.getContentBrief()));
+        bookDescriptionInfoQc.setCatelogInfo(XssUtil.filterInput(bookDescriptionInfoQc.getCatelogInfo()));
+        bookDescriptionInfoQc.setEditorRecommendInfo(XssUtil.filterInput(bookDescriptionInfoQc.getEditorRecommendInfo()));
+        bookDescriptionInfoQc.setMediaCommentInfo(XssUtil.filterInput(bookDescriptionInfoQc.getMediaCommentInfo()));
+
+        //更新图书描述信息
         BookDescriptionInfoDo bookDescriptionInfoDo = new BookDescriptionInfoDo();
         BeanUtils.copyProperties(bookDescriptionInfoQc,bookDescriptionInfoDo);
         bookDescriptionInfoDo.setBookId(bookInfoDo.getId());
@@ -77,6 +85,7 @@ public class BookServiceImpl implements BookService{
     public void add(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc) {
         /**
          * 上传图片
+         * 处理大字段xss过滤
          * 保存信息
          */
 
@@ -94,6 +103,13 @@ public class BookServiceImpl implements BookService{
         //保存图书基本信息
         bookInfoService.insert(bookInfoDo);
         Long bookId = bookInfoDo.getId();
+
+        //处理大字段xss过滤
+        bookDescriptionInfoQc.setAuthorBrief(XssUtil.filterInput(bookDescriptionInfoQc.getAuthorBrief()));
+        bookDescriptionInfoQc.setContentBrief(XssUtil.filterInput(bookDescriptionInfoQc.getContentBrief()));
+        bookDescriptionInfoQc.setCatelogInfo(XssUtil.filterInput(bookDescriptionInfoQc.getCatelogInfo()));
+        bookDescriptionInfoQc.setEditorRecommendInfo(XssUtil.filterInput(bookDescriptionInfoQc.getEditorRecommendInfo()));
+        bookDescriptionInfoQc.setMediaCommentInfo(XssUtil.filterInput(bookDescriptionInfoQc.getMediaCommentInfo()));
 
         //保存图书描述信息
         BookDescriptionInfoDo bookDescriptionInfoDo = new BookDescriptionInfoDo();

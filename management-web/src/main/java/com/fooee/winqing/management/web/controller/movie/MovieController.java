@@ -1,5 +1,6 @@
 package com.fooee.winqing.management.web.controller.movie;
 
+import com.fooee.commons.util.XssUtil;
 import com.fooee.winqing.bean.book.BookDescriptionInfoDo;
 import com.fooee.winqing.bean.book.BookDescriptionInfoQc;
 import com.fooee.winqing.bean.book.BookInfoDo;
@@ -51,6 +52,10 @@ public class MovieController {
         MovieDescriptionInfoQc movieDescriptionInfoQc = new MovieDescriptionInfoQc();
         movieDescriptionInfoQc.setMovieId(id);
         MovieDescriptionInfoDo movieDescriptionInfoDo = movieService.getDescriptionInfo(movieDescriptionInfoQc);
+
+        //处理大字段前端textarea展示
+        movieDescriptionInfoDo.setPlotBrief(XssUtil.encodeBr(movieDescriptionInfoDo.getPlotBrief()));
+        movieDescriptionInfoDo.setEditorRecommendInfo(XssUtil.encodeBr(movieDescriptionInfoDo.getEditorRecommendInfo()));
 
         request.setAttribute("movieInfo",movieInfoDo);
         request.setAttribute("movieDesc",movieDescriptionInfoDo);
