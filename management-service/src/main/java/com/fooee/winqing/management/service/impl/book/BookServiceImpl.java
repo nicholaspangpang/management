@@ -45,25 +45,20 @@ public class BookServiceImpl implements BookService{
         bookInfoService.update(bookInfoDo);
     }
 
-    @Override
-    @Transactional(rollbackFor = Exception.class)
-    public void update(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc) {
-        /**
-         * 如果没有图片则不更新
-         */
-        BookInfoDo bookInfoDo = new BookInfoDo();
-        BeanUtils.copyProperties(bookInfoQc,bookInfoDo);
+    /**
+     * 通用保存逻辑
+     * @param bookInfoQc
+     * @param bookDescriptionInfoQc
+     */
+    private void commonSaveLogic(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc){
 
         //上传图片
         if(null != bookInfoQc.getFile()){
             UploadFileVo uploadFileVo = new UploadFileVo();
             uploadFileVo.setMultipartFile(bookInfoQc.getFile());
             uploadFileVo = uploadService.upload(uploadFileVo);
-            bookInfoDo.setPictureAddress(uploadFileVo.getFileUrl());
+            bookInfoQc.setPictureAddress(uploadFileVo.getFileUrl());
         }
-
-        //更新图书基本信息
-        bookInfoService.update(bookInfoDo);
 
         //处理大字段xss过滤
         bookDescriptionInfoQc.setAuthorBrief(XssUtil.filterInput(bookDescriptionInfoQc.getAuthorBrief()));
@@ -71,6 +66,22 @@ public class BookServiceImpl implements BookService{
         bookDescriptionInfoQc.setCatelogInfo(XssUtil.filterInput(bookDescriptionInfoQc.getCatelogInfo()));
         bookDescriptionInfoQc.setEditorRecommendInfo(XssUtil.filterInput(bookDescriptionInfoQc.getEditorRecommendInfo()));
         bookDescriptionInfoQc.setMediaCommentInfo(XssUtil.filterInput(bookDescriptionInfoQc.getMediaCommentInfo()));
+
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void update(BookInfoQc bookInfoQc, BookDescriptionInfoQc bookDescriptionInfoQc) {
+        /**
+         * 如果没有图片则不更新
+         */
+        this.commonSaveLogic(bookInfoQc,bookDescriptionInfoQc);
+
+        BookInfoDo bookInfoDo = new BookInfoDo();
+        BeanUtils.copyProperties(bookInfoQc,bookInfoDo);
+
+        //更新图书基本信息
+        bookInfoService.update(bookInfoDo);
 
         //更新图书描述信息
         BookDescriptionInfoDo bookDescriptionInfoDo = new BookDescriptionInfoDo();
@@ -88,28 +99,14 @@ public class BookServiceImpl implements BookService{
          * 处理大字段xss过滤
          * 保存信息
          */
+        this.commonSaveLogic(bookInfoQc,bookDescriptionInfoQc);
 
         BookInfoDo bookInfoDo = new BookInfoDo();
         BeanUtils.copyProperties(bookInfoQc,bookInfoDo);
 
-        //上传图片
-        if(null != bookInfoQc.getFile()){
-            UploadFileVo uploadFileVo = new UploadFileVo();
-            uploadFileVo.setMultipartFile(bookInfoQc.getFile());
-            uploadFileVo = uploadService.upload(uploadFileVo);
-            bookInfoDo.setPictureAddress(uploadFileVo.getFileUrl());
-        }
-
         //保存图书基本信息
         bookInfoService.insert(bookInfoDo);
         Long bookId = bookInfoDo.getId();
-
-        //处理大字段xss过滤
-        bookDescriptionInfoQc.setAuthorBrief(XssUtil.filterInput(bookDescriptionInfoQc.getAuthorBrief()));
-        bookDescriptionInfoQc.setContentBrief(XssUtil.filterInput(bookDescriptionInfoQc.getContentBrief()));
-        bookDescriptionInfoQc.setCatelogInfo(XssUtil.filterInput(bookDescriptionInfoQc.getCatelogInfo()));
-        bookDescriptionInfoQc.setEditorRecommendInfo(XssUtil.filterInput(bookDescriptionInfoQc.getEditorRecommendInfo()));
-        bookDescriptionInfoQc.setMediaCommentInfo(XssUtil.filterInput(bookDescriptionInfoQc.getMediaCommentInfo()));
 
         //保存图书描述信息
         BookDescriptionInfoDo bookDescriptionInfoDo = new BookDescriptionInfoDo();
