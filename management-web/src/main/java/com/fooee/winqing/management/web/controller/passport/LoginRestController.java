@@ -1,8 +1,6 @@
 package com.fooee.winqing.management.web.controller.passport;
 
-import com.fooee.commons.web.controller.BaseController;
 import com.fooee.commons.web.vo.JsonResult;
-import com.fooee.winqing.management.dao.vdo.passport.ManageUserDo;
 import com.fooee.winqing.management.dao.vdo.passport.ManageUserVo;
 import com.fooee.winqing.management.service.inf.passport.PassportService;
 import org.springframework.beans.factory.annotation.Autowired;
