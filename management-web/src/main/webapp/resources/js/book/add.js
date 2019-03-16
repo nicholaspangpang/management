@@ -114,8 +114,8 @@ In.ready('datetimepicker','cropper',function() {
 			},
 			success:function (data) {
 				$("#loading").modal("hide");
-				$("#btn_save").button("reset");
 				if(data.error){
+                    $("#btn_save").button("reset");
 					layer.alert(data.message);
 					return false;
 				}
