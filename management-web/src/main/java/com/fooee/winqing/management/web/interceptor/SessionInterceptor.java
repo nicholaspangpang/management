@@ -1,12 +1,8 @@
 package com.fooee.winqing.management.web.interceptor;
 
-import com.fooee.commons.service.dictionary.DictionaryCache;
 import com.fooee.winqing.management.dao.vdo.passport.ManageUserVo;
-import com.fooee.winqing.sso.client.service.inf.SsoClientService;
-import com.fooee.winqing.sso.client.vdo.UserSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,8 +21,6 @@ import java.util.Map;
 public class SessionInterceptor implements HandlerInterceptor {
 
     private static final Logger log = LoggerFactory.getLogger(SessionInterceptor.class);
-    @Autowired
-    private SsoClientService ssoClientService;
 
     public SessionInterceptor() {
     }
